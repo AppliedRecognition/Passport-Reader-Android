@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScanResultActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            android:layout_margin="@dimen/table_cell_vertical_padding" />
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/document_number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/documentNumber"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/personal_number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/personalNumber"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/document_code"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/documentCode"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/issuing_state"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/issuingState"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/date_of_expiry"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/dateOfExpiry"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/primary_identifier"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/primaryIdentifier"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/secondary_identifiers"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/secondaryIdentifiers"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/nationality"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/nationality"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/gender"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:gravity="end"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/date_of_birth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/dateOfBirth"
+                android:gravity="right"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+    </TableLayout>
+</ScrollView>

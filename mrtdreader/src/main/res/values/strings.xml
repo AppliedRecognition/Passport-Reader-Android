@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Ver-ID MRTD Reader</string>
+
+    <string name="mrtd_reader_title">Hold your travel document close to your device</string>
+    <string name="mrtd_no_nfc_reader">The NFC Radio is not enabled. Ensure this device is equipped with an NFC Radio and that it is powered on.</string>
+    <string name="mrtd_reading_document">Please don\'t move your device or the travel document until the process completes.</string>
+
+    <string name="bac_manual_entry_hdr">Please enter the number of your travel document, your date of birth and the document\'s date of expiry.</string>
+
+    <string name="pp_info_lbl_dob">Date of Birth</string>
+
+    <string name="pp_info_lbl_doc_number">Document Number</string>
+    <string name="pp_info_lbl_doc_expiry">Date of Expiry</string>
+
+    <!-- mrtd reader events -->
+    <string name="mrtd_evt_bac">Access Control</string>
+    <string name="mrtd_evt_mrz">Personal Information</string>
+    <string name="mrtd_evt_photo">Photo</string>
+
+
+    <!-- MRTD codes -->
+    <string name="gender_code_male">Male</string>
+    <string name="gender_code_female">Female</string>
+    <string name="gender_code_unspecified">Unspecified</string>
+    <string name="gender_code_unknown">Unknown</string>
+    <string name="travel_document_reader">Travel Document Reader</string>
+
+    <!-- date picker dialog -->
+
+</resources>

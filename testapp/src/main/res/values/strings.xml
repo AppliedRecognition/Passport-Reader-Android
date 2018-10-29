@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Travel Document Reader</string>
+    <string name="compareLiveFace">Compare live face</string>
+    <string name="start_scan">Start scan</string>
+    <string name="loading_face_detection">Loading face detection</string>
+    <string name="detecting_passport_face">Looking for face in travel document photo</string>
+    <string name="mrtd_face_found">Found face in travel document photo</string>
+    <string name="travel_document_face">Travel document face</string>
+    <string name="live_face">Live face</string>
+    <string name="cropping_image">Cropping image</string>
+    <string name="failed_to_crop_image">Failed to crop image</string>
+    <string name="failed_to_collect_live_face">Failed to collect live face</string>
+    <string name="similarity_score">Similarity score %.0f/10</string>
+    <string name="face_comparison">Face Comparison</string>
+    <string name="failed_to_read_travel_document">Failed to read travel document</string>
+    <string name="travel_document">Travel document</string>
+    <string name="document_number">Document number</string>
+    <string name="personal_number">Personal number</string>
+    <string name="document_code">Document code</string>
+    <string name="issuing_state">Issuing state</string>
+    <string name="date_of_expiry">Date of expiry</string>
+    <string name="primary_identifier">Primary identifier</string>
+    <string name="secondary_identifiers">Secondary identifiers</string>
+    <string name="nationality">Nationality</string>
+    <string name="gender">Gender</string>
+    <string name="date_of_birth">Date of birth</string>
+</resources>

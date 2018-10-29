@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.appliedrec.mrtdreader">
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <application>
+        <activity android:name=".MRTDScanActivity" android:label="@string/travel_document_reader" />
+    </application>
+</manifest>

@@ -1,0 +1,107 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.netflix.nebula:gradle-lint-plugin:latest.release'
+        classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.8.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    apply plugin: 'maven'
+    apply plugin: "maven-publish"
+    apply plugin: 'nebula.lint'
+    apply plugin: 'com.jfrog.artifactory'
+    repositories {
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        maven {
+            url 'https://dev.ver-id.com/artifactory/gradle-release'
+            name 'Ver-ID'
+        }
+        jcenter()
+    }
+    // gradleLint.rules = ['all-dependency']
+}
+
+artifactory {
+    contextUrl = "https://dev.ver-id.com/artifactory/"
+    //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'gradle-release-local'
+            username = 'build'
+            password = 'pYmrfLPzvDNrfdwamvYMb7cM'
+            maven = true
+        }
+        defaults {
+            publications('mrtdreader')
+            publishArtifacts = true
+        }
+    }
+}
+
+def getSDKVersion() {
+    return "1.0.0"
+}
+
+project('mrtdreader') {
+    artifactoryPublish.dependsOn('assembleRelease')
+    publishing {
+        publications {
+            mrtdreader(MavenPublication) {
+                groupId "com.appliedrec"
+                version = getSDKVersion()
+                artifactId "mrtd-reader"
+                artifact("$buildDir/outputs/aar/mrtd-reader-${getSDKVersion()}.aar") {
+                    extension "aar"
+                }
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    def jmrtdNode = dependenciesNode.appendNode('dependency')
+                    jmrtdNode.appendNode('groupId', 'org.jmrtd')
+                    jmrtdNode.appendNode('artifactId', 'jmrtd')
+                    jmrtdNode.appendNode('version', '0.5.6')
+                    def certCvcNode = dependenciesNode.appendNode('dependency')
+                    certCvcNode.appendNode('groupId', 'org.ejbca.cvc')
+                    certCvcNode.appendNode('artifactId', 'cert-cvc')
+                    certCvcNode.appendNode('version', '1.4.3')
+                    def androidSupportNode = dependenciesNode.appendNode('dependency')
+                    androidSupportNode.appendNode('groupId', 'com.android.support')
+                    androidSupportNode.appendNode('artifactId', 'appcompat-v7')
+                    androidSupportNode.appendNode('version', '26.1.0')
+                    def scubaNode = dependenciesNode.appendNode('dependency')
+                    scubaNode.appendNode('groupId', 'net.sf.scuba')
+                    scubaNode.appendNode('artifactId', 'scuba-sc-android')
+                    scubaNode.appendNode('version', '0.0.9')
+                    def spongyCastleNode = dependenciesNode.appendNode('dependency')
+                    spongyCastleNode.appendNode('groupId', 'com.madgag.spongycastle')
+                    spongyCastleNode.appendNode('artifactId', 'prov')
+                    spongyCastleNode.appendNode('version', '1.54.0.0')
+                    def multidexNode = dependenciesNode.appendNode('dependency')
+                    multidexNode.appendNode('groupId', 'com.android.support')
+                    multidexNode.appendNode('artifactId', 'multidex')
+                    multidexNode.appendNode('version', '1.0.3')
+                }
+            }
+        }
+    }
+
+    artifactoryPublish {
+        publications(publishing.publications.mrtdreader)
+    }
+}

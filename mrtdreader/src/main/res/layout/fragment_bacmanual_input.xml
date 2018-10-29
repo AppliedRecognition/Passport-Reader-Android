@@ -1,0 +1,103 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".BACInputFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bac_table_padding"
+        android:text="@string/bac_manual_entry_hdr"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp" />
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bacTableRowSeparator" />
+
+    <TableRow>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/bac_table_padding"
+            android:text="@string/pp_info_lbl_doc_number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/txt_doc_number"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:inputType="textCapCharacters|textNoSuggestions"
+            android:maxLength="9"
+            android:maxLines="1"
+            android:padding="@dimen/bac_table_padding"
+            android:text="test"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bacTableRowSeparator" />
+
+    <TableRow>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/bac_table_padding"
+            android:text="@string/pp_info_lbl_dob"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_dob"
+            style="@style/FormField"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="test"
+            android:textAlignment="viewEnd"
+            android:gravity="end"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp" />
+    </TableRow>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bacTableRowSeparator" />
+
+    <TableRow>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/bac_table_padding"
+            android:text="@string/pp_info_lbl_doc_expiry"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_expiry"
+            style="@style/FormField"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="test"
+            android:gravity="end"
+            android:textAlignment="viewEnd"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp" />
+    </TableRow>
+</TableLayout>
