@@ -68,14 +68,6 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
         setHasOptionsMenu(true);
     }
 
-    public void setBACSpec(BACSpec bacSpec) {
-        txtDocNumber.setText(bacSpec.getDocumentNumber());
-        dateOfBirth = bacSpec.getDateOfBirth();
-        dateOfExpiry = bacSpec.getDateOfExpiry();
-        tvBirthDate.setText(dateFormat.format(dateOfBirth));
-        tvExpiryDate.setText(dateFormat.format(dateOfExpiry));
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -119,7 +111,11 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
         if (getArguments() != null) {
             BACSpec bacSpec = getArguments().getParcelable("bacSpec");
             if (bacSpec != null) {
-                setBACSpec(bacSpec);
+                txtDocNumber.setText(bacSpec.getDocumentNumber());
+                dateOfBirth = bacSpec.getDateOfBirth();
+                dateOfExpiry = bacSpec.getDateOfExpiry();
+                tvBirthDate.setText(dateFormat.format(dateOfBirth));
+                tvExpiryDate.setText(dateFormat.format(dateOfExpiry));
             }
         }
         txtDocNumber.addTextChangedListener(new TextWatcher() {

@@ -24,6 +24,7 @@
     <string name="gender_code_unspecified">Unspecified</string>
     <string name="gender_code_unknown">Unknown</string>
     <string name="travel_document_reader">Travel Document Reader</string>
+    <string name="document_number">Number</string>
 
     <!-- date picker dialog -->
 
