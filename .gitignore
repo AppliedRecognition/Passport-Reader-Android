@@ -9,3 +9,14 @@
 .externalNativeBuild
 .idea
 *.apk
+noconflictBouncycastle146
+noconflictejbcacertcvc
+passporthostapi
+scuba_data
+scuba_smartcards
+scuba_smartcards_j2se
+scuba_storage_j2se
+scuba_util
+jj2000androidcompatibility
+app
+testapp/release
