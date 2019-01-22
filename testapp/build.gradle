@@ -11,7 +11,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.2"
+        versionName "1.0.3"
         multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -35,7 +35,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.appliedrec:verid:4.3.4'
+    implementation 'com.appliedrec:verid:4.3.5'
     api project(':mrtdreader')
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
