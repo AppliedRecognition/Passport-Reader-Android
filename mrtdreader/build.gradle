@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: "com.vanniktech.android.apk.size"
 
 android {
     compileSdkVersion 26
@@ -7,23 +9,9 @@ android {
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
-        versionName rootProject.getSDKVersion()
+        versionName rootProject.version
         archivesBaseName = "mrtd-reader"
-        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        libraryVariants.all { variant ->
-            variant.outputs.all { output ->
-                if (variant.name == 'release') {
-                    def outputFile = output.outputFile
-                    def version = getVersionName()
-                    if (outputFile != null && outputFile.name.endsWith(".aar")) {
-                        def fileName = "${archivesBaseName}-${version}.aar"
-                        output.outputFileName = fileName
-                    }
-                }
-            }
-        }
     }
 
     buildTypes {
@@ -32,19 +20,46 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'org.jmrtd:jmrtd:0.5.6'
-    implementation 'org.ejbca.cvc:cert-cvc:1.4.3'
-    implementation 'net.sf.scuba:scuba-sc-android:0.0.9'
-    implementation 'com.madgag.spongycastle:prov:1.54.0.0'
+    implementation "com.android.support:appcompat-v7:${rootProject.appcompatv7Version}"
+    implementation "com.android.support.constraint:constraint-layout:${rootProject.constraintlayoutVersion}"
+    implementation "org.jmrtd:jmrtd:${rootProject.jmrtdVersion}"
+    implementation "org.ejbca.cvc:cert-cvc:${rootProject.certcvcVersion}"
+    implementation "net.sf.scuba:scuba-sc-android:${rootProject.scubaVersion}"
+    implementation "com.madgag.spongycastle:prov:${rootProject.spongycastleVersion}"
+    implementation "com.google.code.gson:gson:${rootProject.gsonVersion}"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+
+task javadoc(type: Javadoc, dependsOn: ':doclet:compileJava') {
+    source = android.sourceSets.main.java.srcDirs
+
+    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += files(ext.androidJar)
+
+    options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PUBLIC
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+    exclude '**/Jama'
+    exclude '**/jj2000'
+    options.doclet("AppliedRecDoclet")
+    options.docletpath(new File("${project.getRootDir()}/doclet/build/classes/java/main"))
+    options.addStringOption("htmlsrc", "${project.getRootDir()}/doclet/src/docs")
+    options.addStringOption("destpath", "${project.getRootDir()}/sample-public/docs")
+    print("Generate documentation in ${project.getRootDir()}/sample-public/docs")
+    failOnError = true
 }

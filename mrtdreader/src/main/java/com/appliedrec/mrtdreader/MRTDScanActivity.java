@@ -17,16 +17,33 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.Arrays;
 
+/**
+ * Machine-Readable Travel Document (MRTD) scan activity
+ *
+ * <p>The activity will ask the user to place their travel document close to their device and read the document's NFC chip</p>
+ * @version 1.0.0
+ */
 public class MRTDScanActivity extends AppCompatActivity implements MRTDReaderFragment.MRTDReaderFragmentInteractionListener {
 
     private static final String TAG = "MRTDReaderAct";
 
+    /**
+     * Constant representing an intent extra key for BAC specification
+     * @version 1.0.0
+     */
     public static final String EXTRA_BAC_SPEC = "com.appliedrec.EXTRA_BAC_SPEC";
+    /**
+     * Constant representing an intent extra key for the scan result
+     * @version 1.0.0
+     */
     public static final String EXTRA_MRTD_SCAN_RESULT = "com.appliedrec.EXTRA_MRTD_SCAN_RESULT";
+    /**
+     * Constant representing an intent extra key for the description of a scan error
+     * @version 1.0.0
+     */
     public static final String EXTRA_MRTD_SCAN_ERROR = "com.appliedrec.EXTRA_MRTD_SCAN_ERROR";
     public static final String MRTD_READER_TAG = "MRTDReader";
 

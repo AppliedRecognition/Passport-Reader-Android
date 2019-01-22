@@ -5,6 +5,10 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
+/**
+ * Basic Access Control (BAC) specification
+ * @version 1.0.0
+ */
 public class BACSpec implements Parcelable {
 
     private String documentNumber;
@@ -33,18 +37,36 @@ public class BACSpec implements Parcelable {
         }
     };
 
+    /**
+     * @version 1.0.0
+     * @return Travel document number
+     */
     public String getDocumentNumber() {
         return documentNumber;
     }
 
+    /**
+     * @version 1.0.0
+     * @return Date of birth of the travel document holder
+     */
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
+    /**
+     * @version 1.0.0
+     * @return Travel document expiry date
+     */
     public Date getDateOfExpiry() {
         return dateOfExpiry;
     }
 
+    /**
+     *
+     * @param documentNumber
+     * @param dateOfBirth
+     * @param dateOfExpiry
+     */
     public BACSpec(String documentNumber, Date dateOfBirth, Date dateOfExpiry) {
         this.documentNumber = documentNumber;
         this.dateOfBirth = dateOfBirth;

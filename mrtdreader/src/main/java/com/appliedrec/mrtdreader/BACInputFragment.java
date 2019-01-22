@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,6 +25,7 @@ import java.util.Date;
  * to handle interaction events.
  * Use the {@link BACInputFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * @version 1.0.0
  */
 public class BACInputFragment extends Fragment implements DatePickerFragment.DatePickerFragmentListener {
 
@@ -51,6 +51,7 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
      * this fragment using the provided parameters.
 
      * @return A new instance of fragment BACInputFragment.
+     * @version 1.0.0
      */
     public static BACInputFragment newInstance(BACSpec bacSpec) {
         BACInputFragment fragment = new BACInputFragment();
@@ -238,9 +239,15 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
+     * @version 1.0.0
      */
     public interface OnBACInputListener {
 
+        /**
+         * Called when the BAC specification changes as a result of user input
+         * @param bacSpec The new BAC specification
+         * @version 1.0.0
+         */
         void onBACChanged(BACSpec bacSpec);
     }
 }
