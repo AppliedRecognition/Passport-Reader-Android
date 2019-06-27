@@ -3,12 +3,12 @@ apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: "com.vanniktech.android.apk.size"
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
+        targetSdkVersion 28
+        versionCode 2
         versionName rootProject.version
         archivesBaseName = "mrtd-reader"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -59,7 +59,7 @@ task javadoc(type: Javadoc, dependsOn: ':doclet:compileJava') {
     options.doclet("AppliedRecDoclet")
     options.docletpath(new File("${project.getRootDir()}/doclet/build/classes/java/main"))
     options.addStringOption("htmlsrc", "${project.getRootDir()}/doclet/src/docs")
-    options.addStringOption("destpath", "${project.getRootDir()}/sample-public/docs")
-    print("Generate documentation in ${project.getRootDir()}/sample-public/docs")
+    options.addStringOption("destpath", "${project.getRootDir()}/sample/docs")
+    print("Generate documentation in ${project.getRootDir()}/sample/docs")
     failOnError = true
 }
