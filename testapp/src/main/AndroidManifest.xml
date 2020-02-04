@@ -6,7 +6,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".MRTDReaderApplication"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
@@ -20,14 +19,13 @@
         <activity android:name=".ScanResultActivity" android:label="@string/travel_document" />
 
         <meta-data
-            android:name="com.appliedrec.verid.apiSecret"
-            android:value="e065e84b0f35dd5460773ac836854d2cdd0b1f241787b8243e9274f0f50574a6" />
+            android:name="com.appliedrec.verid.password"
+            android:value="${veridPassword}" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="59a52ef4745558f6bb3ad15349f547d5f405ddda"
+            android:value="${fabricApiKey}"
             />
-        <activity android:name=".FaceComparisonResult" android:label="@string/face_comparison" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
