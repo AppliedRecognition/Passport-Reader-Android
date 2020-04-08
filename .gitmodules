@@ -1,6 +1,3 @@
-[submodule "sample-public"]
-	path = sample-public
-	url = https://github.com/AppliedRecognition/Passport-Reader-Android-Sample.git
 [submodule "sample"]
 	path = sample
 	url = https://github.com/AppliedRecognition/Passport-Reader-Android-Sample.git
