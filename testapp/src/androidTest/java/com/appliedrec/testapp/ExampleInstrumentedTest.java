@@ -19,8 +19,8 @@ public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.appliedrec.testapp", appContext.getPackageName());
+        assertEquals("com.appliedrec.mrtd_reader_app", appContext.getPackageName());
     }
 }

@@ -1,24 +1,17 @@
 package com.appliedrec.mrtdreader;
 
-import android.Manifest;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.nfc.NfcAdapter;
-import android.nfc.Tag;
-import android.nfc.tech.IsoDep;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
 
-import java.util.Arrays;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.appliedrec.mrtdreader.databinding.ActivityMrtdreaderBinding;
+
+import org.jmrtd.PassportService;
+
+import java.util.Optional;
 
 /**
  * Machine-Readable Travel Document (MRTD) scan activity
@@ -26,194 +19,92 @@ import java.util.Arrays;
  * <p>The activity will ask the user to place their travel document close to their device and read the document's NFC chip</p>
  * @version 1.0.0
  */
-public class MRTDScanActivity extends AppCompatActivity implements MRTDReaderFragment.MRTDReaderFragmentInteractionListener {
+public class MRTDScanActivity extends AppCompatActivity {
 
-    private static final String TAG = "MRTDReaderAct";
+    public static final int REQUEST_CODE_NFC_PERMISSION = 0;
 
-    /**
-     * Constant representing an intent extra key for BAC specification
-     * @version 1.0.0
-     */
-    public static final String EXTRA_BAC_SPEC = "com.appliedrec.EXTRA_BAC_SPEC";
-    /**
-     * Constant representing an intent extra key for the scan result
-     * @version 1.0.0
-     */
-    public static final String EXTRA_MRTD_SCAN_RESULT = "com.appliedrec.EXTRA_MRTD_SCAN_RESULT";
-    /**
-     * Constant representing an intent extra key for the description of a scan error
-     * @version 1.0.0
-     */
-    public static final String EXTRA_MRTD_SCAN_ERROR = "com.appliedrec.EXTRA_MRTD_SCAN_ERROR";
-    public static final String MRTD_READER_TAG = "MRTDReader";
-
-    private NfcAdapter nfcAdapter;
-
-    private MRTDReaderFragment readerFragment;
-    private boolean readStarted = false;
-    private BACSpec bacSpec;
+    private NFCPermissionListener nfcPermissionListener;
+    ActivityMrtdreaderBinding viewBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mrtdreader);
-        if (savedInstanceState == null){
-            bacSpec = getIntent().getParcelableExtra(EXTRA_BAC_SPEC);
-            readerFragment = MRTDReaderFragment.newInstance(bacSpec);
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.mrtdreader_root, readerFragment, MRTD_READER_TAG);
-            ft.commit();
-        }
-        else{
-            bacSpec = savedInstanceState.getParcelable(EXTRA_BAC_SPEC);
-            readerFragment = (MRTDReaderFragment)getSupportFragmentManager().findFragmentByTag(MRTD_READER_TAG);
-        }
-
-        //resolveIntent(getIntent());
+        viewBinding = ActivityMrtdreaderBinding.inflate(getLayoutInflater());
+        setContentView(viewBinding.getRoot());
+        onWaiting();
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable(EXTRA_BAC_SPEC, bacSpec);
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        //this will get called with the NFC intent when we scan an NFC
-        resolveIntent(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        readStarted = false;
-        this.unregisterReceiver(mReceiver);
-        if (nfcAdapter != null) {
-            nfcAdapter.disableForegroundDispatch(this);
-            nfcAdapter = null;
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.NFC) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.NFC}, 0);
-        } else {
-            startNfcAdapter();
-        }
+    protected void onDestroy() {
+        super.onDestroy();
+        viewBinding = null;
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 0) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                startNfcAdapter();
-            }
+        if (requestCode == REQUEST_CODE_NFC_PERMISSION) {
+            getNfcPermissionListener().ifPresent(listener -> {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    listener.onNFCPermissionGranted();
+                } else {
+                    listener.onNFCPermissionDenied();
+                }
+            });
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
-    private void startNfcAdapter() {
-        IntentFilter filter = new IntentFilter(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED);
-        this.registerReceiver(mReceiver, filter);
+    public void onWaiting() {
+        viewBinding.textView.setText(R.string.mrtd_reader_title);
+        viewBinding.progressBar.setVisibility(View.GONE);
+        viewBinding.progressIndicator.setVisibility(View.GONE);
+    }
 
-        if (!readStarted) {
-            nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-            if (nfcAdapter != null && nfcAdapter.isEnabled()) {
-                Log.d(TAG, "Resume is notifying NFCWaiting!");
-                readerFragment.notifyNFCWaiting();
-                enableForegroundDispatch();
-            } else {
+    public void onReading() {
+        viewBinding.textView.setText(R.string.mrtd_reading_document);
+        viewBinding.progressIndicator.setVisibility(View.VISIBLE);
+        viewBinding.progressBar.setVisibility(View.GONE);
+    }
 
-                readerFragment.notifyNFCNotEnabled();
-            }
+    public void onNoNFC() {
+        viewBinding.textView.setText(R.string.mrtd_no_nfc_reader);
+        viewBinding.progressBar.setVisibility(View.GONE);
+        viewBinding.progressIndicator.setVisibility(View.GONE);
+    }
+
+    public void onScanProgress(MRTDReaderProgress progress) {
+        String message;
+        switch (progress.getFileId()) {
+            case PassportService.EF_COM:
+                message = getString(R.string.mrtd_evt_bac);
+            case PassportService.EF_SOD:
+                message = getString(R.string.mrtd_evt_bac);
+                break;
+            case PassportService.EF_DG1:
+                message = getString(R.string.mrtd_evt_mrz);
+                break;
+            case PassportService.EF_DG2:
+                message = getString(R.string.mrtd_evt_photo);
+                break;
+            default:
+                message = "Reading passport";
+        }
+        if (viewBinding != null) {
+            int done = (int) Math.round(progress.getProgress() * 100.0);
+            viewBinding.progressBar.setMax(100);
+            viewBinding.progressBar.setProgress(done);
+            viewBinding.progressBar.setVisibility(View.VISIBLE);
+            viewBinding.progressIndicator.setVisibility(View.GONE);
+            viewBinding.textView.setText(message);
         }
     }
 
-    private void enableForegroundDispatch() {
-
-        Intent in = new Intent(this, this.getClass());
-        in.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        in.putExtra(EXTRA_BAC_SPEC, bacSpec);
-
-        PendingIntent pi = PendingIntent.getActivity( this, 0, in, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        String[][] filter = new String[][]{
-                new String[]{ "android.nfc.tech.IsoDep" }
-        };
-        nfcAdapter.enableForegroundDispatch( this, pi, null, filter);
+    public void setNfcPermissionListener(NFCPermissionListener nfcPermissionListener) {
+        this.nfcPermissionListener = nfcPermissionListener;
     }
 
-    private void resolveIntent(Intent intent) {
-        Log.v(TAG, "resolveIntent");
-        String action = intent.getAction();
-        Log.v(TAG, action);
-
-        if( NfcAdapter.ACTION_TECH_DISCOVERED.equals(action) )
-        {
-            Tag t = intent.getExtras().getParcelable(NfcAdapter.EXTRA_TAG);
-
-            if( Arrays.asList( t.getTechList() ).contains( "android.nfc.tech.IsoDep" ) )
-            {
-                handleIsoDepFound( IsoDep.get(t));
-            }
-        }
+    public Optional<NFCPermissionListener> getNfcPermissionListener() {
+        return Optional.ofNullable(nfcPermissionListener);
     }
-
-    private void handleIsoDepFound(IsoDep isodep) {
-        Log.v(TAG, "handleIsoDepFound");
-        readerFragment.onIsoDepReceived(isodep);
-    }
-
-    @Override
-    public void onMRTDReadStarted() {
-        readStarted = true;
-    }
-
-    @Override
-    public void onMRTDReadFailed(String errorDescription) {
-        Intent intent = new Intent();
-        intent.putExtra(EXTRA_BAC_SPEC, bacSpec);
-        intent.putExtra(EXTRA_MRTD_SCAN_ERROR, errorDescription);
-        setResult(RESULT_OK, intent);
-        finish();
-    }
-
-    @Override
-    public void onMRTDReadCompleted(MRTDScanResult passportResult) {
-        Intent intent = new Intent();
-        intent.putExtra(EXTRA_BAC_SPEC, bacSpec);
-        intent.putExtra(EXTRA_MRTD_SCAN_RESULT, passportResult);
-        setResult(RESULT_OK, intent);
-        finish();
-    }
-
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-
-            if (action.equals(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED)) {
-                final int state = intent.getIntExtra(NfcAdapter.EXTRA_ADAPTER_STATE,
-                        NfcAdapter.STATE_OFF);
-                Log.d(TAG, "Broadcast: NFC Radio State: " + state);
-                switch (state) {
-                    case NfcAdapter.STATE_TURNING_OFF:
-                    case NfcAdapter.STATE_OFF:
-                        readerFragment.notifyNFCNotEnabled();
-                        break;
-
-                    case NfcAdapter.STATE_TURNING_ON:
-                    case NfcAdapter.STATE_ON:
-                        readerFragment.notifyNFCWaiting();
-                        break;
-                }
-            }
-        }
-    };
 }

@@ -1,17 +1,19 @@
 package com.appliedrec.mrtdreader;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import com.appliedrec.mrtdreader.databinding.FragmentBacmanualInputBinding;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,14 +31,13 @@ import java.util.Date;
  */
 public class BACInputFragment extends Fragment implements DatePickerFragment.DatePickerFragmentListener {
 
-    private EditText txtDocNumber;
-    private TextView tvExpiryDate;
-    private TextView tvBirthDate;
+    private FragmentBacmanualInputBinding viewBinding;
 
     private Date dateOfBirth;
     private Date dateOfExpiry;
 
     private OnBACInputListener mListener;
+    @SuppressLint("SimpleDateFormat")
     private SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM, yyyy");
 
     public static final int ID_DOB = 0;
@@ -51,7 +52,7 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
      * this fragment using the provided parameters.
 
      * @return A new instance of fragment BACInputFragment.
-     * @version 1.0.0
+     * @since 1.0.0
      */
     public static BACInputFragment newInstance(BACSpec bacSpec) {
         BACInputFragment fragment = new BACInputFragment();
@@ -70,56 +71,39 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_bacmanual_input, container, false);
-        txtDocNumber = v.findViewById(R.id.txt_doc_number);
-        txtDocNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                selectDateOfBirth();
-                return true;
-            }
+        viewBinding = FragmentBacmanualInputBinding.inflate(inflater, container, false);
+        viewBinding.txtDocNumber.setOnEditorActionListener((v, actionId, event) -> {
+            selectDateOfBirth();
+            return true;
         });
 
         final Calendar selectedDOEDate = Calendar.getInstance();
         selectedDOEDate.set(Calendar.YEAR, selectedDOEDate.get(Calendar.YEAR) + 2);
         dateOfExpiry = selectedDOEDate.getTime();
 
-        tvExpiryDate = v.findViewById(R.id.tv_expiry);
-        tvExpiryDate.setText(dateFormat.format(dateOfExpiry));
-        tvExpiryDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDateOfExpiry();
-            }
-        });
+        viewBinding.tvExpiry.setText(dateFormat.format(dateOfExpiry));
+        viewBinding.tvExpiry.setOnClickListener(v -> selectDateOfExpiry());
 
         final Calendar selectedDOBDate = Calendar.getInstance();
         selectedDOBDate.set(Calendar.YEAR, selectedDOBDate.get(Calendar.YEAR) - 35);
         dateOfBirth = selectedDOBDate.getTime();
 
-        tvBirthDate = v.findViewById(R.id.tv_dob);
-        tvBirthDate.setText(dateFormat.format(selectedDOBDate.getTime()));
-        tvBirthDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectDateOfBirth();
-            }
-        });
+        viewBinding.tvDob.setText(dateFormat.format(selectedDOBDate.getTime()));
+        viewBinding.tvDob.setOnClickListener(v -> selectDateOfBirth());
 
         if (getArguments() != null) {
             BACSpec bacSpec = getArguments().getParcelable("bacSpec");
             if (bacSpec != null) {
-                txtDocNumber.setText(bacSpec.getDocumentNumber());
+                viewBinding.txtDocNumber.setText(bacSpec.getDocumentNumber());
                 dateOfBirth = bacSpec.getDateOfBirth();
                 dateOfExpiry = bacSpec.getDateOfExpiry();
-                tvBirthDate.setText(dateFormat.format(dateOfBirth));
-                tvExpiryDate.setText(dateFormat.format(dateOfExpiry));
+                viewBinding.tvDob.setText(dateFormat.format(dateOfBirth));
+                viewBinding.tvExpiry.setText(dateFormat.format(dateOfExpiry));
             }
         }
-        txtDocNumber.addTextChangedListener(new TextWatcher() {
+        viewBinding.txtDocNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -135,12 +119,18 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
                 onBACSpecChanged();
             }
         });
-        return v;
+        return viewBinding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewBinding = null;
     }
 
     private void onBACSpecChanged() {
         if (isFormValid()) {
-            String docNumber = txtDocNumber.getText().toString().trim();
+            String docNumber = viewBinding.txtDocNumber.getText().toString().trim();
             BACSpec bacSpec = new BACSpec(docNumber, dateOfBirth, dateOfExpiry);
             mListener.onBACChanged(bacSpec);
         } else {
@@ -166,10 +156,10 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
     }
 
     private boolean isFormValid() {
-        String docNumber = txtDocNumber.getText().toString().trim();
+        String docNumber = viewBinding.txtDocNumber.getText().toString().trim();
         boolean valid = docNumber.length() > 0 && docNumber.length() <= 9;
         if (valid) {
-            valid &= dateOfBirth.before(new Date());
+            valid = dateOfBirth.before(new Date());
         }
         return valid;
     }
@@ -177,15 +167,15 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
     @Override
     public void onResume() {
         super.onResume();
-        if (getActivity() != null && txtDocNumber != null) {
-            txtDocNumber.requestFocus();
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(txtDocNumber, InputMethodManager.SHOW_IMPLICIT);
+        if (viewBinding != null) {
+            viewBinding.txtDocNumber.requestFocus();
+            InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(viewBinding.txtDocNumber, InputMethodManager.SHOW_IMPLICIT);
         }
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnBACInputListener) {
             mListener = (OnBACInputListener) context;
@@ -204,9 +194,9 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
     @Override
     public void onDateSelected(int identifier, Date date) {
         if (identifier == ID_DOB) {
-            tvBirthDate.setText(dateFormat.format(date));
+            viewBinding.tvDob.setText(dateFormat.format(date));
         } else {
-            tvExpiryDate.setText(dateFormat.format(date));
+            viewBinding.tvExpiry.setText(dateFormat.format(date));
         }
     }
 
@@ -214,10 +204,10 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
     public void onDateCommitted(int identifier) {
         try {
             if (identifier == ID_DOB) {
-                dateOfBirth = dateFormat.parse(tvBirthDate.getText().toString());
+                dateOfBirth = dateFormat.parse(viewBinding.tvDob.getText().toString());
                 selectDateOfExpiry();
             } else {
-                dateOfExpiry = dateFormat.parse(tvExpiryDate.getText().toString());
+                dateOfExpiry = dateFormat.parse(viewBinding.tvExpiry.getText().toString());
             }
             onBACSpecChanged();
         } catch (ParseException e) {
@@ -246,7 +236,7 @@ public class BACInputFragment extends Fragment implements DatePickerFragment.Dat
         /**
          * Called when the BAC specification changes as a result of user input
          * @param bacSpec The new BAC specification
-         * @version 1.0.0
+         * @since 1.0.0
          */
         void onBACChanged(BACSpec bacSpec);
     }

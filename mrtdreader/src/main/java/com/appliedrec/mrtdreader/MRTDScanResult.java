@@ -18,8 +18,6 @@ import com.google.gson.JsonSerializer;
 import com.google.gson.annotations.JsonAdapter;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
@@ -40,7 +38,11 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
     private String dateOfBirth;
     private String gender;
     private String dateOfExpiry;
-    private String faceImageFilePath;
+    private Bitmap faceImage;
+
+    MRTDScanResult() {
+
+    }
 
     MRTDScanResult(
             String documentCode,
@@ -52,8 +54,7 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
             String personalNumber,
             String dateOfBirth,
             String gender,
-            String dateOfExpiry,
-            String faceImageFilePath
+            String dateOfExpiry
     ) {
         this.documentCode = documentCode;
         this.issuingState = issuingState;
@@ -65,7 +66,6 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.dateOfExpiry = dateOfExpiry;
-        this.faceImageFilePath = faceImageFilePath;
     }
 
     protected MRTDScanResult(Parcel in) {
@@ -79,7 +79,11 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         dateOfBirth = in.readString();
         gender = in.readString();
         dateOfExpiry = in.readString();
-        faceImageFilePath = in.readString();
+        byte[] faceImageData = new byte[in.readInt()];
+        in.readByteArray(faceImageData);
+        if (faceImageData.length > 0) {
+            faceImage = BitmapFactory.decodeByteArray(faceImageData, 0, faceImageData.length);
+        }
     }
 
     public static final Creator<MRTDScanResult> CREATOR = new Creator<MRTDScanResult>() {
@@ -93,6 +97,50 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
             return new MRTDScanResult[size];
         }
     };
+
+    void setDocumentCode(String documentCode) {
+        this.documentCode = documentCode;
+    }
+
+    void setIssuingState(String issuingState) {
+        this.issuingState = issuingState;
+    }
+
+    void setPrimaryIdentifier(String primaryIdentifier) {
+        this.primaryIdentifier = primaryIdentifier;
+    }
+
+    void setSecondaryIdentifiers(String[] secondaryIdentifiers) {
+        this.secondaryIdentifiers = secondaryIdentifiers;
+    }
+
+    void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
+    void setPersonalNumber(String personalNumber) {
+        this.personalNumber = personalNumber;
+    }
+
+    void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    void setDateOfExpiry(String dateOfExpiry) {
+        this.dateOfExpiry = dateOfExpiry;
+    }
+
+    void setFaceImage(Bitmap image) {
+        this.faceImage = image;
+    }
 
     /**
      * @version 1.0.0
@@ -174,14 +222,6 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         return dateOfExpiry;
     }
 
-    /**
-     * @version 1.0.0
-     * @return Path to the image of the documen't holder face
-     */
-    public String getFaceImageFilePath() {
-        return faceImageFilePath;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -199,7 +239,17 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         parcel.writeString(dateOfBirth);
         parcel.writeString(gender);
         parcel.writeString(dateOfExpiry);
-        parcel.writeString(faceImageFilePath);
+        byte[] faceImageData = new byte[0];
+        if (faceImage != null) {
+            try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+                faceImage.compress(Bitmap.CompressFormat.JPEG, 75, outputStream);
+                outputStream.flush();
+                faceImageData = outputStream.toByteArray();
+            } catch (IOException e) {
+            }
+        }
+        parcel.writeInt(faceImageData.length);
+        parcel.writeByteArray(faceImageData);
     }
 
     @Override
@@ -225,11 +275,12 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         String dateOfBirth = jsonObject.has("dateOfBirth") ? jsonObject.get("dateOfBirth").getAsString() : null;
         String gender = jsonObject.has("gender") ? jsonObject.get("gender").getAsString() : null;
         String dateOfExpiry = jsonObject.has("dateOfExpiry") ? jsonObject.get("dateOfExpiry").getAsString() : null;
+        MRTDScanResult result = new MRTDScanResult(documentCode, issuingState, primaryIdentifier, secondaryIdentifiers, nationality, documentNumber, personalNumber, dateOfBirth, gender, dateOfExpiry);
         if (jsonObject.has("image") && !jsonObject.get("image").isJsonNull()) {
-
+            String image = jsonObject.get("image").getAsString();
+            // TODO: Parse image
         }
-        String faceImageFilePath = jsonObject.has("faceImageFilePath") ? jsonObject.get("faceImageFilePath").getAsString() : null;
-        return new MRTDScanResult(documentCode, issuingState, primaryIdentifier, secondaryIdentifiers, nationality, documentNumber, personalNumber, dateOfBirth, gender, dateOfExpiry, faceImageFilePath);
+        return result;
     }
 
     @Override
@@ -251,20 +302,21 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         jsonObject.addProperty("dateOfBirth", src.dateOfBirth);
         jsonObject.addProperty("gender", src.gender);
         jsonObject.addProperty("dateOfExpiry", src.dateOfExpiry);
-        if (src.faceImageFilePath != null) {
+        if (src.faceImage != null) {
             try {
-                Bitmap bitmap = BitmapFactory.decodeFile(src.faceImageFilePath);
-                if (bitmap != null) {
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    outputStream.write("data:image/jpeg;base64,".getBytes("UTF-8"));
-                    Base64OutputStream base64OutputStream = new Base64OutputStream(outputStream, Base64.NO_WRAP);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, base64OutputStream);
-                    jsonObject.addProperty("image", outputStream.toString("UTF-8"));
-                }
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                outputStream.write("data:image/jpeg;base64,".getBytes("UTF-8"));
+                Base64OutputStream base64OutputStream = new Base64OutputStream(outputStream, Base64.NO_WRAP);
+                src.faceImage.compress(Bitmap.CompressFormat.JPEG, 90, base64OutputStream);
+                jsonObject.addProperty("image", outputStream.toString("UTF-8"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return jsonObject;
+    }
+
+    public Bitmap getFaceImage() {
+        return faceImage;
     }
 }

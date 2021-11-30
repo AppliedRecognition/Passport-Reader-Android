@@ -2,30 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.appliedrec.mrtd_reader_sample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name="com.appliedrec.mrtd_reader_app.MRTDReaderApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".MRTDReaderApplication"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.appliedrec.mrtd_reader_app.BACSpecManualEntryActivity"></activity>
+        <activity android:name="com.appliedrec.mrtd_reader_app.FaceComparisonActivity" />
+        <activity android:name="com.appliedrec.mrtd_reader_app.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScanResultActivity" android:label="@string/travel_document" />
+        <activity
+            android:name="com.appliedrec.mrtd_reader_app.ScanResultActivity"
+            android:label="@string/travel_document" />
 
         <meta-data
             android:name="com.appliedrec.verid.password"
             android:value="${veridPassword}" />
-
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${fabricApiKey}"
-            />
+            android:value="${fabricApiKey}" />
+        <meta-data
+            android:name="com.appliedrec.microblink_key"
+            android:value="${microblinkLicenceKey}" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

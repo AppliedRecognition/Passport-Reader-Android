@@ -29,20 +29,12 @@ import android.nfc.tech.IsoDep;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import net.sf.scuba.smartcards.CardFileInputStream;
 import net.sf.scuba.smartcards.CardService;
 
 import org.jmrtd.BACKey;
 import org.jmrtd.BACKeySpec;
 import org.jmrtd.PassportService;
-import org.jmrtd.lds.CardAccessFile;
-import org.jmrtd.lds.PACEInfo;
-import org.jmrtd.lds.SODFile;
-import org.jmrtd.lds.icao.COMFile;
-import org.jmrtd.lds.icao.DG1File;
 import org.jmrtd.lds.icao.DG2File;
-import org.jmrtd.lds.icao.LDS;
-import org.jmrtd.lds.icao.MRZInfo;
 import org.jmrtd.lds.iso19794.FaceImageInfo;
 import org.jmrtd.lds.iso19794.FaceInfo;
 import org.spongycastle.jce.provider.BouncyCastleProvider;
@@ -50,7 +42,6 @@ import org.spongycastle.jce.provider.BouncyCastleProvider;
 import java.io.DataInputStream;
 import java.security.Security;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import jj2000.JJ2000Frontend;
@@ -128,23 +119,23 @@ public class MRTDReaderTask extends AsyncTask<Void, MRTDReaderTask.MRTDReaderTas
             CardService cardService = CardService.getInstance(isoDep);
             cardService.open();
 
-            PassportService service = new PassportService(cardService);
+            PassportService service = null;//new PassportService(cardService);
             service.open();
 
             boolean paceSucceeded = false;
-            try {
-                CardAccessFile cardAccessFile = new CardAccessFile(service.getInputStream(PassportService.EF_CARD_ACCESS));
-                Collection<PACEInfo> paceInfos = cardAccessFile.getPACEInfos();
-                if (paceInfos != null && paceInfos.size() > 0) {
-                    PACEInfo paceInfo = paceInfos.iterator().next();
-                    service.doPACE(bacKey, paceInfo.getObjectIdentifier(), PACEInfo.toParameterSpec(paceInfo.getParameterId()));
-                    paceSucceeded = true;
-                } else {
-                    paceSucceeded = true;
-                }
-            } catch (Exception e) {
-                Log.w(TAG, e);
-            }
+//            try {
+//                CardAccessFile cardAccessFile = new CardAccessFile(service.getInputStream(PassportService.EF_CARD_ACCESS));
+//                Collection<PACEInfo> paceInfos = cardAccessFile.getPACEInfos();
+//                if (paceInfos != null && paceInfos.size() > 0) {
+//                    PACEInfo paceInfo = paceInfos.iterator().next();
+//                    service.doPACE(bacKey, paceInfo.getObjectIdentifier(), PACEInfo.toParameterSpec(paceInfo.getParameterId()));
+//                    paceSucceeded = true;
+//                } else {
+//                    paceSucceeded = true;
+//                }
+//            } catch (Exception e) {
+//                Log.w(TAG, e);
+//            }
 
             service.sendSelectApplet(paceSucceeded);
 
@@ -158,33 +149,34 @@ public class MRTDReaderTask extends AsyncTask<Void, MRTDReaderTask.MRTDReaderTas
 
             MRTDConnectionResult res = new MRTDConnectionResult();
 
-            LDS lds = new LDS();
+//            LDS lds = new LDS();
+//
+//
+//            CardFileInputStream comIn = service.getInputStream(PassportService.EF_COM);
+//            lds.add(PassportService.EF_COM, comIn, comIn.getLength());
+//            COMFile comFile = lds.getCOMFile();
+//            publishProgress(makeTaskProgress(PassportService.EF_COM, true, "Success"));
+//
+//
+//            fid = PassportService.EF_SOD;
+//            CardFileInputStream sodIn = service.getInputStream(PassportService.EF_SOD);
+//            lds.add(PassportService.EF_SOD, sodIn, sodIn.getLength());
+//            SODFile sodFile = lds.getSODFile();
+//
+//            fid = PassportService.EF_DG1;
+//            CardFileInputStream dg1In = service.getInputStream(PassportService.EF_DG1);
+//            lds.add(PassportService.EF_DG1, dg1In, dg1In.getLength());
+//            DG1File dg1File = lds.getDG1File();
+//            MRZInfo mrzInfo = dg1File.getMRZInfo();
+//            res.setMRZInfo(mrzInfo);
+//
+//            fid = PassportService.EF_DG2;
+//            CardFileInputStream dg2In = service.getInputStream(PassportService.EF_DG2);
+//            lds.add(PassportService.EF_DG2, dg2In, dg2In.getLength());
+//            DG2File dg2File = lds.getDG2File();
+            DG2File dg2File = null;
 
-
-            CardFileInputStream comIn = service.getInputStream(PassportService.EF_COM);
-            lds.add(PassportService.EF_COM, comIn, comIn.getLength());
-            COMFile comFile = lds.getCOMFile();
-            publishProgress(makeTaskProgress(PassportService.EF_COM, true, "Success"));
-
-
-            fid = PassportService.EF_SOD;
-            CardFileInputStream sodIn = service.getInputStream(PassportService.EF_SOD);
-            lds.add(PassportService.EF_SOD, sodIn, sodIn.getLength());
-            SODFile sodFile = lds.getSODFile();
-
-            fid = PassportService.EF_DG1;
-            CardFileInputStream dg1In = service.getInputStream(PassportService.EF_DG1);
-            lds.add(PassportService.EF_DG1, dg1In, dg1In.getLength());
-            DG1File dg1File = lds.getDG1File();
-            MRZInfo mrzInfo = dg1File.getMRZInfo();
-            res.setMRZInfo(mrzInfo);
-
-            fid = PassportService.EF_DG2;
-            CardFileInputStream dg2In = service.getInputStream(PassportService.EF_DG2);
-            lds.add(PassportService.EF_DG2, dg2In, dg2In.getLength());
-            DG2File dg2File = lds.getDG2File();
-
-            List<FaceImageInfo> allFaceImageInfos = new ArrayList<>();
+                    List<FaceImageInfo> allFaceImageInfos = new ArrayList<>();
             List<FaceInfo> faceInfos = dg2File.getFaceInfos();
             for (FaceInfo faceInfo : faceInfos) {
                 allFaceImageInfos.addAll(faceInfo.getFaceImageInfos());

@@ -228,10 +228,10 @@ public class MRTDReaderFragment extends Fragment implements MRTDReaderTask.IMRTD
             }
         }
 
-        MRTDScanResult scanResult = new MRTDScanResult(mrzInfo.getDocumentCode(), mrzInfo.getIssuingState(), mrzInfo.getPrimaryIdentifier(), mrzInfo.getSecondaryIdentifierComponents(), mrzInfo.getNationality(), mrzInfo.getDocumentNumber(), mrzInfo.getPersonalNumber(), mrzInfo.getDateOfBirth(), gender, mrzInfo.getDateOfExpiry(), imageFilePath);
-
-        if (mListener != null)
-            mListener.onMRTDReadCompleted(scanResult);
+//        MRTDScanResult scanResult = new MRTDScanResult(mrzInfo.getDocumentCode(), mrzInfo.getIssuingState(), mrzInfo.getPrimaryIdentifier(), mrzInfo.getSecondaryIdentifierComponents(), mrzInfo.getNationality(), mrzInfo.getDocumentNumber(), mrzInfo.getPersonalNumber(), mrzInfo.getDateOfBirth(), gender, mrzInfo.getDateOfExpiry(), imageFilePath);
+//
+//        if (mListener != null)
+//            mListener.onMRTDReadCompleted(scanResult);
 
     }
 

@@ -1,1 +1,1 @@
-include ':mrtdreader', ':testapp', ':doclet'
+include ':mrtdreader', ':testapp'

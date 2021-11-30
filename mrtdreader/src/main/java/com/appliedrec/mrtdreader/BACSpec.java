@@ -3,12 +3,16 @@ package com.appliedrec.mrtdreader;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Basic Access Control (BAC) specification
  * @version 1.0.0
  */
+@JsonAdapter(BACSpecJsonAdapter.class)
 public class BACSpec implements Parcelable {
 
     private String documentNumber;
@@ -93,5 +97,20 @@ public class BACSpec implements Parcelable {
         } else {
             parcel.writeByte((byte)0);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BACSpec)) return false;
+        BACSpec bacSpec = (BACSpec) o;
+        return documentNumber.equals(bacSpec.documentNumber) &&
+                dateOfBirth.equals(bacSpec.dateOfBirth) &&
+                dateOfExpiry.equals(bacSpec.dateOfExpiry);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(documentNumber, dateOfBirth, dateOfExpiry);
     }
 }
