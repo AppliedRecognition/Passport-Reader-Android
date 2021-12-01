@@ -105,7 +105,7 @@ public class CaptureResultActivity extends AppCompatActivity implements VerIDSes
             verIDSession.setDelegate(this);
             verIDSession.start();
         } catch (Exception exception) {
-            exception.printStackTrace();
+            showError(R.string.failed_to_start_face_capture_session);
         }
     }
 
