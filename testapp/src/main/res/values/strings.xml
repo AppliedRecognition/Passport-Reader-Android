@@ -1,19 +1,8 @@
-<resources>
-    <string name="app_name">Travel Document Reader</string>
-    <string name="compareLiveFace">Compare live face</string>
-    <string name="start_scan">Start scan</string>
-    <string name="loading_face_detection">Loading face detection</string>
-    <string name="detecting_passport_face">Looking for face in travel document photo</string>
-    <string name="mrtd_face_found">Found face in travel document photo</string>
-    <string name="travel_document_face">Travel document face</string>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Passport Reader</string>
     <string name="live_face">Live face</string>
-    <string name="cropping_image">Cropping image</string>
-    <string name="failed_to_crop_image">Failed to crop image</string>
-    <string name="failed_to_collect_live_face">Failed to collect live face</string>
-    <string name="similarity_score">Similarity score %.0f/10</string>
-    <string name="face_comparison">Face Comparison</string>
-    <string name="failed_to_read_travel_document">Failed to read travel document</string>
-    <string name="travel_document">Travel document</string>
+    <string name="passport_face">Passport face</string>
+    <string name="failed_to_read_travel_document">Failed to read passport</string>
     <string name="document_number">Document number</string>
     <string name="personal_number">Personal number</string>
     <string name="document_code">Document code</string>
@@ -24,5 +13,15 @@
     <string name="nationality">Nationality</string>
     <string name="gender">Gender</string>
     <string name="date_of_birth">Date of birth</string>
-    <string name="passed">Passed</string>
+    <string name="capture">Capture</string>
+    <string name="compare_to_live_selfie">Compare to live selfie</string>
+    <string name="details">Details</string>
+    <string name="pass_details">The face matching score <xliff:g example="4.0" id="score">%1$.01f</xliff:g> indicates a likelihood of <xliff:g example="99.05" id="probability">%2$.02f</xliff:g>%% that the person on the ID card is the same person as the one in the selfie. We recommend a threshold of <xliff:g example="3.0" id="threshold">%3$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
+    <string name="warning_details">The face matching score <xliff:g example="4.0" id="score">%1$.01f</xliff:g> indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of <xliff:g example="3.0" id="threshold">%2$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
+    <string name="pass">Pass</string>
+    <string name="warning">Warning</string>
+    <string name="nfc_passport_capture">NFC Passport Capture</string>
+    <string name="captured_document">Captured Document</string>
+    <string name="document_details">Document Details</string>
+    <string name="face_comparison">Face Comparison</string>
 </resources>

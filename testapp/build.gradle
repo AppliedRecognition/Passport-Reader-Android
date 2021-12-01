@@ -26,12 +26,6 @@ android {
         dataBinding true
     }
 
-    sourceSets {
-        main.java.srcDirs += '../sample/src/main/java'
-        main.res.srcDirs = ['../sample/src/main/res']
-        main.assets.srcDirs = ['../sample/src/main/assets']
-    }
-
     compileOptions {
         coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8

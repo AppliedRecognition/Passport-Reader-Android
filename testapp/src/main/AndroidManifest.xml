@@ -11,10 +11,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name="com.appliedrec.mrtd_reader_app.BACSpecManualEntryActivity"></activity>
-        <activity android:name="com.appliedrec.mrtd_reader_app.FaceComparisonActivity" />
-        <activity android:name="com.appliedrec.mrtd_reader_app.MainActivity"
-            android:exported="true">
+        <activity
+            android:name="com.appliedrec.mrtd_reader_app.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            android:label="@string/nfc_passport_capture">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +23,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.appliedrec.mrtd_reader_app.ScanResultActivity"
-            android:label="@string/travel_document" />
+            android:name="com.appliedrec.mrtd_reader_app.CaptureResultActivity"
+            android:label="@string/captured_document"
+            android:exported="false" />
+        <activity
+            android:name="com.appliedrec.mrtd_reader_app.FaceComparisonActivity"
+            android:label="@string/face_comparison" />
+        <activity
+            android:name="com.appliedrec.mrtd_reader_app.DocumentDetailsActivity"
+            android:label="@string/document_details" />
 
         <meta-data
             android:name="com.appliedrec.verid.password"
