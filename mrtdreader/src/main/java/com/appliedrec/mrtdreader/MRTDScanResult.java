@@ -278,7 +278,9 @@ public class MRTDScanResult implements Parcelable, JsonSerializer<MRTDScanResult
         MRTDScanResult result = new MRTDScanResult(documentCode, issuingState, primaryIdentifier, secondaryIdentifiers, nationality, documentNumber, personalNumber, dateOfBirth, gender, dateOfExpiry);
         if (jsonObject.has("image") && !jsonObject.get("image").isJsonNull()) {
             String image = jsonObject.get("image").getAsString();
-            // TODO: Parse image
+            image = image.replace("data:image/jpeg;base64,", "");
+            byte[] imageData = Base64.decode(image, Base64.NO_WRAP);
+            result.faceImage = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
         }
         return result;
     }

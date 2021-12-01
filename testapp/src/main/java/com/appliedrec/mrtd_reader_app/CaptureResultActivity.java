@@ -1,6 +1,8 @@
 package com.appliedrec.mrtd_reader_app;
 
+import androidx.annotation.IntegerRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -110,17 +112,17 @@ public class CaptureResultActivity extends AppCompatActivity implements VerIDSes
     @Override
     public void onSessionFinished(IVerIDSession<?> session, VerIDSessionResult result) {
         if (result.getError().isPresent()) {
-            // TODO: Show error
+            showError(R.string.face_capture_failed);
             return;
         }
         try {
             startActivity(createFaceComparisonIntent(session.getVerID(), result));
         } catch (Exception exception) {
-            // TODO: Show error
+            showError(R.string.face_comparison_failed);
         }
     }
 
-    private void showError(String description) {
+    private void showError(@StringRes int description) {
         new AlertDialog.Builder(this)
                 .setMessage(description)
                 .setPositiveButton(android.R.string.ok, null)

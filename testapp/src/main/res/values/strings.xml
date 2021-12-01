@@ -24,4 +24,6 @@
     <string name="captured_document">Captured Document</string>
     <string name="document_details">Document Details</string>
     <string name="face_comparison">Face Comparison</string>
+    <string name="face_capture_failed">Face capture failed</string>
+    <string name="face_comparison_failed">Face comparison failed</string>
 </resources>

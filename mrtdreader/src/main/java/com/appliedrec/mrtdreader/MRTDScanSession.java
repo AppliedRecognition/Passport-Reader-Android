@@ -206,7 +206,7 @@ public class MRTDScanSession implements Application.ActivityLifecycleCallbacks, 
 
     @Override
     public void onNFCPermissionDenied() {
-        // TODO
+        getListener().ifPresent(listener -> listener.onMRTDScanFailed(bacSpec, new Exception("NFC reader permission denied")));
     }
 
     //endregion
@@ -245,7 +245,9 @@ public class MRTDScanSession implements Application.ActivityLifecycleCallbacks, 
                 options.putInt(NfcAdapter.EXTRA_READER_PRESENCE_CHECK_DELAY, 50);
                 nfcAdapter.enableReaderMode(mrtdScanActivity, this, NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK | NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_NFC_B, options);
             } else {
-                // TODO
+                getListener().ifPresent(listener -> listener.onMRTDScanFailed(bacSpec, new Exception("NFC adapter unavailable or disabled")));
+                listener = null;
+                getScanActivity().ifPresent(Activity::finish);
             }
         } else {
             ActivityCompat.requestPermissions(mrtdScanActivity, new String[]{Manifest.permission.NFC}, MRTDScanActivity.REQUEST_CODE_NFC_PERMISSION);
@@ -285,6 +287,7 @@ public class MRTDScanSession implements Application.ActivityLifecycleCallbacks, 
                             readerDisposable = null;
                             unregisterActivityLifecycleListener();
                             getListener().ifPresent(listener -> listener.onMRTDScanFailed(bacSpec, error));
+                            listener = null;
                             getScanActivity().ifPresent(Activity::finish);
                         }
                 );
