@@ -26,14 +26,13 @@ internal object MRTDReader {
     fun createProgressObservable(isoDep: IsoDep, bacSpec: BACSpec): Observable<MRTDReaderProgress> {
         val bacKey = BACKey(bacSpec.documentNumber, bacSpec.dateOfBirth, bacSpec.dateOfExpiry)
         return Observable.create { emitter ->
-            var cardService: CardService? = null
             var passportService: PassportService? = null
             try {
                 Security.addProvider(BouncyCastleProvider())
 //                Security.insertProviderAt(BouncyCastleProvider(), 1)
 //                Security.addProvider(SecurityProvider("MRTDSecurityProvider", 1.0, "null"))
 
-                cardService = CardService.getInstance(isoDep)
+                val cardService = CardService.getInstance(isoDep)
                 passportService = PassportService(
                     cardService,
                     PassportService.NORMAL_MAX_TRANCEIVE_LENGTH,
@@ -75,7 +74,7 @@ internal object MRTDReader {
                     faceImageInfos.addAll(faceInfo.faceImageInfos)
                 }
                 if (faceImageInfos.isNotEmpty()) {
-                    var faceImage: Bitmap? = null
+                    var faceImage: Bitmap?
                     for (faceImageInfo in faceImageInfos) {
                         faceImageInfo.imageInputStream.use { inputStream ->
                             ByteArrayOutputStream().use { outputStream ->

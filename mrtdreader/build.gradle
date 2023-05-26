@@ -8,6 +8,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'org.jetbrains.dokka'
+    id 'maven-publish'
+    id 'com.vanniktech.maven.publish'
 }
 
 android {
@@ -18,9 +20,9 @@ android {
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 3
+        versionCode 2000000
         versionName rootProject.version
-        archivesBaseName = "mrtd-reader"
+        archivesBaseName = "mrtdreader"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -67,28 +69,6 @@ dependencies {
     dokkaPlugin 'org.jetbrains.dokka:android-documentation-plugin:1.8.10'
 }
 
-
-task javadoc(type: Javadoc, dependsOn: ':doclet:compileJava') {
-    source = android.sourceSets.main.java.srcDirs
-
-    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += files(ext.androidJar)
-
-    options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PUBLIC
-    exclude '**/BuildConfig.java'
-    exclude '**/R.java'
-    exclude '**/Jama'
-    exclude '**/jj2000'
-    options.doclet("AppliedRecDoclet")
-    options.docletpath(new File("${project.getRootDir()}/doclet/build/classes/java/main"))
-    options.addStringOption("htmlsrc", "${project.getRootDir()}/doclet/src/docs")
-    options.addStringOption("destpath", "${project.getRootDir()}/sample/docs")
-    print("Generate documentation in ${project.getRootDir()}/sample/docs")
-    failOnError = true
-}
-
 tasks.withType(DokkaTask.class) {
     moduleName.set("MRTD Reader")
     moduleVersion.set(project.version.toString())
@@ -97,6 +77,26 @@ tasks.withType(DokkaTask.class) {
     dokkaSourceSets {
         configureEach {
             suppressedFiles.from(file("src/main/java/jj2000"))
+        }
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId 'com.appliedrec.mrtdreader'
+            artifactId 'mrtdreader'
+            version '2.0.0'
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "LocalRepo"
+            url = "${rootProject.buildDir}/deploy"
         }
     }
 }

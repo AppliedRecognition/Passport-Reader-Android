@@ -8,19 +8,23 @@ buildscript {
             name 'Google'
         }
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        gradlePluginPortal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.0.2'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
     }
 }
 
 plugins {
     id 'org.jetbrains.dokka' version '1.8.10'
+    id 'com.vanniktech.maven.publish' version '0.24.0' apply false
 }
 
 ext {
-    version = "1.0.2"
+    version = "2.0.0"
     jmrtdVersion = "0.7.31"
     certcvcVersion = '1.4.13'
     appcompatVersion = '1.4.0'
