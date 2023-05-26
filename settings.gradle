@@ -1,1 +1,18 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.microblink.com' }
+        maven { url 'https://mvnrepository.com/artifact/org.apache.commons/commons-math3' }
+    }
+}
+rootProject.name = "Passport reader"
 include ':mrtdreader', ':testapp'

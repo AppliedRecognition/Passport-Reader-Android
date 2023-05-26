@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appliedrec.mrtd_reader_sample">
+    package="com.appliedrec.mrtd_reader_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -36,9 +36,6 @@
         <meta-data
             android:name="com.appliedrec.verid.password"
             android:value="${veridPassword}" />
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="${fabricApiKey}" />
         <meta-data
             android:name="com.appliedrec.microblink_key"
             android:value="${microblinkLicenceKey}" />

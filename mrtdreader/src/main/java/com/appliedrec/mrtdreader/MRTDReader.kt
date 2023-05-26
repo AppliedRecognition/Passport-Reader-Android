@@ -1,0 +1,209 @@
+package com.appliedrec.mrtdreader
+
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.nfc.tech.IsoDep
+import io.reactivex.rxjava3.core.Observable
+import jj2000.JJ2000Frontend
+import net.sf.scuba.smartcards.CardService
+import org.bouncycastle.jce.provider.BouncyCastleProvider
+import org.jmrtd.BACKey
+import org.jmrtd.PACEKeySpec
+import org.jmrtd.PassportService
+import org.jmrtd.lds.CardSecurityFile
+import org.jmrtd.lds.LDSFileUtil
+import org.jmrtd.lds.PACEInfo
+import org.jmrtd.lds.icao.DG1File
+import org.jmrtd.lds.icao.DG2File
+import org.jmrtd.lds.iso19794.FaceImageInfo
+import java.io.ByteArrayOutputStream
+import java.security.Security
+
+
+object MRTDReader {
+
+    @JvmStatic
+    fun createProgressObservable(isoDep: IsoDep, bacSpec: BACSpec): Observable<MRTDReaderProgress> {
+        val bacKey = BACKey(bacSpec.documentNumber, bacSpec.dateOfBirth, bacSpec.dateOfExpiry)
+        return Observable.create { emitter ->
+            var cardService: CardService? = null
+            var passportService: PassportService? = null
+            try {
+                Security.addProvider(BouncyCastleProvider())
+//                Security.insertProviderAt(BouncyCastleProvider(), 1)
+//                Security.addProvider(SecurityProvider("MRTDSecurityProvider", 1.0, "null"))
+
+                cardService = CardService.getInstance(isoDep)
+                passportService = PassportService(
+                    cardService,
+                    PassportService.NORMAL_MAX_TRANCEIVE_LENGTH,
+                    PassportService.DEFAULT_MAX_BLOCKSIZE,
+                    true,
+                    false
+                )
+                passportService.open()
+
+                val paceSucceeded = doPACE(passportService, bacKey)
+                passportService.sendSelectApplet(paceSucceeded)
+                if (!paceSucceeded) {
+                    passportService.doBAC(bacKey)
+                }
+                val personalDataShare = 0.05
+                var progress = MRTDReaderProgress(PassportService.EF_DG1, MRTDScanResult(), personalDataShare)
+                val dG1File: DG1File = readFile(passportService, PassportService.EF_DG1)
+                val mrzInfo = dG1File.mrzInfo
+                progress.result.dateOfBirth = mrzInfo.dateOfBirth
+                progress.result.dateOfExpiry = mrzInfo.dateOfExpiry
+                progress.result.documentNumber = mrzInfo.documentNumber
+                progress.result.documentCode = mrzInfo.documentCode
+                progress.result.gender = mrzInfo.gender.name
+                progress.result.issuingState = mrzInfo.issuingState
+                progress.result.nationality = mrzInfo.nationality
+                progress.result.personalNumber = mrzInfo.personalNumber
+                progress.result.primaryIdentifier = mrzInfo.primaryIdentifier
+                progress.result.secondaryIdentifiers = mrzInfo.secondaryIdentifierComponents
+                if (!emitter.isDisposed) {
+                    emitter.onNext(progress)
+                }
+                progress = MRTDReaderProgress(PassportService.EF_DG2, progress.result, progress.progress)
+                if (!emitter.isDisposed) {
+                    emitter.onNext(progress)
+                }
+                val dG2File: DG2File = readFile(passportService, PassportService.EF_DG2)
+                val faceImageInfos = mutableListOf<FaceImageInfo>()
+                dG2File.faceInfos.forEach { faceInfo ->
+                    faceImageInfos.addAll(faceInfo.faceImageInfos)
+                }
+                if (faceImageInfos.isNotEmpty()) {
+                    var faceImage: Bitmap? = null
+                    for (faceImageInfo in faceImageInfos) {
+                        faceImageInfo.imageInputStream.use { inputStream ->
+                            ByteArrayOutputStream().use { outputStream ->
+                                var read: Int
+                                val buffer = ByteArray(1024)
+                                var totalRead: Int = 0
+                                while (inputStream.read(buffer).also { read = it } > 0) {
+                                    outputStream.write(buffer, 0, read)
+                                    totalRead += read
+                                    progress = MRTDReaderProgress(PassportService.EF_DG2, progress.result, personalDataShare + totalRead.toDouble() / faceImageInfo.imageLength.toDouble() * (1.0 - personalDataShare))
+                                    if (!emitter.isDisposed) {
+                                        emitter.onNext(progress)
+                                    }
+                                }
+                                outputStream.flush()
+                                val imageData = outputStream.toByteArray()
+                                faceImage = JJ2000Frontend.decode(imageData)
+                                if (faceImage == null) {
+                                    faceImage = BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
+                                }
+                            }
+                        }
+                        if (faceImage != null) {
+                            progress.result.faceImage = faceImage
+                            break
+                        }
+                    }
+                }
+                if (!emitter.isDisposed) {
+                    progress = MRTDReaderProgress(PassportService.EF_DG2, progress.result, 1.0)
+                    emitter.onNext(progress)
+                    emitter.onComplete()
+                }
+            } catch (e: Exception) {
+                if (!emitter.isDisposed) {
+                    emitter.onError(e)
+                }
+            } finally {
+                passportService?.close()
+            }
+        }
+    }
+
+    private fun <T> readFile(passportService: PassportService, id: Short): T {
+        passportService.getInputStream(id, PassportService.DEFAULT_MAX_BLOCKSIZE).use { inputStream ->
+            return LDSFileUtil.getLDSFile(id, inputStream) as T
+        }
+    }
+
+    private fun doChipAuthentication(passportService: PassportService): Boolean {
+        return false
+//        try {
+//            val dg14File: DG14File = readFile(passportService, PassportService.EF_DG14)
+//            dg14File.securityInfos.firstOrNull { it is ChipAuthenticationPublicKeyInfo }?.let { securityInfo ->
+//                val publicKey = (securityInfo as ChipAuthenticationPublicKeyInfo).subjectPublicKey
+//                val keyId = securityInfo.keyId
+//                val agreementAlgo = Util.inferKeyAgreementAlgorithm(publicKey)
+//                val keyPairGenerator = KeyPairGenerator.getInstance(agreementAlgo)
+//                var params: AlgorithmParameterSpec? = null
+//                if ("DH" == agreementAlgo) {
+//                    val dhPublicKey: DHPublicKey = publicKey as DHPublicKey
+//                    params = dhPublicKey.getParams()
+//                } else if ("ECDH" == agreementAlgo) {
+//                    val ecPublicKey: ECPublicKey = publicKey as ECPublicKey
+//                    params = ecPublicKey.getParams()
+//                } else {
+//                    throw IllegalStateException("Unsupported algorithm \"$agreementAlgo\"")
+//                }
+//                keyPairGenerator.initialize(params)
+//                val keyPair = keyPairGenerator.generateKeyPair()
+//                val keyAgreement = KeyAgreement.getInstance(agreementAlgo)
+//                keyAgreement.init(keyPair.private)
+//                keyAgreement.doPhase(publicKey, true)
+//                val secret = keyAgreement.generateSecret()
+//                var keyData: ByteArray = ByteArray(0)
+//                var idData: ByteArray = ByteArray(0)
+//                var keyHash: ByteArray = ByteArray(0)
+//                if ("DH" == agreementAlgo) {
+//                    val dhPublicKey = keyPair.public as DHPublicKey
+//                    keyData = dhPublicKey.y.toByteArray()
+//                    val md = MessageDigest.getInstance("SHA1")
+//                    keyHash = md.digest(keyData)
+//                } else {
+//                    val ecPublicKey = keyPair.public as org.spongycastle.jce.interfaces.ECPublicKey
+//                    keyData = ecPublicKey.q.getEncoded(false)
+//                    val t = Util.i2os(ecPublicKey.q.x.toBigInteger())
+//                    keyHash = Util.alignKeyDataToSize(t, ecPublicKey.parameters.curve.fieldSize / 8)
+//                }
+//                keyData = Util.wrapDO(0x91.toByte(), keyData)
+//                if (keyId.compareTo(BigInteger.ZERO) >= 0) {
+//                    val keyIdBytes = keyId.toByteArray()
+//                    idData = Util.wrapDO(0x84.toByte(), keyIdBytes)
+//                }
+//                passportService.sendMSEKAT(passportService.getWrapper(), keyData, idData)
+//
+//                val ksEnc = Util.deriveKey(secret, Util.ENC_MODE)
+//                val ksMac = Util.deriveKey(secret, Util.MAC_MODE)
+//
+//                passportService.setWrapper(DESedeSecureMessagingWrapper(ksEnc, ksMac, 0L))
+//                val fld: Field = PassportService::class.java.getDeclaredField("state")
+//                fld.setAccessible(true)
+//                fld.set(passportService, 4) //PassportService.CA_AUTHENTICATED_STATE)
+//
+//                return ChipAuthenticationResult(keyId, publicKey, keyHash, keyPair)
+//            }
+//        } catch (ignore: Exception) {}
+    }
+
+    private fun doPACE(passportService: PassportService, bacKey: BACKey): Boolean {
+        try {
+            passportService.getInputStream(
+                PassportService.EF_CARD_SECURITY,
+                PassportService.DEFAULT_MAX_BLOCKSIZE
+            ).use { inputStream ->
+                val cardAccessFile = CardSecurityFile(inputStream)
+                val securityInfo =
+                    cardAccessFile.securityInfos.firstOrNull { it is PACEInfo } as? PACEInfo
+                if (securityInfo != null) {
+                    passportService.doPACE(
+                        PACEKeySpec.createMRZKey(bacKey),
+                        securityInfo.objectIdentifier,
+                        PACEInfo.toParameterSpec(securityInfo.parameterId),
+                        null
+                    )
+                    return true
+                }
+            }
+        } catch (ignore: Exception) {}
+        return false
+    }
+}

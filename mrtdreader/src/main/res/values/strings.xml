@@ -13,10 +13,10 @@
     <string name="pp_info_lbl_doc_expiry">Date of Expiry</string>
 
     <!-- mrtd reader events -->
-    <string name="mrtd_evt_bac">Access Control</string>
-    <string name="mrtd_evt_mrz">Personal Information</string>
-    <string name="mrtd_evt_photo">Photo</string>
-
+    <string name="mrtd_evt_bac">Access control</string>
+    <string name="mrtd_evt_mrz">Reading personal information</string>
+    <string name="mrtd_evt_photo">Reading photo</string>
+    <string name="mrtd_evt_reading_passport">Reading passport</string>
 
     <!-- MRTD codes -->
     <string name="gender_code_male">Male</string>

@@ -10,54 +10,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
-        // classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.16.1'
-//        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.4'
-        classpath "com.vanniktech:gradle-android-apk-size-plugin:0.4.0"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21'
     }
 }
-
-allprojects {
-    apply plugin: 'maven'
-    apply plugin: "maven-publish"
-    // apply plugin: 'com.jfrog.artifactory'
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://maven.microblink.com' }
-        maven { url 'https://maven.fabric.io/public' }
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
-        maven {
-            url 'https://dev.ver-id.com/artifactory/gradle-release'
-            name 'Ver-ID'
-        }
-        maven { url 'https://mvnrepository.com/artifact/org.apache.commons/commons-math3' }
-//        maven { url 'https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform' }
-    }
-    // gradleLint.rules = ['all-dependency']
-}
-
-//artifactory {
-//    contextUrl = verid_artifactory_url
-//    //The base Artifactory URL if not overridden by the publisher/resolver
-//    publish {
-//        repository {
-//            repoKey = verid_artifactory_repo
-//            username = verid_artifactory_username
-//            password = verid_artifactory_password
-//            maven = true
-//        }
-//        defaults {
-//            publications('mrtdreader')
-//            publishArtifacts = true
-//        }
-//    }
-//}
 
 ext {
     version = "1.0.2"
@@ -70,50 +26,3 @@ ext {
     multidexVersion = "[1.0.3,2.0.0["
     gsonVersion = '2.8.9'
 }
-
-//project('mrtdreader') {
-//    artifactoryPublish.dependsOn('assembleRelease')
-//    publishing {
-//        publications {
-//            mrtdreader(MavenPublication) {
-//                groupId "com.appliedrec"
-//                version rootProject.ext.version
-//                artifactId "mrtd-reader"
-//                artifact("$buildDir/outputs/aar/mrtd-reader-release.aar") {
-//                    extension "aar"
-//                }
-//                pom.withXml {
-//                    def dependenciesNode = asNode().appendNode('dependencies')
-//                    def jmrtdNode = dependenciesNode.appendNode('dependency')
-//                    jmrtdNode.appendNode('groupId', 'org.jmrtd')
-//                    jmrtdNode.appendNode('artifactId', 'jmrtd')
-//                    jmrtdNode.appendNode('version', rootProject.jmrtdVersion)
-//                    def certCvcNode = dependenciesNode.appendNode('dependency')
-//                    certCvcNode.appendNode('groupId', 'org.ejbca.cvc')
-//                    certCvcNode.appendNode('artifactId', 'cert-cvc')
-//                    certCvcNode.appendNode('version', rootProject.certcvcVersion)
-//                    def androidSupportNode = dependenciesNode.appendNode('dependency')
-//                    androidSupportNode.appendNode('groupId', 'androidx.appcompat')
-//                    androidSupportNode.appendNode('artifactId', 'appcompat')
-//                    androidSupportNode.appendNode('version', rootProject.appcompatVersion)
-//                    def constraintLayoutNode = dependenciesNode.appendNode('dependency')
-//                    constraintLayoutNode.appendNode('groupId', 'androidx.constraintlayout')
-//                    constraintLayoutNode.appendNode('artifactId', 'constraintlayout')
-//                    constraintLayoutNode.appendNode('version', rootProject.constraintlayoutVersion)
-//                    def scubaNode = dependenciesNode.appendNode('dependency')
-//                    scubaNode.appendNode('groupId', 'net.sf.scuba')
-//                    scubaNode.appendNode('artifactId', 'scuba-sc-android')
-//                    scubaNode.appendNode('version', rootProject.scubaVersion)
-//                    def spongyCastleNode = dependenciesNode.appendNode('dependency')
-//                    spongyCastleNode.appendNode('groupId', 'com.madgag.spongycastle')
-//                    spongyCastleNode.appendNode('artifactId', 'prov')
-//                    spongyCastleNode.appendNode('version', rootProject.spongycastleVersion)
-//                }
-//            }
-//        }
-//    }
-//
-//    artifactoryPublish {
-//        publications(publishing.publications.mrtdreader)
-//    }
-//}
