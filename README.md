@@ -21,7 +21,7 @@ To read a passport you will first need to obtain the following:
 
 You can use a library like [Microblink's BlinkID](https://github.com/BlinkID/blinkid-android) to read the machine-readable zone (MRZ) on the passport or you can let the user enter the above information.
 
-Once you have the document number, date of birth and date of expiry, construct an instance of `BACSpec` that you're going to pass to the scan session:
+Once you have the document number, date of birth and date of expiry, construct an instance of [`BACSpec`](https://appliedrecognition.github.io/Passport-Reader-Android/-m-r-t-d%20-reader/com.appliedrec.mrtdreader/-b-a-c-spec/index.html) that you're going to pass to the scan session:
 
 ```kotlin
 val documentNumber: String // Document (passport) number
@@ -57,4 +57,4 @@ The project contains a sample application in the module called `testapp`. The ap
 
 ## Documentation
 
-API documentation is available in the [docs folder](./docs).
+API documentation is available in the [docs folder](https://appliedrecognition.github.io/Passport-Reader-Android/-m-r-t-d%20-reader/com.appliedrec.mrtdreader/index.html).
