@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
@@ -5,6 +7,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.21'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'org.jetbrains.dokka'
 }
 
 android {
@@ -60,6 +63,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    dokkaPlugin 'org.jetbrains.dokka:android-documentation-plugin:1.8.10'
 }
 
 
@@ -82,4 +87,16 @@ task javadoc(type: Javadoc, dependsOn: ':doclet:compileJava') {
     options.addStringOption("destpath", "${project.getRootDir()}/sample/docs")
     print("Generate documentation in ${project.getRootDir()}/sample/docs")
     failOnError = true
+}
+
+tasks.withType(DokkaTask.class) {
+    moduleName.set("MRTD Reader")
+    moduleVersion.set(project.version.toString())
+    outputDirectory.set(file("../docs"))
+
+    dokkaSourceSets {
+        configureEach {
+            suppressedFiles.from(file("src/main/java/jj2000"))
+        }
+    }
 }

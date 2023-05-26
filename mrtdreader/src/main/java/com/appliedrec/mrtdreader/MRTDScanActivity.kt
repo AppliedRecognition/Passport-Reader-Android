@@ -13,6 +13,7 @@ import org.jmrtd.PassportService
  *
  * The activity will ask the user to place their travel document close to their device and read the document's NFC chip
  * @version 1.0.0
+ * @suppress
  */
 class MRTDScanActivity: AppCompatActivity() {
 
@@ -46,25 +47,25 @@ class MRTDScanActivity: AppCompatActivity() {
         }
     }
 
-    fun onWaiting() {
+    internal fun onWaiting() {
         viewBinding.textView.setText(R.string.mrtd_reader_title)
         viewBinding.progressBar.visibility = View.GONE
         viewBinding.progressIndicator.visibility = View.GONE
     }
 
-    fun onReading() {
+    internal fun onReading() {
         viewBinding.textView.setText(R.string.mrtd_reading_document)
         viewBinding.progressIndicator.visibility = View.VISIBLE
         viewBinding.progressBar.visibility = View.GONE
     }
 
-    fun onNoNFC() {
+    internal fun onNoNFC() {
         viewBinding.textView.setText(R.string.mrtd_no_nfc_reader)
         viewBinding.progressBar.visibility = View.GONE
         viewBinding.progressIndicator.visibility = View.GONE
     }
 
-    fun onScanProgress(progress: MRTDReaderProgress) {
+    internal fun onScanProgress(progress: MRTDReaderProgress) {
         val message = when (progress.fileId) {
             PassportService.EF_COM, PassportService.EF_SOD -> getString(R.string.mrtd_evt_bac)
             PassportService.EF_DG1 -> getString(R.string.mrtd_evt_mrz)

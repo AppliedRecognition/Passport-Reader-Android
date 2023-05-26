@@ -8,7 +8,7 @@ import kotlinx.serialization.encoding.Encoder
 import java.text.SimpleDateFormat
 import java.util.Date
 
-object DateAsStringSerializer: KSerializer<Date> {
+internal object DateAsStringSerializer: KSerializer<Date> {
 
     private val dateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
 

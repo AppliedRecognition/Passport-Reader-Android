@@ -1,6 +1,6 @@
 package com.appliedrec.mrtdreader
 
-interface NFCPermissionListener {
+internal interface NFCPermissionListener {
     fun onNFCPermissionGranted()
     fun onNFCPermissionDenied()
 }

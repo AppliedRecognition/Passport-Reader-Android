@@ -12,7 +12,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.io.ByteArrayOutputStream
 
-object BitmapSerializer: KSerializer<Bitmap> {
+internal object BitmapSerializer: KSerializer<Bitmap> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Bitmap", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): Bitmap {

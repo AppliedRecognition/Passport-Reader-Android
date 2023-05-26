@@ -20,7 +20,7 @@ import java.io.ByteArrayOutputStream
 import java.security.Security
 
 
-object MRTDReader {
+internal object MRTDReader {
 
     @JvmStatic
     fun createProgressObservable(isoDep: IsoDep, bacSpec: BACSpec): Observable<MRTDReaderProgress> {
