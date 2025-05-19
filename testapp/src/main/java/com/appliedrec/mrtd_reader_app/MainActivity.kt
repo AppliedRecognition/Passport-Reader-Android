@@ -1,6 +1,7 @@
 package com.appliedrec.mrtd_reader_app
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.appliedrec.mrtdreader.MRTDScanSessionListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 
 class MainActivity : AppCompatActivity(), MRTDScanSessionListener, BACEntryFragment.Listener {
     private var viewModel: BACSpecModel? = null
@@ -70,7 +72,15 @@ class MainActivity : AppCompatActivity(), MRTDScanSessionListener, BACEntryFragm
 
     //endregion
     override fun onRequestCapture(bacSpec: BACSpec) {
-        val session = MRTDScanSession(this, bacSpec)
+        val masterListFile: File = File(cacheDir, "MasterList.pem")
+        if (!masterListFile.isFile) {
+            assets.open("MasterList.pem").use { inputStream ->
+                masterListFile.outputStream().use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+        }
+        val session = MRTDScanSession(this, bacSpec, Uri.fromFile(masterListFile))
         session.setListener(this)
         session.start()
     }

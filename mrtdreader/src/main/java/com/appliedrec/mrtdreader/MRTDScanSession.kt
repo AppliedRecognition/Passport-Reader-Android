@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.nfc.NfcAdapter
 import android.nfc.NfcAdapter.ReaderCallback
 import android.nfc.Tag
@@ -18,21 +19,31 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.appliedrec.mrtdreader.MRTDReader.createProgressObservable
 import com.appliedrec.mrtdreader.MRTDScanActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.ref.WeakReference
+import java.security.cert.Certificate
+import java.security.cert.CertificateFactory
+import java.security.cert.X509Certificate
 import java.util.Arrays
 import java.util.Optional
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.Future
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * @since 2.0.0
  */
-class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCallbacks,
+class MRTDScanSession(context: Context, bacSpec: BACSpec, val masterListUri: Uri?=null) : ActivityLifecycleCallbacks,
     NFCPermissionListener, ReaderCallback {
     private val contextRef: WeakReference<Context>
 
@@ -46,7 +57,7 @@ class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCal
     private var mrtdScanActivityRef: WeakReference<MRTDScanActivity>? = null
     private val isStarted = AtomicBoolean(false)
     private var nfcAdapter: NfcAdapter? = null
-    private var readerDisposable: Disposable? = null
+    private var scanJob: Job? = null
 
     /**
      * @return Session listener
@@ -90,6 +101,9 @@ class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCal
      */
     fun cancel() {
         Handler(Looper.getMainLooper()).post {
+            scanJob?.cancel()
+            scanJob = null
+            masterListFuture?.cancel(true)
             scanActivity?.setResult(Activity.RESULT_CANCELED)
             scanActivity?.finish()
         }
@@ -162,10 +176,8 @@ class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCal
         getScanActivity(activity).ifPresent { mrtdScanActivity: MRTDScanActivity ->
             mrtdScanActivityRef = null
             if (mrtdScanActivity.isFinishing) {
-                if (readerDisposable != null && !readerDisposable!!.isDisposed) {
-                    readerDisposable!!.dispose()
-                }
-                readerDisposable = null
+                scanJob?.cancel()
+                scanJob = null
                 unregisterActivityLifecycleListener()
                 getListener().ifPresent { listener: MRTDScanSessionListener ->
                     listener.onMRTDScanCancelled(
@@ -211,6 +223,8 @@ class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCal
         }
     }
 
+    private val masterListFuture: CompletableFuture<Collection<X509Certificate>>?
+
     /**
      * Session constructor
      * @param context
@@ -221,6 +235,11 @@ class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCal
         contextRef = WeakReference(context)
         bACSpec = bacSpec
         sessionId = SESSION_ID.getAndIncrement()
+        if (masterListUri != null) {
+            masterListFuture = loadMasterList(context, masterListUri)
+        } else {
+            masterListFuture = null
+        }
     }
 
     private fun startReadingNFCTags(mrtdScanActivity: MRTDScanActivity) {
@@ -270,47 +289,37 @@ class MRTDScanSession(context: Context, bacSpec: BACSpec) : ActivityLifecycleCal
 
     override fun onTagDiscovered(tag: Tag) {
         if (Arrays.asList(*tag.techList).contains("android.nfc.tech.IsoDep")) {
-            if (readerDisposable != null) {
-                return
-            }
             val isoDep = IsoDep.get(tag)
             isoDep.timeout = 1000
-            readerDisposable = createProgressObservable(isoDep, bACSpec)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext { mrtdReaderProgress: MRTDReaderProgress? ->
-                    mrtdReaderProgress?.let { progress ->
+            scanJob = scanActivity?.lifecycleScope?.launch(Dispatchers.IO) {
+                try {
+                    val result = MRTDReader.readPassport(isoDep, bACSpec, { progress ->
                         scanActivity?.onScanProgress(progress)
-                    }
-                }
-                .lastOrError()
-                .subscribe(
-                    { result: MRTDReaderProgress ->
-                        readerDisposable = null
+                    }, masterListFuture)
+                    withContext(Dispatchers.Main) {
                         unregisterActivityLifecycleListener()
                         scanActivity?.finish()
-                        getListener().ifPresent { listener: MRTDScanSessionListener ->
-                            try {
-                                listener.onMRTDScanSucceeded(
-                                    bACSpec, result.result
-                                )
-                            } catch (ignore: Exception) {}
-                        }
-                        listener = null
+                        listener?.onMRTDScanSucceeded(bACSpec, result)
                     }
-                ) { error: Throwable? ->
-                    readerDisposable = null
-                    unregisterActivityLifecycleListener()
-                    scanActivity?.finish()
-                    getListener().ifPresent { listener: MRTDScanSessionListener ->
-                        try {
-                            listener.onMRTDScanFailed(
-                                bACSpec, error!!
-                            )
-                        } catch (ignore: Exception) {}
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        unregisterActivityLifecycleListener()
+                        scanActivity?.finish()
+                        listener?.onMRTDScanFailed(bACSpec, e)
                     }
+                } finally {
                     listener = null
                 }
+            }
+        }
+    }
+
+    private fun loadMasterList(context: Context, uri: Uri): CompletableFuture<Collection<X509Certificate>> {
+        return CompletableFuture.supplyAsync {
+            context.contentResolver.openInputStream(uri).use { inputStream ->
+                val certs = CertificateFactory.getInstance("X.509").generateCertificates(inputStream)
+                return@supplyAsync certs.filter { it is X509Certificate }.map { it as X509Certificate }
+            }
         }
     }
 

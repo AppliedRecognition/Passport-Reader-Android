@@ -45,6 +45,16 @@ class DocumentDetailsActivity : AppCompatActivity() {
                 } else {
                     viewBinding.imageView.visibility = View.GONE
                 }
+                viewBinding.signatureVerified.text = if (scanResult!!.signatureVerified) {
+                    getString(R.string.yes)
+                } else {
+                    getString(R.string.no)
+                }
+                viewBinding.certificateVerified.text = if (scanResult!!.issuerVerified) {
+                    getString(R.string.yes)
+                } else {
+                    getString(R.string.no)
+                }
             }
         }
     }

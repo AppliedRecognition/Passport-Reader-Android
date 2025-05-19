@@ -34,7 +34,9 @@ data class MRTDScanResult(
     var dateOfExpiry: String?,
     var gender: String?,
     @Serializable(with = BitmapSerializer::class)
-    var faceImage: Bitmap?): Parcelable {
+    var faceImage: Bitmap?,
+    var signatureVerified: Boolean=false,
+    var issuerVerified: Boolean=false): Parcelable {
 
     constructor(): this(null, null, null, emptyArray(), null, null, null, null, null, null, null)
 }

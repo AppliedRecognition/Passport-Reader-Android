@@ -45,13 +45,6 @@ class BACSpecModel : ViewModel(), SharedPreferences.OnSharedPreferenceChangeList
         preferences?.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        if (PREF_KEY == key) {
-            _bacSpec = bacSpecFromPreferences()
-            _liveData.postValue(_bacSpec)
-        }
-    }
-
     private fun bacSpecFromPreferences(): BACSpec? {
         val bacSpecsString: String = preferences?.getString(PREF_KEY, null) ?: return null
         if (bacSpecsString.isEmpty()) {
@@ -62,5 +55,12 @@ class BACSpecModel : ViewModel(), SharedPreferences.OnSharedPreferenceChangeList
 
     companion object {
         private const val PREF_KEY = "bacSpec"
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (PREF_KEY == key) {
+            _bacSpec = bacSpecFromPreferences()
+            _liveData.postValue(_bacSpec)
+        }
     }
 }

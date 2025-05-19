@@ -10,7 +10,7 @@ import org.apache.commons.math3.distribution.NormalDistribution
 
 class FaceComparisonActivity : AppCompatActivity() {
 
-    var threshold = 4f
+    var threshold = 0.5f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

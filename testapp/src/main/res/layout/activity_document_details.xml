@@ -298,5 +298,61 @@
                 android:paddingBottom="@dimen/table_cell_vertical_padding"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/digital_signature_verified"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/signatureVerified"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:background="@color/tableRowDivider" />
+
+        <TableRow>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/table_cell_horizontal_padding"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:text="@string/signing_certificate_verified"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/certificateVerified"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingTop="@dimen/table_cell_vertical_padding"
+                android:paddingEnd="@dimen/table_cell_horizontal_padding"
+                android:paddingBottom="@dimen/table_cell_vertical_padding"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </TableRow>
     </TableLayout>
 </ScrollView>

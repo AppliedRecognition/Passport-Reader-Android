@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Rect
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,39 +12,40 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
-import androidx.core.net.toFile
-import androidx.core.util.Pair
 import androidx.lifecycle.lifecycleScope
 import com.appliedrec.mrtd_reader_app.databinding.ActivityCaptureResultBinding
 import com.appliedrec.mrtdreader.MRTDScanResult
-import com.appliedrec.verid.core2.Bearing
-import com.appliedrec.verid.core2.Face
-import com.appliedrec.verid.core2.IRecognizable
-import com.appliedrec.verid.core2.Image
-import com.appliedrec.verid.core2.RecognizableFace
-import com.appliedrec.verid.core2.VerID
-import com.appliedrec.verid.core2.session.LivenessDetectionSessionSettings
-import com.appliedrec.verid.core2.session.VerIDSessionResult
-import com.appliedrec.verid.ui2.IVerIDSession
-import com.appliedrec.verid.ui2.VerIDSession
-import com.appliedrec.verid.ui2.VerIDSessionDelegate
+import com.appliedrec.verid3.common.Bearing
+import com.appliedrec.verid3.common.Face
+import com.appliedrec.verid3.common.Image
+import com.appliedrec.verid3.common.serialization.fromBitmap
+import com.appliedrec.verid3.common.serialization.toBitmap
+import com.appliedrec.verid3.facecapture.CapturedFace
+import com.appliedrec.verid3.facecapture.FaceCapture
+import com.appliedrec.verid3.facecapture.FaceCaptureSessionModuleFactories
+import com.appliedrec.verid3.facecapture.FaceCaptureSessionResult
+import com.appliedrec.verid3.facecapture.FaceCaptureSessionSettings
+import com.appliedrec.verid3.facecapture.ui.FaceCaptureConfiguration
+import com.appliedrec.verid3.facecapture.ui.FaceCaptureViewConfiguration
+import com.appliedrec.verid3.facedetection.mp.FaceDetection
+import com.appliedrec.verid3.facerecognition.arcface.FaceRecognition
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.StringJoiner
 
-class CaptureResultActivity : AppCompatActivity(), VerIDSessionDelegate {
+class CaptureResultActivity : AppCompatActivity() {
 
     private var scanResult: MRTDScanResult? = null
+    private lateinit var faceDetection: FaceDetection
+    private lateinit var faceRecognition: FaceRecognition
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        faceDetection = FaceDetection(this)
+        faceRecognition = FaceRecognition(this)
         val viewBinding = ActivityCaptureResultBinding.inflate(
             layoutInflater
         )
@@ -78,6 +78,13 @@ class CaptureResultActivity : AppCompatActivity(), VerIDSessionDelegate {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        if (isFinishing) {
+            faceRecognition.close()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.scan_result, menu)
         return true
@@ -99,25 +106,33 @@ class CaptureResultActivity : AppCompatActivity(), VerIDSessionDelegate {
 
     private fun compareToSelfie() {
         try {
-            val verID = (application as MRTDReaderApplication).verID ?: throw Exception("Ver-ID not initialized")
-            val settings = LivenessDetectionSessionSettings()
-            val verIDSession = VerIDSession(verID, settings)
-            verIDSession.setDelegate(this)
-            verIDSession.start()
+            val activity = this
+            lifecycleScope.launch {
+                val faceCaptureResult = FaceCapture.captureFaces(activity, FaceCaptureConfiguration(
+                    FaceCaptureSessionSettings(),
+                    viewConfiguration = FaceCaptureViewConfiguration(activity),
+                    faceCaptureSessionModuleFactories = FaceCaptureSessionModuleFactories(
+                        createFaceDetection = { faceDetection }
+                    ),
+                ))
+                when (faceCaptureResult) {
+                    is FaceCaptureSessionResult.Success -> {
+                        val faceCapture = faceCaptureResult.capturedFaces.first { it.bearing == Bearing.STRAIGHT }
+                        val intent = createFaceComparisonIntent(faceCapture)
+                        withContext(Dispatchers.Main) {
+                            startActivity(intent)
+                        }
+                    }
+                    is FaceCaptureSessionResult.Failure -> {
+                        withContext(Dispatchers.Main) {
+                            showError(R.string.face_comparison_failed)
+                        }
+                    }
+                    else -> {}
+                }
+            }
         } catch (exception: Exception) {
             showError(R.string.failed_to_start_face_capture_session)
-        }
-    }
-
-    override fun onSessionFinished(session: IVerIDSession<*>, result: VerIDSessionResult) {
-        if (result.error.isPresent) {
-            showError(R.string.face_capture_failed)
-            return
-        }
-        try {
-            startActivity(createFaceComparisonIntent(session.verID, result))
-        } catch (exception: Exception) {
-            showError(R.string.face_comparison_failed)
         }
     }
 
@@ -130,21 +145,23 @@ class CaptureResultActivity : AppCompatActivity(), VerIDSessionDelegate {
     }
 
     @Throws(Exception::class)
-    private fun createFaceComparisonIntent(verID: VerID, result: VerIDSessionResult): Intent {
-        val facePair = detectFaceInImage(
-            scanResult!!.faceImage
-        )
-        val documentFaceImage = cropImageToFace(scanResult!!.faceImage, facePair.first)
-        if (!result.getFirstFaceCapture(Bearing.STRAIGHT).isPresent) {
-            throw Exception("Face not present in result")
-        }
-        val faceCapture = result.getFirstFaceCapture(Bearing.STRAIGHT).get()
-        val score = verID.faceRecognition.compareSubjectFacesToFaces(
-            arrayOf(facePair.second),
-            arrayOf<IRecognizable>(faceCapture.face)
-        )
+    private suspend fun createFaceComparisonIntent(capturedFace: CapturedFace): Intent {
+        val documentFace = scanResult?.faceImage?.let { faceImage ->
+            faceDetection.detectFacesInImage(Image.fromBitmap(faceImage), 1).firstOrNull()
+        } ?: throw Exception("Face not detected in image")
+        val documentFaceImage = scanResult?.faceImage?.let { faceImage ->
+            cropImageToFace(faceImage, documentFace)
+        } ?: throw Exception("Missing document face image")
+        val capturedFaceTemplate = faceRecognition.createFaceRecognitionTemplates(
+            arrayOf(capturedFace.face), capturedFace.image
+        ).first()
+        val documentFaceTemplate = faceRecognition.createFaceRecognitionTemplates(
+            arrayOf(documentFace), Image.fromBitmap(documentFaceImage)
+        ).first()
+        val score = faceRecognition.compareFaceRecognitionTemplates(arrayOf(capturedFaceTemplate), documentFaceTemplate).first()
         val documentFaceJpeg = compressImage(documentFaceImage)
-        val liveFaceJpeg = compressImage(faceCapture.faceImage)
+        val croppedCaptureFaceImage = cropImageToFace(capturedFace.image.toBitmap(), capturedFace.face)
+        val liveFaceJpeg = compressImage(croppedCaptureFaceImage)
         val intent = Intent(this, FaceComparisonActivity::class.java)
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE1, documentFaceJpeg)
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE2, liveFaceJpeg)
@@ -154,31 +171,19 @@ class CaptureResultActivity : AppCompatActivity(), VerIDSessionDelegate {
 
     @Throws(IOException::class)
     private fun compressImage(image: Bitmap): ByteArray {
-        ByteArrayOutputStream().use { outputStream ->
+        return ByteArrayOutputStream().use { outputStream ->
             image.compress(Bitmap.CompressFormat.JPEG, 75, outputStream)
             outputStream.flush()
-            return outputStream.toByteArray()
+            outputStream.toByteArray()
         }
-    }
-
-    @Throws(Exception::class)
-    private fun detectFaceInImage(image: Bitmap?): Pair<Face, IRecognizable> {
-        val verID = (application as MRTDReaderApplication).verID ?: throw Exception("Ver-ID not initialized")
-        val verIDImage = Image(image)
-        val faces = verID.faceDetection.detectFacesInImage(verIDImage, 1, 0)
-        if (faces.size == 0) {
-            throw Exception("Face not detected in image")
-        }
-        val recognizables: Array<out RecognizableFace> =
-            verID.faceRecognition.createRecognizableFacesFromFaces(faces, verIDImage)
-        return Pair(faces[0], recognizables[0])
     }
 
     @SuppressLint("CheckResult")
-    private fun cropImageToFace(image: Bitmap?, face: Face): Bitmap {
+    private fun cropImageToFace(image: Bitmap, face: Face): Bitmap {
         val bounds = Rect()
+        face.faceAspectRatio = 4/5f
         face.bounds.round(bounds)
-        bounds.intersect(0, 0, image!!.width, image.height)
+        bounds.intersect(0, 0, image.width, image.height)
         return Bitmap.createBitmap(image, bounds.left, bounds.top, bounds.width(), bounds.height())
     }
 }

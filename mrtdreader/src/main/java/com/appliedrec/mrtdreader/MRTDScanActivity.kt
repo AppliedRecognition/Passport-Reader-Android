@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.appliedrec.mrtdreader.databinding.ActivityMrtdreaderBinding
-import org.jmrtd.PassportService
 
 /**
  * Machine-Readable Travel Document (MRTD) scan activity
@@ -65,19 +64,13 @@ class MRTDScanActivity: AppCompatActivity() {
         viewBinding.progressIndicator.visibility = View.GONE
     }
 
-    internal fun onScanProgress(progress: MRTDReaderProgress) {
-        val message = when (progress.fileId) {
-            PassportService.EF_COM, PassportService.EF_SOD -> getString(R.string.mrtd_evt_bac)
-            PassportService.EF_DG1 -> getString(R.string.mrtd_evt_mrz)
-            PassportService.EF_DG2 -> getString(R.string.mrtd_evt_photo)
-            else -> getString(R.string.mrtd_evt_reading_passport)
-        }
-        val done = Math.round(progress.progress * 100.0).toInt()
+    internal fun onScanProgress(progress: Progress) {
+        val done = Math.round(progress.completed * 100.0).toInt()
         viewBinding.progressBar.max = 100
         viewBinding.progressBar.progress = done
         viewBinding.progressBar.visibility = View.VISIBLE
         viewBinding.progressIndicator.visibility = View.GONE
-        viewBinding.textView.text = message
+        viewBinding.textView.text = progress.message
     }
 
     companion object {

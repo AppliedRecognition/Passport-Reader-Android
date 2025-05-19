@@ -29,4 +29,8 @@
     <string name="failed_to_start_face_capture_session">Failed to start face capture session</string>
     <string name="capture_mrz">Capture text from passport using your device\'s camera</string>
     <string name="failed_to_save_scan_result">Failed to save scan result</string>
+    <string name="digital_signature_verified">Digital signature verified</string>
+    <string name="signing_certificate_verified">Signing certificate verified</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
