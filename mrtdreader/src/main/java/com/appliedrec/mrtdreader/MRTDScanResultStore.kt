@@ -2,7 +2,7 @@ package com.appliedrec.mrtdreader
 
 import java.util.concurrent.ConcurrentHashMap
 
-object MRTDScanResultStore {
+internal object MRTDScanResultStore {
 
     private val results = ConcurrentHashMap<Int,MRTDScanResult>()
 

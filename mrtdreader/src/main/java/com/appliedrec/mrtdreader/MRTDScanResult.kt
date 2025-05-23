@@ -24,7 +24,7 @@ sealed class MRTDScanResult : Parcelable {
      * @version 1.0.0
      */
     @Serializable
-    data class Success(
+    data class Success internal constructor(
         var documentCode: String?,
         var issuingState: String?,
         var primaryIdentifier: String?,
@@ -41,7 +41,7 @@ sealed class MRTDScanResult : Parcelable {
         var issuerVerified: Boolean=false
     ): MRTDScanResult()
     @Serializable
-    data class Failure(
+    data class Failure internal constructor(
         @Serializable(with = ThrowableSerializer::class)
         val error: Throwable
     ): MRTDScanResult()
