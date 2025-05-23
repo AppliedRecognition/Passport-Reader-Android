@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class DocumentDetailsActivity : AppCompatActivity() {
 
-    var scanResult: MRTDScanResult? = null
+    var scanResult: MRTDScanResult.Success? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

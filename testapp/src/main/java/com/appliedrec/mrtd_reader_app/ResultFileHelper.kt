@@ -20,7 +20,7 @@ object ResultFileHelper {
         }
     }
 
-    suspend fun saveScanResult(result: MRTDScanResult): Uri = coroutineScope {
+    suspend fun saveScanResult(result: MRTDScanResult.Success): Uri = coroutineScope {
         val resultFile = File.createTempFile("scan_result", ".json")
         resultFile.writeText(Json.encodeToString(result))
         files.add(resultFile)
@@ -28,10 +28,10 @@ object ResultFileHelper {
     }
 
     @OptIn(ExperimentalSerializationApi::class)
-    suspend fun readScanResult(uri: Uri): MRTDScanResult = coroutineScope {
+    suspend fun readScanResult(uri: Uri): MRTDScanResult.Success = coroutineScope {
         uri.toFile().inputStream().use { inputStream ->
             val json = Json { ignoreUnknownKeys = true }
-            return@coroutineScope json.decodeFromStream<MRTDScanResult>(inputStream)
+            return@coroutineScope json.decodeFromStream<MRTDScanResult.Success>(inputStream)
         }
     }
 }

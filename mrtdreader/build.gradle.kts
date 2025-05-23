@@ -1,8 +1,11 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kapt)
+    alias(libs.plugins.dokka)
     id("kotlin-parcelize")
     `maven-publish`
     signing
@@ -39,11 +42,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "11"
     }
 
     packaging {
@@ -72,21 +75,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-//    dokkaPlugin 'org.jetbrains.dokka:android-documentation-plugin:1.8.10'
 }
 
-//tasks.withType(DokkaTask.class) {
-//    moduleName.set("MRTD Reader")
-//    moduleVersion.set(project.version.toString())
-//    outputDirectory.set(file("../docs"))
-//
-//    dokkaSourceSets {
-//        configureEach {
-//            suppressedFiles.from(file("src/main/java/jj2000"))
-//        }
-//    }
-//}
+tasks.withType<DokkaTask>().configureEach {
+    moduleName.set("MRTD Reader")
+    moduleVersion.set(project.version.toString())
+    outputDirectory.set(file("../docs"))
+
+    dokkaSourceSets.configureEach {
+        suppressedFiles.from(file("src/main/java/jj2000"))
+    }
+}
 
 publishing {
     publications {
@@ -94,9 +93,9 @@ publishing {
             afterEvaluate {
                 from(components["release"])
             }
-            groupId = "com.appliedrec.mrtdreader"
-            artifactId = "mrtdreader"
-            version = "2.0.1"
+            groupId = "com.appliedrec"
+            artifactId = "mrtd-reader"
+            version = "3.0.0"
 
             pom {
                 name.set("MRTD Reader")

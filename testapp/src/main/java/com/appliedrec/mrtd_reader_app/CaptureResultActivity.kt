@@ -38,7 +38,7 @@ import java.util.StringJoiner
 
 class CaptureResultActivity : AppCompatActivity() {
 
-    private var scanResult: MRTDScanResult? = null
+    private var scanResult: MRTDScanResult.Success? = null
     private lateinit var faceDetection: FaceDetection
     private lateinit var faceRecognition: FaceRecognition
 

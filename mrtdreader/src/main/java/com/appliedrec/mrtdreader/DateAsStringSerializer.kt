@@ -1,5 +1,6 @@
 package com.appliedrec.mrtdreader
 
+import android.annotation.SuppressLint
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
@@ -10,6 +11,7 @@ import java.util.Date
 
 internal object DateAsStringSerializer: KSerializer<Date> {
 
+    @SuppressLint("SimpleDateFormat")
     private val dateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
 
     override val descriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)

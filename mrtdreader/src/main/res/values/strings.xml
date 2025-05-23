@@ -2,7 +2,8 @@
     <string name="app_name">Ver-ID MRTD Reader</string>
 
     <string name="mrtd_reader_title">Hold your travel document close to your device</string>
-    <string name="mrtd_no_nfc_reader">The NFC Radio is not enabled. Ensure this device is equipped with an NFC Radio and that it is powered on.</string>
+    <string name="mrtd_no_nfc_reader">The NFC radio is not available.</string>
+    <string name="mrtd_nfc_reader_disabled">The NFC radio is not enabled. Please enable near field communication in your device settings.</string>
     <string name="mrtd_reading_document">Please don\'t move your device or the travel document until the process completes.</string>
 
     <string name="bac_manual_entry_hdr">Please enter the number of your travel document, your date of birth and the document\'s date of expiry.</string>
