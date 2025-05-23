@@ -93,9 +93,9 @@ publishing {
             afterEvaluate {
                 from(components["release"])
             }
-            groupId = "com.appliedrec.mrtdreader"
-            artifactId = "mrtdreader"
-            version = "2.0.1"
+            groupId = "com.appliedrec"
+            artifactId = "mrtd-reader"
+            version = "3.0.0"
 
             pom {
                 name.set("MRTD Reader")
