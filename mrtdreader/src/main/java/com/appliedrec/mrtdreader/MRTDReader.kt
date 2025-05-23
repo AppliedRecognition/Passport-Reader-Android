@@ -3,12 +3,10 @@ package com.appliedrec.mrtdreader
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.nfc.tech.IsoDep
-import io.reactivex.rxjava3.core.Observable
 import jj2000.JJ2000Frontend
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import net.sf.scuba.smartcards.CardService
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.jmrtd.BACKey
@@ -26,14 +24,13 @@ import java.security.Security
 import java.security.Signature
 import java.security.cert.X509Certificate
 import java.util.concurrent.CompletableFuture
-import java.util.function.Consumer
 
 
 internal object MRTDReader {
 
     @JvmStatic
     @Throws(Exception::class)
-    suspend fun readPassport(isoDep: IsoDep, bacSpec: BACSpec, progressConsumer: Consumer<Progress>?, masterListFuture: CompletableFuture<Collection<X509Certificate>>?): MRTDScanResult = coroutineScope {
+    suspend fun readPassport(isoDep: IsoDep, bacSpec: BACSpec, onProgress: ((Progress) -> Unit)?, masterListFuture: CompletableFuture<Collection<X509Certificate>>?): MRTDScanResult = coroutineScope {
         val bacKey = BACKey(bacSpec.documentNumber, bacSpec.dateOfBirth, bacSpec.dateOfExpiry)
         var passportService: PassportService? = null
         try {
@@ -52,7 +49,7 @@ internal object MRTDReader {
                 true,
                 false
             )
-            reportProgress(progressConsumer, tasks, 0)
+            reportProgress(onProgress, tasks, 0)
             passportService.open()
             val paceSucceeded = doPACE(passportService, bacKey)
             passportService.sendSelectApplet(paceSucceeded)
@@ -61,9 +58,21 @@ internal object MRTDReader {
             }
             val sodFile: SODFile = readFile(passportService, PassportService.EF_SOD)
             tasks[0].completed = 1.0
-            reportProgress(progressConsumer, tasks, 1)
+            reportProgress(onProgress, tasks, 1)
             val dG1File: DG1File = readFile(passportService, PassportService.EF_DG1)
-            val result = MRTDScanResult()
+            val result = MRTDScanResult.Success(
+                documentCode = dG1File.mrzInfo.documentCode,
+                issuingState = dG1File.mrzInfo.issuingState,
+                primaryIdentifier = dG1File.mrzInfo.primaryIdentifier,
+                secondaryIdentifiers = dG1File.mrzInfo.secondaryIdentifierComponents,
+                nationality = dG1File.mrzInfo.nationality,
+                documentNumber = dG1File.mrzInfo.documentNumber,
+                personalNumber = dG1File.mrzInfo.personalNumber,
+                dateOfBirth = dG1File.mrzInfo.dateOfBirth,
+                dateOfExpiry = dG1File.mrzInfo.dateOfExpiry,
+                gender = dG1File.mrzInfo.genderCode.name,
+                faceImage = null
+            )
             result.dateOfBirth = dG1File.mrzInfo.dateOfBirth
             result.dateOfExpiry = dG1File.mrzInfo.dateOfExpiry
             result.documentNumber = dG1File.mrzInfo.documentNumber
@@ -75,7 +84,7 @@ internal object MRTDReader {
             result.primaryIdentifier = dG1File.mrzInfo.primaryIdentifier
             result.secondaryIdentifiers = dG1File.mrzInfo.secondaryIdentifierComponents
             tasks[1].completed = 1.0
-            reportProgress(progressConsumer, tasks, 2)
+            reportProgress(onProgress, tasks, 2)
             val dG2File: DG2File = readFile(passportService, PassportService.EF_DG2)
             val faceImageInfos = mutableListOf<FaceImageInfo>()
             dG2File.faceInfos.forEach { faceInfo ->
@@ -94,13 +103,14 @@ internal object MRTDReader {
                                 outputStream.write(buffer, 0, read)
                                 totalRead += read.toDouble()
                                 tasks[2].completed = totalRead / imageSize
-                                reportProgress(progressConsumer, tasks, 2)
+                                reportProgress(onProgress, tasks, 2)
                             }
                             outputStream.flush()
                             val imageData = outputStream.toByteArray()
                             faceImage = JJ2000Frontend.decode(imageData)
                             if (faceImage == null) {
-                                faceImage = BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
+                                faceImage =
+                                    BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
                             }
                         }
                     }
@@ -111,134 +121,35 @@ internal object MRTDReader {
                 }
             }
             tasks[2].completed = 1.0
-            reportProgress(progressConsumer, tasks, 3)
+            reportProgress(onProgress, tasks, 3)
             result.signatureVerified = checkDocumentSignature(sodFile)
             tasks[3].completed = 0.3
-            reportProgress(progressConsumer, tasks, 3)
+            reportProgress(onProgress, tasks, 3)
             if (masterListFuture != null) {
                 try {
                     val masterList = masterListFuture.get()
-                    result.issuerVerified = verifySigningCertificate(sodFile.docSigningCertificate, masterList)
+                    result.issuerVerified =
+                        verifySigningCertificate(sodFile.docSigningCertificate, masterList)
                 } catch (e: Exception) {
                     result.issuerVerified = false
                 }
             }
             tasks[3].completed = 1.0
-            reportProgress(progressConsumer, tasks, 3)
+            reportProgress(onProgress, tasks, 3)
             result
+        } catch (e: Exception) {
+            MRTDScanResult.Failure(e)
         } finally {
             passportService?.close()
         }
     }
 
-    fun reportProgress(progressConsumer: Consumer<Progress>?, tasks: Array<Progress>, currentTaskIndex: Int) {
-        progressConsumer?.let { consumer ->
+    private suspend fun reportProgress(onProgress: ((Progress) -> Unit)?, tasks: Array<Progress>, currentTaskIndex: Int) {
+        onProgress?.let { consumer ->
             val totalProgress = tasks.sumOf { it.completed } / tasks.size.toDouble()
             val progress = Progress(totalProgress, tasks[currentTaskIndex].message)
-            CoroutineScope(Dispatchers.Main).launch {
-                consumer.accept(progress)
-            }
-        }
-    }
-
-    @JvmStatic
-    fun createProgressObservable(isoDep: IsoDep, bacSpec: BACSpec, masterListFuture: CompletableFuture<Collection<X509Certificate>>?): Observable<MRTDReaderProgress> {
-        val bacKey = BACKey(bacSpec.documentNumber, bacSpec.dateOfBirth, bacSpec.dateOfExpiry)
-        return Observable.create { emitter ->
-            var passportService: PassportService? = null
-            try {
-                Security.addProvider(BouncyCastleProvider())
-//                Security.insertProviderAt(BouncyCastleProvider(), 1)
-//                Security.addProvider(SecurityProvider("MRTDSecurityProvider", 1.0, "null"))
-
-                val cardService = CardService.getInstance(isoDep)
-                passportService = PassportService(
-                    cardService,
-                    PassportService.NORMAL_MAX_TRANCEIVE_LENGTH,
-                    PassportService.DEFAULT_MAX_BLOCKSIZE,
-                    true,
-                    false
-                )
-                passportService.open()
-
-                val paceSucceeded = doPACE(passportService, bacKey)
-                passportService.sendSelectApplet(paceSucceeded)
-                if (!paceSucceeded) {
-                    passportService.doBAC(bacKey)
-                }
-                val sodFile: SODFile = readFile(passportService, PassportService.EF_SOD)
-                val signatureVerified = checkDocumentSignature(sodFile)
-                if (masterListFuture != null) {
-                    val masterList = masterListFuture.get()
-                    val issuerVerified = verifySigningCertificate(sodFile.docSigningCertificate, masterList)
-                }
-                val personalDataShare = 0.05
-                var progress = MRTDReaderProgress(PassportService.EF_DG1, MRTDScanResult(), personalDataShare)
-                val dG1File: DG1File = readFile(passportService, PassportService.EF_DG1)
-                val mrzInfo = dG1File.mrzInfo
-                progress.result.dateOfBirth = mrzInfo.dateOfBirth
-                progress.result.dateOfExpiry = mrzInfo.dateOfExpiry
-                progress.result.documentNumber = mrzInfo.documentNumber
-                progress.result.documentCode = mrzInfo.documentCode
-                progress.result.gender = mrzInfo.gender.name
-                progress.result.issuingState = mrzInfo.issuingState
-                progress.result.nationality = mrzInfo.nationality
-                progress.result.personalNumber = mrzInfo.personalNumber
-                progress.result.primaryIdentifier = mrzInfo.primaryIdentifier
-                progress.result.secondaryIdentifiers = mrzInfo.secondaryIdentifierComponents
-                if (!emitter.isDisposed) {
-                    emitter.onNext(progress)
-                }
-                progress = MRTDReaderProgress(PassportService.EF_DG2, progress.result, progress.progress)
-                if (!emitter.isDisposed) {
-                    emitter.onNext(progress)
-                }
-                val dG2File: DG2File = readFile(passportService, PassportService.EF_DG2)
-                val faceImageInfos = mutableListOf<FaceImageInfo>()
-                dG2File.faceInfos.forEach { faceInfo ->
-                    faceImageInfos.addAll(faceInfo.faceImageInfos)
-                }
-                if (faceImageInfos.isNotEmpty()) {
-                    var faceImage: Bitmap?
-                    for (faceImageInfo in faceImageInfos) {
-                        faceImageInfo.imageInputStream.use { inputStream ->
-                            ByteArrayOutputStream().use { outputStream ->
-                                var read: Int
-                                val buffer = ByteArray(1024)
-                                var totalRead: Int = 0
-                                while (inputStream.read(buffer).also { read = it } > 0) {
-                                    outputStream.write(buffer, 0, read)
-                                    totalRead += read
-                                    progress = MRTDReaderProgress(PassportService.EF_DG2, progress.result, personalDataShare + totalRead.toDouble() / faceImageInfo.imageLength.toDouble() * (1.0 - personalDataShare))
-                                    if (!emitter.isDisposed) {
-                                        emitter.onNext(progress)
-                                    }
-                                }
-                                outputStream.flush()
-                                val imageData = outputStream.toByteArray()
-                                faceImage = JJ2000Frontend.decode(imageData)
-                                if (faceImage == null) {
-                                    faceImage = BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
-                                }
-                            }
-                        }
-                        if (faceImage != null) {
-                            progress.result.faceImage = faceImage
-                            break
-                        }
-                    }
-                }
-                if (!emitter.isDisposed) {
-                    progress = MRTDReaderProgress(PassportService.EF_DG2, progress.result, 1.0)
-                    emitter.onNext(progress)
-                    emitter.onComplete()
-                }
-            } catch (e: Exception) {
-                if (!emitter.isDisposed) {
-                    emitter.onError(e)
-                }
-            } finally {
-                passportService?.close()
+            withContext(Dispatchers.Main) {
+                consumer(progress)
             }
         }
     }

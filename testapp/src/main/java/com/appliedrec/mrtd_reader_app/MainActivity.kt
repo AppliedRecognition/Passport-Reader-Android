@@ -1,7 +1,6 @@
 package com.appliedrec.mrtd_reader_app
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,15 +10,14 @@ import androidx.preference.PreferenceManager
 import com.appliedrec.mrtd_reader_app.BACSpecModel
 import com.appliedrec.mrtd_reader_app.databinding.ActivityMainBinding
 import com.appliedrec.mrtdreader.BACSpec
+import com.appliedrec.mrtdreader.MRTDReaderActivityResultContract
 import com.appliedrec.mrtdreader.MRTDScanResult
-import com.appliedrec.mrtdreader.MRTDScanSession
-import com.appliedrec.mrtdreader.MRTDScanSessionListener
+import com.appliedrec.mrtdreader.MRTDScanSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
 
-class MainActivity : AppCompatActivity(), MRTDScanSessionListener, BACEntryFragment.Listener {
+class MainActivity : AppCompatActivity(), BACEntryFragment.Listener {
     private var viewModel: BACSpecModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +36,7 @@ class MainActivity : AppCompatActivity(), MRTDScanSessionListener, BACEntryFragm
         }
     }
 
-    //region MRTD scan listener
-    override fun onMRTDScanSucceeded(bacSpec: BACSpec, result: MRTDScanResult) {
+    private fun onMRTDScanSucceeded(result: MRTDScanResult.Success) {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val uri = ResultFileHelper.saveScanResult(result)
@@ -60,7 +57,7 @@ class MainActivity : AppCompatActivity(), MRTDScanSessionListener, BACEntryFragm
         }
     }
 
-    override fun onMRTDScanFailed(bacSpec: BACSpec, throwable: Throwable) {
+    private fun onMRTDScanFailed(throwable: Throwable) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.failed_to_read_travel_document)
         builder.setMessage(throwable.toString())
@@ -68,20 +65,15 @@ class MainActivity : AppCompatActivity(), MRTDScanSessionListener, BACEntryFragm
         builder.create().show()
     }
 
-    override fun onMRTDScanCancelled(bacSpec: BACSpec) {}
-
-    //endregion
-    override fun onRequestCapture(bacSpec: BACSpec) {
-        val masterListFile: File = File(cacheDir, "MasterList.pem")
-        if (!masterListFile.isFile) {
-            assets.open("MasterList.pem").use { inputStream ->
-                masterListFile.outputStream().use { outputStream ->
-                    inputStream.copyTo(outputStream)
-                }
-            }
+    private val launcher = registerForActivityResult(MRTDReaderActivityResultContract()) { result ->
+        when (result) {
+            is MRTDScanResult.Success -> onMRTDScanSucceeded(result)
+            is MRTDScanResult.Failure -> onMRTDScanFailed(result.error)
+            else -> {}
         }
-        val session = MRTDScanSession(this, bacSpec, Uri.fromFile(masterListFile))
-        session.setListener(this)
-        session.start()
+    }
+
+    override fun onRequestCapture(bacSpec: BACSpec) {
+        launcher.launch(MRTDScanSettings(bacSpec))
     }
 }
