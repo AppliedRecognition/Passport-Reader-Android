@@ -16,10 +16,12 @@
     <string name="capture">Capture</string>
     <string name="compare_to_live_selfie">Compare to live selfie</string>
     <string name="details">Details</string>
-    <string name="pass_details">The face matching score <xliff:g example="4.0" id="score">%1$.01f</xliff:g> indicates a likelihood of <xliff:g example="99.05" id="probability">%2$.02f</xliff:g>%% that the person on the ID card is the same person as the one in the selfie. We recommend a threshold of <xliff:g example="3.0" id="threshold">%3$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
-    <string name="warning_details">The face matching score <xliff:g example="4.0" id="score">%1$.01f</xliff:g> indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of <xliff:g example="3.0" id="threshold">%2$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
+    <string name="pass_details">The face matching score <xliff:g example="0.6" id="score">%1$.01f</xliff:g> indicates that the person on the ID card is the same person as the one in the selfie. We recommend a threshold of <xliff:g example="0.5" id="threshold">%3$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
+    <string name="warning_details">The face matching score <xliff:g example="0.45" id="score">%1$.01f</xliff:g> indicates that the person on the ID card may not be the same person as the one in the selfie. We recommend a threshold of <xliff:g example="0.5" id="threshold">%2$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
+    <string name="fail_details">The face matching score <xliff:g example="0.1" id="score">%1$.01f</xliff:g> indicates that the person on the ID card is likely NOT the same person as the one in the selfie. We recommend a threshold of <xliff:g example="0.5" id="threshold">%2$.01f</xliff:g> for a positive identification when comparing faces from identity cards.</string>
     <string name="pass">Pass</string>
     <string name="warning">Warning</string>
+    <string name="fail">Fail</string>
     <string name="nfc_passport_capture">NFC Passport Capture</string>
     <string name="captured_document">Captured Document</string>
     <string name="document_details">Document Details</string>

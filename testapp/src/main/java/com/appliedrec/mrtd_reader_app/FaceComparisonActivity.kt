@@ -10,7 +10,13 @@ import org.apache.commons.math3.distribution.NormalDistribution
 
 class FaceComparisonActivity : AppCompatActivity() {
 
-    var threshold = 0.5f
+    companion object {
+        const val EXTRA_SCORE = "score"
+        const val EXTRA_IMAGE1 = "image1"
+        const val EXTRA_IMAGE2 = "image2"
+        const val PASS_THRESHOLD = 0.5f;
+        const val WARNING_THRESHOLD = 0.4f;
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,16 +25,18 @@ class FaceComparisonActivity : AppCompatActivity() {
         )
         setContentView(viewBinding.root)
         val score = intent.getFloatExtra(EXTRA_SCORE, 0f)
-        if (score >= threshold) {
-            val probability = NormalDistribution().cumulativeProbability(score.toDouble()) * 100
-            viewBinding.contextLabel.text =
-                getString(R.string.pass_details, score, probability, threshold)
+        if (score >= PASS_THRESHOLD) {
+            viewBinding.contextLabel.text = getString(R.string.pass_details, score, PASS_THRESHOLD)
             viewBinding.resultStatusTextView.setText(R.string.pass)
             val green = Color.rgb(54, 175, 0)
             viewBinding.resultStatusTextView.setTextColor(green)
-        } else {
-            viewBinding.contextLabel.text = getString(R.string.warning_details, score, threshold)
+        } else if (score >= WARNING_THRESHOLD) {
+            viewBinding.contextLabel.text = getString(R.string.warning_details, score, PASS_THRESHOLD)
             viewBinding.resultStatusTextView.setText(R.string.warning)
+            viewBinding.resultStatusTextView.setTextColor(Color.rgb(244, 191, 79))
+        } else {
+            viewBinding.contextLabel.text = getString(R.string.fail_details, score, PASS_THRESHOLD)
+            viewBinding.resultStatusTextView.setText(R.string.fail)
             viewBinding.resultStatusTextView.setTextColor(Color.RED)
         }
         val imageViews = arrayOf(
@@ -48,11 +56,5 @@ class FaceComparisonActivity : AppCompatActivity() {
                 imageViews[i].setImageDrawable(drawable)
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_SCORE = "score"
-        const val EXTRA_IMAGE1 = "image1"
-        const val EXTRA_IMAGE2 = "image2"
     }
 }

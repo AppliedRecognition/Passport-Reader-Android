@@ -27,6 +27,11 @@ android {
         }
     }
 
+    lint {
+        abortOnError = false
+        disable += "NullSafeMutableLiveData"
+    }
+
     buildFeatures {
         viewBinding = true
         dataBinding = true

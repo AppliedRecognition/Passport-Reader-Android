@@ -35,6 +35,7 @@ android {
 
     lint {
         abortOnError = false
+        disable += "NullSafeMutableLiveData"
     }
 
     compileOptions {
