@@ -18,24 +18,14 @@
             android:id="@+id/documentNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="@string/document_number"
             android:inputType="textCapCharacters"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/documentNumberLabel" />
-
-        <ImageView
-            android:id="@+id/cameraButton"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="@+id/documentNumber"
-            app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
+            app:layout_constraintTop_toBottomOf="@+id/documentNumberLabel"
+            tools:ignore="TextFields" />
 
         <TextView
             android:id="@+id/documentNumberLabel"

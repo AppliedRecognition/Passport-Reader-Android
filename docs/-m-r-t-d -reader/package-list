@@ -1,0 +1,47 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.appliedrec.mrtdreader////PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/index.html
+$dokka.location:com.appliedrec.mrtdreader/BACSpec///PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/index.html
+$dokka.location:com.appliedrec.mrtdreader/BACSpec/BACSpec/#kotlin.String#java.util.Date#java.util.Date/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/-b-a-c-spec.html
+$dokka.location:com.appliedrec.mrtdreader/BACSpec/dateOfBirth/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/date-of-birth.html
+$dokka.location:com.appliedrec.mrtdreader/BACSpec/dateOfExpiry/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/date-of-expiry.html
+$dokka.location:com.appliedrec.mrtdreader/BACSpec/documentNumber/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/document-number.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult///PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/index.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/MRTDScanResult/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/-m-r-t-d-scan-result.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/MRTDScanResult/#kotlin.String?#kotlin.String?#kotlin.String?#kotlin.Array[kotlin.String]#kotlin.String?#kotlin.String?#kotlin.String?#kotlin.String?#kotlin.String?#kotlin.String?#android.graphics.Bitmap?/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/-m-r-t-d-scan-result.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/dateOfBirth/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/date-of-birth.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/dateOfExpiry/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/date-of-expiry.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/documentCode/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/document-code.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/documentNumber/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/document-number.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/faceImage/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/face-image.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/gender/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/gender.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/issuingState/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/issuing-state.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/nationality/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/nationality.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/personalNumber/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/personal-number.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/primaryIdentifier/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/primary-identifier.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanResult/secondaryIdentifiers/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-result/secondary-identifiers.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession.Companion///PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/-companion/index.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession///PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/index.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/MRTDScanSession/#android.content.Context#com.appliedrec.mrtdreader.BACSpec/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/-m-r-t-d-scan-session.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/bACSpec/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/b-a-c-spec.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/cancel/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/cancel.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/context/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/context.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/getListener/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/get-listener.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivityCreated/#android.app.Activity#android.os.Bundle?/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-created.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivityDestroyed/#android.app.Activity/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-destroyed.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivityPaused/#android.app.Activity/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-paused.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivityResumed/#android.app.Activity/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-resumed.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivitySaveInstanceState/#android.app.Activity#android.os.Bundle/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-save-instance-state.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivityStarted/#android.app.Activity/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-started.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onActivityStopped/#android.app.Activity/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-activity-stopped.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onNFCPermissionDenied/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-n-f-c-permission-denied.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onNFCPermissionGranted/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-n-f-c-permission-granted.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/onTagDiscovered/#android.nfc.Tag/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/on-tag-discovered.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/setListener/#com.appliedrec.mrtdreader.MRTDScanSessionListener?/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/set-listener.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSession/start/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session/start.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSessionListener///PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session-listener/index.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSessionListener/onMRTDScanCancelled/#com.appliedrec.mrtdreader.BACSpec/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session-listener/on-m-r-t-d-scan-cancelled.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSessionListener/onMRTDScanFailed/#com.appliedrec.mrtdreader.BACSpec#kotlin.Throwable/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session-listener/on-m-r-t-d-scan-failed.html
+$dokka.location:com.appliedrec.mrtdreader/MRTDScanSessionListener/onMRTDScanSucceeded/#com.appliedrec.mrtdreader.BACSpec#com.appliedrec.mrtdreader.MRTDScanResult/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-m-r-t-d-scan-session-listener/on-m-r-t-d-scan-succeeded.html
+com.appliedrec.mrtdreader
+

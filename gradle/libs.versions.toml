@@ -1,0 +1,41 @@
+[versions]
+agp = "8.7.3"
+kotlin = "2.0.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.16.0" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name ="constraintlayout", version = "2.2.1" }
+androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.9.0" }
+jmrtd = { group = "org.jmrtd", name = "jmrtd", version = "0.8.1" }
+scuba-sc-android = { group = "net.sf.scuba", name = "scuba-sc-android", version = "0.0.24" }
+spongycastle = { group = "com.madgag.spongycastle", name = "prov", version = "1.58.0.0" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.7.3" }
+rxjava = { group = "io.reactivex.rxjava3", name ="rxjava", version = "3.1.10" }
+rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version = "3.0.2" }
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version = "1.2.1" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.6.1" }
+android-material = { group = "com.google.android.material", name = "material", version = "1.12.0" }
+androidx-multidex = { group = "androidx.multidex", name = "multidex", version = "2.0.1" }
+commons-math3 = { group = "org.apache.commons", name = "commons-math3", version = "3.6.1" }
+androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version = "1.4.1" }
+androidx-room = { group = "androidx.room", name = "room-common", version = "2.7.1" }
+androidx-preference = { group = "androidx.preference", name = "preference", version = "1.2.1" }
+microblink-blinkid = { group = "com.microblink", name = "blinkid", version = "6.1.2" }
+okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.12.0" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version = "2.9.0" }
+verid3-face-capture = { group = "com.appliedrec.verid3", name = "face-capture", version = "1.0.1" }
+verid-spoof-device-detection = { group = "com.appliedrec.verid.livenessdetection", name = "spoof-device-detection", version = "2.1.1" }
+verid-spoof-device-detection-models = { group = "com.appliedrec.verid.livenessdetection", name = "spoof-device-detection-models", version = "2.1.1" }
+verid3-face-detection-mp = { group = "com.appliedrec.verid3", name = "face-detection-mp", version = "1.0.0" }
+verid3-face-recognition-arcface = { group = "com.appliedrec.verid3", name = "face-recognition-arcface", version = "1.0.0" }
+verid3-common-serialization = { group = "com.appliedrec.verid3", name = "common-serialization", version = "1.0.0" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "1.8.21" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
