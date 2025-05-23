@@ -1,8 +1,11 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kapt)
+    alias(libs.plugins.dokka)
     id("kotlin-parcelize")
     `maven-publish`
     signing
@@ -72,21 +75,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-//    dokkaPlugin 'org.jetbrains.dokka:android-documentation-plugin:1.8.10'
 }
 
-//tasks.withType(DokkaTask.class) {
-//    moduleName.set("MRTD Reader")
-//    moduleVersion.set(project.version.toString())
-//    outputDirectory.set(file("../docs"))
-//
-//    dokkaSourceSets {
-//        configureEach {
-//            suppressedFiles.from(file("src/main/java/jj2000"))
-//        }
-//    }
-//}
+tasks.withType<DokkaTask>().configureEach {
+    moduleName.set("MRTD Reader")
+    moduleVersion.set(project.version.toString())
+    outputDirectory.set(file("../docs"))
+
+    dokkaSourceSets.configureEach {
+        suppressedFiles.from(file("src/main/java/jj2000"))
+    }
+}
 
 publishing {
     publications {
