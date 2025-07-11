@@ -14,10 +14,11 @@
     <string name="pp_info_lbl_doc_expiry">Date of Expiry</string>
 
     <!-- mrtd reader events -->
-    <string name="mrtd_evt_bac">Access control</string>
+    <string name="mrtd_evt_bac">Authenticating</string>
     <string name="mrtd_evt_mrz">Reading personal information</string>
     <string name="mrtd_evt_photo">Reading photo</string>
     <string name="mrtd_evt_reading_passport">Reading passport</string>
+    <string name="mrtd_evt_signature">Verifying document signature</string>
 
     <!-- MRTD codes -->
     <string name="gender_code_male">Male</string>
@@ -26,6 +27,8 @@
     <string name="gender_code_unknown">Unknown</string>
     <string name="travel_document_reader">Travel Document Reader</string>
     <string name="document_number">Number</string>
+    <string name="tag_lost">Tag lost. Please hold document steady and try again.</string>
+    <string name="mrtd_reader_success">Document read successfully</string>
 
     <!-- date picker dialog -->
 

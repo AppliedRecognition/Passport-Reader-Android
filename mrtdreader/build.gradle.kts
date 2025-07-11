@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kapt)
     alias(libs.plugins.dokka)
     id("kotlin-parcelize")
@@ -32,8 +33,8 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         buildConfig = true
+        compose = true
     }
 
     lint {
@@ -63,15 +64,21 @@ dependencies {
 //    implementation(fileTree(dir: "libs", include: ["*.jar"]))
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
     implementation(libs.jmrtd)
     implementation(libs.scuba.sc.android)
     implementation(libs.spongycastle)
     implementation(libs.kotlinx.serialization)
-    implementation(libs.rxjava)
-    implementation(libs.rxandroid)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
+//    implementation(libs.rxjava)
+//    implementation(libs.rxandroid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -95,7 +102,7 @@ publishing {
             }
             groupId = "com.appliedrec"
             artifactId = "mrtd-reader"
-            version = "3.0.0"
+            version = "3.0.1"
 
             pom {
                 name.set("MRTD Reader")

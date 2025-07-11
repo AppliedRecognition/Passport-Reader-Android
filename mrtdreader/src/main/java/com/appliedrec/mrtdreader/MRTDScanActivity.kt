@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.net.Uri
 import android.nfc.NfcAdapter
@@ -14,17 +13,21 @@ import android.nfc.tech.IsoDep
 import android.os.Build
 import android.os.Bundle
 import android.view.Surface
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.appliedrec.mrtdreader.databinding.ActivityMrtdreaderBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.security.cert.CertificateFactory
-import java.security.cert.X509Certificate
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.atomic.AtomicBoolean
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.appliedrec.mrtdreader.ui.theme.MRTDReaderTheme
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 
 /**
  * Machine-Readable Travel Document (MRTD) scan activity
@@ -34,13 +37,13 @@ import java.util.concurrent.atomic.AtomicBoolean
  * @version 1.0.0
  * @suppress
  */
-class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
+class MRTDScanActivity: ComponentActivity(), NfcAdapter.ReaderCallback {
 
-    private lateinit var viewBinding: ActivityMrtdreaderBinding
     private var nfcAdapter: NfcAdapter? = null
-    private val isReadingTag = AtomicBoolean(false)
     private lateinit var bacSpec: BACSpec
-    private lateinit var masterListFuture: CompletableFuture<Collection<X509Certificate>>
+    private var masterListLocation: MasterListLocation = MasterListLocation.None
+    private val mrtdReaderViewModel: MRTDReaderViewModel by viewModels()
+    private val nfcAdapterState = MutableStateFlow(NfcAdapterState.UNKNOWN)
 
     companion object {
         const val EXTRA_RESULT_ID = "com.appliedrec.mrtdreader.EXTRA_RESULT_ID"
@@ -57,8 +60,8 @@ class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
                     NfcAdapter.STATE_OFF
                 )
                 when (state) {
-                    NfcAdapter.STATE_TURNING_OFF, NfcAdapter.STATE_OFF -> onNFCDisabled()
-                    NfcAdapter.STATE_TURNING_ON, NfcAdapter.STATE_ON -> onWaiting()
+                    NfcAdapter.STATE_TURNING_OFF, NfcAdapter.STATE_OFF -> nfcAdapterState.update { NfcAdapterState.UNAVAILABLE }
+                    NfcAdapter.STATE_TURNING_ON, NfcAdapter.STATE_ON -> nfcAdapterState.update { NfcAdapterState.UNKNOWN }
                 }
             }
         }
@@ -66,10 +69,7 @@ class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityMrtdreaderBinding.inflate(
-            layoutInflater
-        )
-        setContentView(viewBinding.root)
+        enableEdgeToEdge()
         lockCurrentOrientation()
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
         val bac = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -82,13 +82,56 @@ class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
             finish()
             return@onCreate
         }
-        masterListFuture = intent.getStringExtra(EXTRA_MASTERLIST_URI)?.let { urlString ->
-            loadMasterList(this, Uri.parse(urlString))
-        } ?: loadMasterListFromAssets(this, "masterlist.pem")
+        setContent {
+            MRTDReaderTheme {
+                val nfcState by nfcAdapterState.collectAsStateWithLifecycle()
+                Surface(
+                    color = MaterialTheme.colorScheme.background,
+                    contentColor = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    when (nfcState) {
+                        NfcAdapterState.DISABLED -> {
+                            MessageView(stringResource(R.string.mrtd_nfc_reader_disabled))
+                        }
+
+                        NfcAdapterState.UNAVAILABLE -> {
+                            MessageView(stringResource(R.string.mrtd_no_nfc_reader))
+                        }
+
+                        else -> {
+                            val resultState by mrtdReaderViewModel.result.collectAsStateWithLifecycle()
+                            LaunchedEffect(resultState) {
+                                if (resultState is MRTDReaderUiState.Finished) {
+                                    if ((resultState as MRTDReaderUiState.Finished).result is MRTDScanResult.Cancelled) {
+                                        setResult(RESULT_CANCELED)
+                                    } else {
+                                        val resultId =
+                                            MRTDScanResultStore.addResult((resultState as MRTDReaderUiState.Finished).result)
+                                        setResult(RESULT_OK, Intent().apply {
+                                            putExtra(EXTRA_RESULT_ID, resultId)
+                                        })
+                                    }
+                                    finish()
+                                }
+                            }
+                            MRTDReaderView(resultState)
+                        }
+                    }
+                }
+            }
+        }
+        masterListLocation = intent.getStringExtra(EXTRA_MASTERLIST_URI)?.let { urlString ->
+            try {
+                MasterListLocation.Url(this, Uri.parse(urlString))
+            } catch (e: Exception) {
+                null
+            }
+        } ?: MasterListLocation.Assets(this, "masterlist.pem")
         if (nfcAdapter == null) {
-            onNoNFC()
+            nfcAdapterState.update { NfcAdapterState.UNAVAILABLE }
         } else {
-            onWaiting()
+            nfcAdapterState.update { NfcAdapterState.UNKNOWN }
         }
     }
 
@@ -114,8 +157,9 @@ class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
             val filter = IntentFilter(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED)
             registerReceiver(broadcastReceiver, filter)
             if (!adapter.isEnabled) {
-                onNFCDisabled()
+                nfcAdapterState.update { NfcAdapterState.DISABLED }
             } else {
+                nfcAdapterState.update { NfcAdapterState.AVAILABLE }
                 val options = Bundle().apply {
                     putInt(NfcAdapter.EXTRA_READER_PRESENCE_CHECK_DELAY, 50)
                 }
@@ -131,6 +175,7 @@ class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
 
     override fun onPause() {
         super.onPause()
+        mrtdReaderViewModel.cancelReading()
         nfcAdapter?.let { adapter ->
             unregisterReceiver(broadcastReceiver)
             if (adapter.isEnabled) {
@@ -139,85 +184,10 @@ class MRTDScanActivity: AppCompatActivity(), NfcAdapter.ReaderCallback {
         }
     }
 
-    private fun onWaiting() {
-        viewBinding.textView.setText(R.string.mrtd_reader_title)
-        viewBinding.progressBar.visibility = View.GONE
-        viewBinding.progressIndicator.visibility = View.GONE
-    }
-
-    private fun onReading() {
-        viewBinding.textView.setText(R.string.mrtd_reading_document)
-        viewBinding.progressIndicator.visibility = View.VISIBLE
-        viewBinding.progressBar.visibility = View.GONE
-    }
-
-    private fun onNoNFC() {
-        viewBinding.textView.setText(R.string.mrtd_no_nfc_reader)
-        viewBinding.progressBar.visibility = View.GONE
-        viewBinding.progressIndicator.visibility = View.GONE
-    }
-
-    private fun onNFCDisabled() {
-        viewBinding.textView.setText(R.string.mrtd_nfc_reader_disabled)
-        viewBinding.progressBar.visibility = View.GONE
-        viewBinding.progressIndicator.visibility = View.GONE
-    }
-
-    private fun onScanProgress(progress: Progress) {
-        val done = Math.round(progress.completed * 100.0).toInt()
-        viewBinding.progressBar.max = 100
-        viewBinding.progressBar.progress = done
-        viewBinding.progressBar.visibility = View.VISIBLE
-        viewBinding.progressIndicator.visibility = View.GONE
-        viewBinding.textView.text = progress.message
-    }
-
-    private fun loadMasterList(context: Context, uri: Uri): CompletableFuture<Collection<X509Certificate>> {
-        return CompletableFuture.supplyAsync {
-            context.contentResolver.openInputStream(uri).use { inputStream ->
-                val certs = CertificateFactory.getInstance("X.509").generateCertificates(inputStream)
-                return@supplyAsync certs.filterIsInstance<X509Certificate>()
-            }
-        }
-    }
-
-    private fun loadMasterListFromAssets(context: Context, assetName: String): CompletableFuture<Collection<X509Certificate>> {
-        return CompletableFuture.supplyAsync {
-            val certs = context.assets.open(assetName).use { CertificateFactory.getInstance("X.509").generateCertificates(it) }
-            return@supplyAsync certs.filterIsInstance<X509Certificate>()
-        }
-    }
-
     override fun onTagDiscovered(tag: Tag) {
         if (listOf(*tag.techList).contains("android.nfc.tech.IsoDep")) {
-            val isoDep = IsoDep.get(tag)
-            isoDep.timeout = 1000
-            if (isReadingTag.compareAndSet(false, true)) {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    try {
-                        val result = MRTDReader.readPassport(isoDep, bacSpec, { progress ->
-                            onScanProgress(progress)
-                        }, masterListFuture)
-                        val resultId = MRTDScanResultStore.addResult(result)
-                        withContext(Dispatchers.Main) {
-                            setResult(RESULT_OK, Intent().apply {
-                                putExtra(EXTRA_RESULT_ID, resultId)
-                            })
-                            finish()
-                        }
-                    } catch (e: Exception) {
-                        val resultId = MRTDScanResultStore.addResult(MRTDScanResult.Failure(e))
-                        withContext(Dispatchers.Main) {
-                            setResult(RESULT_OK, Intent().apply {
-                                putExtra(EXTRA_RESULT_ID, resultId)
-                            })
-                            finish()
-                        }
-                    } finally {
-                        isReadingTag.set(false)
-                    }
-                }
-            }
+            val isoDep = IsoDep.get(tag) ?: return
+            mrtdReaderViewModel.readPassport(isoDep, bacSpec, masterListLocation)
         }
     }
 }
