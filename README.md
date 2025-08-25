@@ -8,7 +8,7 @@ Add the following dependency in your module's build.gradle file:
 
 ```groovy
 dependencies {
-    implementation 'com.appliedrec:mrtd-reader:3.0.0'
+    implementation 'com.appliedrec:mrtd-reader:3.0.2'
 }
 ```
 ## Usage
