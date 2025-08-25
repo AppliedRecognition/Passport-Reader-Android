@@ -22,13 +22,13 @@ import com.appliedrec.verid3.common.serialization.fromBitmap
 import com.appliedrec.verid3.common.serialization.toBitmap
 import com.appliedrec.verid3.facecapture.CapturedFace
 import com.appliedrec.verid3.facecapture.FaceCapture
-import com.appliedrec.verid3.facecapture.FaceCaptureSessionModuleFactories
 import com.appliedrec.verid3.facecapture.FaceCaptureSessionResult
-import com.appliedrec.verid3.facecapture.FaceCaptureSessionSettings
-import com.appliedrec.verid3.facecapture.ui.FaceCaptureConfiguration
-import com.appliedrec.verid3.facecapture.ui.FaceCaptureViewConfiguration
-import com.appliedrec.verid3.facedetection.mp.FaceDetection
-import com.appliedrec.verid3.facerecognition.arcface.FaceRecognition
+import com.appliedrec.verid3.facecapture.FaceTrackingPlugin
+import com.appliedrec.verid3.facecapture.LivenessDetectionPlugin
+import com.appliedrec.verid3.facedetection.retinaface.FaceDetectionRetinaFace
+import com.appliedrec.verid3.facerecognition.arcface.FaceRecognitionArcFace
+import com.appliedrec.verid3.spoofdevicedetection.local.SpoofDeviceDetection
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -39,13 +39,12 @@ import java.util.StringJoiner
 class CaptureResultActivity : AppCompatActivity() {
 
     private var scanResult: MRTDScanResult.Success? = null
-    private lateinit var faceDetection: FaceDetection
-    private lateinit var faceRecognition: FaceRecognition
+    private lateinit var faceDetection: FaceDetectionRetinaFace
+    private lateinit var faceRecognition: FaceRecognitionArcFace
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        faceDetection = FaceDetection(this)
-        faceRecognition = FaceRecognition(this)
+        faceRecognition = FaceRecognitionArcFace(this)
         val viewBinding = ActivityCaptureResultBinding.inflate(
             layoutInflater
         )
@@ -56,6 +55,7 @@ class CaptureResultActivity : AppCompatActivity() {
         }
         lifecycleScope.launch(Dispatchers.IO) {
             try {
+                faceDetection = FaceDetectionRetinaFace.create(this@CaptureResultActivity)
                 scanResult = ResultFileHelper.readScanResult(uri)
                 withContext(Dispatchers.Main) {
 
@@ -81,7 +81,9 @@ class CaptureResultActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         if (isFinishing) {
-            faceRecognition.close()
+            CoroutineScope(Dispatchers.Default).launch {
+                faceDetection.close()
+            }
         }
     }
 
@@ -107,14 +109,15 @@ class CaptureResultActivity : AppCompatActivity() {
     private fun compareToSelfie() {
         try {
             val activity = this
-            lifecycleScope.launch {
-                val faceCaptureResult = FaceCapture.captureFaces(activity, FaceCaptureConfiguration(
-                    FaceCaptureSessionSettings(),
-                    viewConfiguration = FaceCaptureViewConfiguration(activity),
-                    faceCaptureSessionModuleFactories = FaceCaptureSessionModuleFactories(
-                        createFaceDetection = { faceDetection }
-                    ),
-                ))
+            lifecycleScope.launch(Dispatchers.Default) {
+                val faceCaptureResult = FaceCapture.captureFaces(activity) {
+                    createFaceDetection = { FaceDetectionRetinaFace.create(activity) }
+                    createFaceTrackingPlugins = { listOf(
+                        LivenessDetectionPlugin(arrayOf(
+                            SpoofDeviceDetection(activity)
+                        )) as FaceTrackingPlugin<Any>
+                    )}
+                }
                 when (faceCaptureResult) {
                     is FaceCaptureSessionResult.Success -> {
                         val faceCapture = faceCaptureResult.capturedFaces.first { it.bearing == Bearing.STRAIGHT }
@@ -146,20 +149,18 @@ class CaptureResultActivity : AppCompatActivity() {
 
     @Throws(Exception::class)
     private suspend fun createFaceComparisonIntent(capturedFace: CapturedFace): Intent {
-        val documentFace = scanResult?.faceImage?.let { faceImage ->
-            faceDetection.detectFacesInImage(Image.fromBitmap(faceImage), 1).firstOrNull()
-        } ?: throw Exception("Face not detected in image")
-        val documentFaceImage = scanResult?.faceImage?.let { faceImage ->
-            cropImageToFace(faceImage, documentFace)
-        } ?: throw Exception("Missing document face image")
+        val documentFaceImage = scanResult?.faceImage?.let { Image.fromBitmap(it) } ?: throw Exception("Missing document face image")
+        val documentFace = faceDetection.detectFacesInImage(documentFaceImage, 1).firstOrNull()
+            ?: throw Exception("Face not detected in image")
+        val documentFaceCroppedImage = cropImageToFace(documentFaceImage.toBitmap(), documentFace)
         val capturedFaceTemplate = faceRecognition.createFaceRecognitionTemplates(
-            arrayOf(capturedFace.face), capturedFace.image
+            listOf(capturedFace.face), capturedFace.image
         ).first()
         val documentFaceTemplate = faceRecognition.createFaceRecognitionTemplates(
-            arrayOf(documentFace), Image.fromBitmap(documentFaceImage)
+            listOf(documentFace), documentFaceImage
         ).first()
-        val score = faceRecognition.compareFaceRecognitionTemplates(arrayOf(capturedFaceTemplate), documentFaceTemplate).first()
-        val documentFaceJpeg = compressImage(documentFaceImage)
+        val score = faceRecognition.compareFaceRecognitionTemplates(listOf(capturedFaceTemplate), documentFaceTemplate).first()
+        val documentFaceJpeg = compressImage(documentFaceCroppedImage)
         val croppedCaptureFaceImage = cropImageToFace(capturedFace.image.toBitmap(), capturedFace.face)
         val liveFaceJpeg = compressImage(croppedCaptureFaceImage)
         val intent = Intent(this, FaceComparisonActivity::class.java)

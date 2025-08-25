@@ -1,19 +1,23 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kapt)
     alias(libs.plugins.dokka)
     id("kotlin-parcelize")
-    `maven-publish`
+    alias(libs.plugins.vanniktech.publish)
     signing
 }
 
+version = "3.0.2"
+
 android {
     namespace = "com.appliedrec.mrtdreader"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
@@ -32,21 +36,24 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         buildConfig = true
+        compose = true
     }
 
     lint {
         abortOnError = false
         disable += "NullSafeMutableLiveData"
+        targetSdk = 36
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
 
     packaging {
@@ -60,18 +67,20 @@ android {
 }
 
 dependencies {
-//    implementation(fileTree(dir: "libs", include: ["*.jar"]))
-
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.runtime)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
     implementation(libs.jmrtd)
     implementation(libs.scuba.sc.android)
     implementation(libs.spongycastle)
     implementation(libs.kotlinx.serialization)
-    implementation(libs.rxjava)
-    implementation(libs.rxandroid)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -87,55 +96,35 @@ tasks.withType<DokkaTask>().configureEach {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            afterEvaluate {
-                from(components["release"])
+mavenPublishing {
+    coordinates("com.appliedrec", "mrtd-reader")
+    pom {
+        name.set("MRTD Reader")
+        description.set("Scans NFC chips in machine readable travel documents (MRTDs) like passports")
+        url.set("https://github.com/AppliedRecognition/Passport-Reader-Android")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
-            groupId = "com.appliedrec"
-            artifactId = "mrtd-reader"
-            version = "3.0.0"
-
-            pom {
-                name.set("MRTD Reader")
-                description.set("Scans NFC chips in machine readable travel documents (MRTDs) like passports")
-                url.set("https://github.com/AppliedRecognition/Passport-Reader-Android")
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git://github.com/AppliedRecognition/Passport-Reader-Android.git")
-                    developerConnection.set("scm:git:ssh://github.com/AppliedRecognition/Passport-Reader-Android.git")
-                    url.set("https://github.com/AppliedRecognition/Passport-Reader-Android")
-                }
-                developers {
-                    developer {
-                        id.set("appliedrecognition")
-                        name.set("Applied Recognition Corp.")
-                        email.set("support@appliedrecognition.com")
-                    }
-                }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/AppliedRecognition/Passport-Reader-Android.git")
+            developerConnection.set("scm:git:ssh://github.com/AppliedRecognition/Passport-Reader-Android.git")
+            url.set("https://github.com/AppliedRecognition/Passport-Reader-Android")
+        }
+        developers {
+            developer {
+                id.set("appliedrecognition")
+                name.set("Applied Recognition Corp.")
+                email.set("support@appliedrecognition.com")
             }
         }
     }
-
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/AppliedRecognition/Ver-ID-3D-Android-Libraries")
-            credentials {
-                username = project.findProperty("gpr.user") as String?
-                password = project.findProperty("gpr.token") as String?
-            }
-        }
-    }
+    publishToMavenCentral(automaticRelease = true)
 }
 
 signing {
     useGpgCmd()
-    sign(publishing.publications["release"])
+    sign(publishing.publications)
 }

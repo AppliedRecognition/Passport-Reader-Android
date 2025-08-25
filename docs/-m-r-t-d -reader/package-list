@@ -1,5 +1,17 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme////PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/index.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//DarkBlue/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-dark-blue.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//LightBlue/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-light-blue.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//MRTDReaderTheme/#kotlin.Boolean#kotlin.Boolean#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-m-r-t-d-reader-theme.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//MidBlue/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-mid-blue.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//Pink40/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-pink40.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//Pink80/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-pink80.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//Purple40/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-purple40.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//Purple80/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-purple80.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//PurpleGrey40/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-purple-grey40.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//PurpleGrey80/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-purple-grey80.html
+$dokka.location:com.appliedrec.mrtdreader.ui.theme//Typography/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader.ui.theme/-typography.html
 $dokka.location:com.appliedrec.mrtdreader////PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/index.html
 $dokka.location:com.appliedrec.mrtdreader/BACSpec///PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/index.html
 $dokka.location:com.appliedrec.mrtdreader/BACSpec/BACSpec/#kotlin.String#java.util.Date#java.util.Date/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-b-a-c-spec/-b-a-c-spec.html
@@ -37,3 +49,4 @@ $dokka.location:com.appliedrec.mrtdreader/Progress/Progress/#kotlin.Double#kotli
 $dokka.location:com.appliedrec.mrtdreader/Progress/completed/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-progress/completed.html
 $dokka.location:com.appliedrec.mrtdreader/Progress/message/#/PointingToDeclaration/-m-r-t-d -reader/com.appliedrec.mrtdreader/-progress/message.html
 com.appliedrec.mrtdreader
+com.appliedrec.mrtdreader.ui.theme

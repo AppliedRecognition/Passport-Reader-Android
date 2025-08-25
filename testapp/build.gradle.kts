@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -7,11 +9,12 @@ plugins {
 
 android {
     namespace = "com.appliedrec.mrtd_reader_app"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.appliedrec.mrtd_reader_app"
         minSdk = 26
+        targetSdk = 36
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,12 +41,14 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
     }
     
     packaging {
@@ -71,12 +76,11 @@ dependencies {
     implementation(libs.okhttp3)
     implementation(libs.kotlinx.serialization)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.verid3.face.capture)
-    implementation(libs.verid.spoof.device.detection)
-    implementation(libs.verid.spoof.device.detection.models)
-    implementation(libs.verid3.face.detection.mp)
-    implementation(libs.verid3.face.recognition.arcface)
-    implementation(libs.verid3.common.serialization)
+    implementation(libs.verid.face.capture)
+    implementation(libs.spoof.device.detection)
+    implementation(libs.verid.face.detection)
+    implementation(libs.verid.face.recognition.arcface)
+    implementation(libs.verid.common.serialization)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
