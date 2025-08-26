@@ -26,8 +26,8 @@ import com.appliedrec.verid3.facecapture.FaceCaptureSessionResult
 import com.appliedrec.verid3.facecapture.FaceTrackingPlugin
 import com.appliedrec.verid3.facecapture.LivenessDetectionPlugin
 import com.appliedrec.verid3.facedetection.retinaface.FaceDetectionRetinaFace
-import com.appliedrec.verid3.facerecognition.arcface.FaceRecognitionArcFace
-import com.appliedrec.verid3.spoofdevicedetection.local.SpoofDeviceDetection
+import com.appliedrec.verid3.facerecognition.arcface.cloud.FaceRecognitionArcFace
+import com.appliedrec.verid3.spoofdevicedetection.cloud.SpoofDeviceDetection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -167,6 +167,7 @@ class CaptureResultActivity : AppCompatActivity() {
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE1, documentFaceJpeg)
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE2, liveFaceJpeg)
         intent.putExtra(FaceComparisonActivity.EXTRA_SCORE, score)
+        intent.putExtra(FaceComparisonActivity.EXTRA_THRESHOLD, faceRecognition.defaultThreshold)
         return intent
     }
 

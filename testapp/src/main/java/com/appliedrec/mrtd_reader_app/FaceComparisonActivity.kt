@@ -14,8 +14,7 @@ class FaceComparisonActivity : AppCompatActivity() {
         const val EXTRA_SCORE = "score"
         const val EXTRA_IMAGE1 = "image1"
         const val EXTRA_IMAGE2 = "image2"
-        const val PASS_THRESHOLD = 0.5f;
-        const val WARNING_THRESHOLD = 0.4f;
+        const val EXTRA_THRESHOLD = "threshold"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,17 +24,19 @@ class FaceComparisonActivity : AppCompatActivity() {
         )
         setContentView(viewBinding.root)
         val score = intent.getFloatExtra(EXTRA_SCORE, 0f)
-        if (score >= PASS_THRESHOLD) {
-            viewBinding.contextLabel.text = getString(R.string.pass_details, score, PASS_THRESHOLD)
+        val threshold = intent.getFloatExtra(EXTRA_THRESHOLD, 0.68f)
+        val warningThreshold = threshold - 0.15f
+        if (score >= threshold) {
+            viewBinding.contextLabel.text = getString(R.string.pass_details, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.pass)
             val green = Color.rgb(54, 175, 0)
             viewBinding.resultStatusTextView.setTextColor(green)
-        } else if (score >= WARNING_THRESHOLD) {
-            viewBinding.contextLabel.text = getString(R.string.warning_details, score, PASS_THRESHOLD)
+        } else if (score >= warningThreshold) {
+            viewBinding.contextLabel.text = getString(R.string.warning_details, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.warning)
             viewBinding.resultStatusTextView.setTextColor(Color.rgb(244, 191, 79))
         } else {
-            viewBinding.contextLabel.text = getString(R.string.fail_details, score, PASS_THRESHOLD)
+            viewBinding.contextLabel.text = getString(R.string.fail_details, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.fail)
             viewBinding.resultStatusTextView.setTextColor(Color.RED)
         }
