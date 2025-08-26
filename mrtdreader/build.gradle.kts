@@ -13,7 +13,7 @@ plugins {
     signing
 }
 
-version = "3.0.3"
+version = "3.0.4"
 
 android {
     namespace = "com.appliedrec.mrtdreader"
