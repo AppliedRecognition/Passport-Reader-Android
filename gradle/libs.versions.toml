@@ -44,7 +44,7 @@ verid-common = { group = "com.appliedrec", name = "verid-common", version = "4.0
 verid-common-serialization = { group = "com.appliedrec", name = "verid-serialization", version = "1.0.4" }
 verid-face-detection = { group = "com.appliedrec", name = "face-detection-retinaface", version = "1.0.2" }
 spoof-device-detection = { group = "com.appliedrec", name = "spoof-device-detection-cloud", version = "1.0.1" }
-verid-face-recognition-arcface = { group = "com.appliedrec", name = "face-recognition-arcface-cloud", version = "1.1.1" }
+verid-face-recognition-arcface = { group = "com.appliedrec", name = "face-recognition-arcface-cloud", version = "1.1.2" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
