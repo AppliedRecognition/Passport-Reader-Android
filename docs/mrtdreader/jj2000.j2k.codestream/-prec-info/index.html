@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PrecInfo</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    mrtdreader
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+3.0.4        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":mrtdreader/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":mrtdreader/release"
+                                       data-filter=":mrtdreader/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    mrtdreader
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="mrtdreader::jj2000.j2k.codestream/PrecInfo///PointingToDeclaration//-1722531997">
+  <div class="breadcrumbs"><a href="../../../index.html">mrtdreader</a><span class="delimiter">/</span><a href="../index.html">jj2000.j2k.codestream</a><span class="delimiter">/</span><span class="current">PrecInfo</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Prec</span><wbr></wbr><span><span>Info</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">PrecInfo</a></div><p class="paragraph">Class that holds precinct coordinates and references to contained code-blocks in each subband.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-949358754%2FConstructors%2F-1722531997" anchor-label="PrecInfo" id="-949358754%2FConstructors%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-prec-info.html"><span>Prec</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-949358754%2FConstructors%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">r<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">ulx<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">uly<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">w<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">h<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rgulx<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rguly<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rgw<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rgh<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief ">Class constructor.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="29967365%2FProperties%2F-1722531997" anchor-label="cblk" id="29967365%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cblk.html"><span><span>cblk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="29967365%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="cblk.html">cblk</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="../-c-blk-coord-info/index.html">CBlkCoordInfo</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief ">Code-blocks belonging to this precinct in each subbands of the resolution level</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="112785775%2FProperties%2F-1722531997" anchor-label="h" id="112785775%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="h.html"><span><span>h</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="112785775%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="h.html">h</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct height in the corresponding resolution level</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-935848560%2FProperties%2F-1722531997" anchor-label="nblk" id="-935848560%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="nblk.html"><span><span>nblk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-935848560%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="nblk.html">nblk</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="brief ">Number of code-blocks in each subband belonging to this precinct</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="422983845%2FProperties%2F-1722531997" anchor-label="r" id="422983845%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="r.html"><span><span>r</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="422983845%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="r.html">r</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Resolution level index</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1949556508%2FProperties%2F-1722531997" anchor-label="rgh" id="-1949556508%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rgh.html"><span><span>rgh</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1949556508%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="rgh.html">rgh</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct height reported in the reference grid</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="659610347%2FProperties%2F-1722531997" anchor-label="rgulx" id="659610347%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rgulx.html"><span><span>rgulx</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659610347%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="rgulx.html">rgulx</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct horizontal upper-left coordinate in the reference grid</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="690630154%2FProperties%2F-1722531997" anchor-label="rguly" id="690630154%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rguly.html"><span><span>rguly</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="690630154%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="rguly.html">rguly</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct vertical upper-left coordinate in the reference grid</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1484259403%2FProperties%2F-1722531997" anchor-label="rgw" id="-1484259403%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rgw.html"><span><span>rgw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1484259403%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="rgw.html">rgw</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct width reported in the reference grid</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1704346442%2FProperties%2F-1722531997" anchor-label="ulx" id="-1704346442%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ulx.html"><span><span>ulx</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1704346442%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="ulx.html">ulx</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct horizontal upper-left coordinate in the corresponding resolution level</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1673326635%2FProperties%2F-1722531997" anchor-label="uly" id="-1673326635%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="uly.html"><span><span>uly</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1673326635%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="uly.html">uly</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct vertical upper-left coordinate in the corresponding resolution level</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="578082880%2FProperties%2F-1722531997" anchor-label="w" id="578082880%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="w.html"><span><span>w</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="578082880%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="w.html">w</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Precinct width in the corresponding resolution level</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

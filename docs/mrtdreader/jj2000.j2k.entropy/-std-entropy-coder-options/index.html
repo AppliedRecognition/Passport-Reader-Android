@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>StdEntropyCoderOptions</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    mrtdreader
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+3.0.4        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":mrtdreader/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":mrtdreader/release"
+                                       data-filter=":mrtdreader/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    mrtdreader
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="mrtdreader::jj2000.j2k.entropy/StdEntropyCoderOptions///PointingToDeclaration//-1722531997">
+  <div class="breadcrumbs"><a href="../../../index.html">mrtdreader</a><span class="delimiter">/</span><a href="../index.html">jj2000.j2k.entropy</a><span class="delimiter">/</span><span class="current">StdEntropyCoderOptions</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Std</span><wbr></wbr><span>Entropy</span><wbr></wbr><span>Coder</span><wbr></wbr><span><span>Options</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">StdEntropyCoderOptions</a></div><p class="paragraph">This interface define the constants that identify the possible options for the entropy coder, as well some fixed parameters of the JPEG 2000 entropy coder.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../jj2000.j2k.entropy.decoder/-std-entropy-decoder/index.html">StdEntropyDecoder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../jj2000.j2k.codestream.reader/-header-decoder/index.html">HeaderDecoder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../jj2000.j2k.codestream.reader/-file-bitstream-reader-agent/index.html">FileBitstreamReaderAgent</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../jj2000.j2k.codestream.reader/-pkt-decoder/index.html">PktDecoder</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1566422869%2FProperties%2F-1722531997" anchor-label="FIRST_BYPASS_PASS_IDX" id="1566422869%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-f-i-r-s-t_-b-y-p-a-s-s_-p-a-s-s_-i-d-x.html"><span>FIRST_</span><wbr></wbr><span>BYPASS_</span><wbr></wbr><span>PASS_</span><wbr></wbr><span>IDX</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1566422869%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-f-i-r-s-t_-b-y-p-a-s-s_-p-a-s-s_-i-d-x.html">FIRST_BYPASS_PASS_IDX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">10</span></div><div class="brief ">The index of the first &quot;raw&quot; pass, if bypass mode is on.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-541982406%2FProperties%2F-1722531997" anchor-label="MAX_CB_AREA" id="-541982406%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-m-a-x_-c-b_-a-r-e-a.html"><span>MAX_</span><wbr></wbr><span>CB_</span><wbr></wbr><span>AREA</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-541982406%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-m-a-x_-c-b_-a-r-e-a.html">MAX_CB_AREA</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4096</span></div><div class="brief ">The maximum code-block area (width x height).</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-875713109%2FProperties%2F-1722531997" anchor-label="MAX_CB_DIM" id="-875713109%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-m-a-x_-c-b_-d-i-m.html"><span>MAX_</span><wbr></wbr><span>CB_</span><wbr></wbr><span>DIM</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-875713109%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-m-a-x_-c-b_-d-i-m.html">MAX_CB_DIM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1024</span></div><div class="brief ">The maximum code-block dimension.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-899778919%2FProperties%2F-1722531997" anchor-label="MIN_CB_DIM" id="-899778919%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-m-i-n_-c-b_-d-i-m.html"><span>MIN_</span><wbr></wbr><span>CB_</span><wbr></wbr><span>DIM</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-899778919%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-m-i-n_-c-b_-d-i-m.html">MIN_CB_DIM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4</span></div><div class="brief ">The minimum code-block dimension.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1432112406%2FProperties%2F-1722531997" anchor-label="NUM_EMPTY_PASSES_IN_MS_BP" id="-1432112406%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-n-u-m_-e-m-p-t-y_-p-a-s-s-e-s_-i-n_-m-s_-b-p.html"><span>NUM_</span><wbr></wbr><span>EMPTY_</span><wbr></wbr><span>PASSES_</span><wbr></wbr><span>IN_</span><wbr></wbr><span>MS_</span><wbr></wbr><span>BP</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1432112406%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-n-u-m_-e-m-p-t-y_-p-a-s-s-e-s_-i-n_-m-s_-b-p.html">NUM_EMPTY_PASSES_IN_MS_BP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">The number of empty passes in the most significant bit-plane.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1092005933%2FProperties%2F-1722531997" anchor-label="NUM_NON_BYPASS_MS_BP" id="-1092005933%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-n-u-m_-n-o-n_-b-y-p-a-s-s_-m-s_-b-p.html"><span>NUM_</span><wbr></wbr><span>NON_</span><wbr></wbr><span>BYPASS_</span><wbr></wbr><span>MS_</span><wbr></wbr><span>BP</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1092005933%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-n-u-m_-n-o-n_-b-y-p-a-s-s_-m-s_-b-p.html">NUM_NON_BYPASS_MS_BP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4</span></div><div class="brief ">The number of most significant bit-planes where bypass mode is not to be used, even if bypass mode is on: 4.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-229207114%2FProperties%2F-1722531997" anchor-label="NUM_PASSES" id="-229207114%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-n-u-m_-p-a-s-s-e-s.html"><span>NUM_</span><wbr></wbr><span>PASSES</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-229207114%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-n-u-m_-p-a-s-s-e-s.html">NUM_PASSES</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">3</span></div><div class="brief ">The number of coding passes per bit-plane.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1001946778%2FProperties%2F-1722531997" anchor-label="OPT_BYPASS" id="1001946778%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-p-t_-b-y-p-a-s-s.html"><span>OPT_</span><wbr></wbr><span>BYPASS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1001946778%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-p-t_-b-y-p-a-s-s.html">OPT_BYPASS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">The flag bit to indicate that selective arithmetic coding bypass should be used.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1862761038%2FProperties%2F-1722531997" anchor-label="OPT_PRED_TERM" id="1862761038%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-p-t_-p-r-e-d_-t-e-r-m.html"><span>OPT_</span><wbr></wbr><span>PRED_</span><wbr></wbr><span>TERM</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1862761038%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-p-t_-p-r-e-d_-t-e-r-m.html">OPT_PRED_TERM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">16</span></div><div class="brief ">The flag bit to indicate that error resilience info is embedded on MQ termination.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="139630862%2FProperties%2F-1722531997" anchor-label="OPT_RESET_MQ" id="139630862%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-p-t_-r-e-s-e-t_-m-q.html"><span>OPT_</span><wbr></wbr><span>RESET_</span><wbr></wbr><span>MQ</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="139630862%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-p-t_-r-e-s-e-t_-m-q.html">OPT_RESET_MQ</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">The flag bit to indicate that the MQ states for all contexts should be reset at the end of each (non-bypassed) coding pass.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1140761209%2FProperties%2F-1722531997" anchor-label="OPT_SEG_SYMBOLS" id="-1140761209%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-p-t_-s-e-g_-s-y-m-b-o-l-s.html"><span>OPT_</span><wbr></wbr><span>SEG_</span><wbr></wbr><span>SYMBOLS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1140761209%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-p-t_-s-e-g_-s-y-m-b-o-l-s.html">OPT_SEG_SYMBOLS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">32</span></div><div class="brief ">The flag bit to indicate that an error resilience segmentation symbol is to be inserted at the end of each cleanup coding pass.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2112251052%2FProperties%2F-1722531997" anchor-label="OPT_TERM_PASS" id="-2112251052%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-p-t_-t-e-r-m_-p-a-s-s.html"><span>OPT_</span><wbr></wbr><span>TERM_</span><wbr></wbr><span>PASS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2112251052%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-p-t_-t-e-r-m_-p-a-s-s.html">OPT_TERM_PASS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4</span></div><div class="brief ">The flag bit to indicate that a termination should be performed after each coding pass.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1218393493%2FProperties%2F-1722531997" anchor-label="OPT_VERT_STR_CAUSAL" id="1218393493%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-p-t_-v-e-r-t_-s-t-r_-c-a-u-s-a-l.html"><span>OPT_</span><wbr></wbr><span>VERT_</span><wbr></wbr><span>STR_</span><wbr></wbr><span>CAUSAL</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1218393493%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-p-t_-v-e-r-t_-s-t-r_-c-a-u-s-a-l.html">OPT_VERT_STR_CAUSAL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">8</span></div><div class="brief ">The flag bit to indicate the vertically stripe-causal context formation should be used.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="567791219%2FProperties%2F-1722531997" anchor-label="STRIPE_HEIGHT" id="567791219%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-t-r-i-p-e_-h-e-i-g-h-t.html"><span>STRIPE_</span><wbr></wbr><span>HEIGHT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="567791219%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-s-t-r-i-p-e_-h-e-i-g-h-t.html">STRIPE_HEIGHT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4</span></div><div class="brief ">The stripe height.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

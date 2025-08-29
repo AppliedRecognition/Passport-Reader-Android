@@ -1,1 +1,1 @@
-sourceset_dependencies='{":mrtdreader:dokkaHtml/debug":[],":mrtdreader:dokkaHtml/main":[],":mrtdreader:dokkaHtml/release":[]}'
+sourceset_dependencies='{":mrtdreader/debug":[],":mrtdreader/main":[],":mrtdreader/release":[]}'

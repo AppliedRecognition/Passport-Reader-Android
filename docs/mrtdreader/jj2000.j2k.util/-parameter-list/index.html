@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ParameterList</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    mrtdreader
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+3.0.4        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":mrtdreader/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":mrtdreader/release"
+                                       data-filter=":mrtdreader/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    mrtdreader
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="mrtdreader::jj2000.j2k.util/ParameterList///PointingToDeclaration//-1722531997">
+  <div class="breadcrumbs"><a href="../../../index.html">mrtdreader</a><span class="delimiter">/</span><a href="../index.html">jj2000.j2k.util</a><span class="delimiter">/</span><span class="current">ParameterList</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Parameter</span><wbr></wbr><span><span>List</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">ParameterList</a> : <a href="https://developer.android.com/reference/kotlin/java/util/Properties.html">Properties</a></div><p class="paragraph">This class holds modules options and parameters as they are provided to the encoder or the decoder. Each option and its associated parameters are stored as strings. </p><p class="paragraph">This class is built on the standard Java Properties class. Consequently, it offers facilities to load and write parameters from/to a file. In the meantime, a ParameterList object can also handle default parameters for each option.</p><p class="paragraph">Each parameter can be retrieved as a string or as an specific primitive type (int, float, etc).</p><p class="paragraph">For more details see the Properties class.</p><p class="paragraph">Note that this class does not support multiple occurrences of parameters (for a parameter name, only one value is possible). Also there is no particular order of the parameters.</p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="https://developer.android.com/reference/kotlin/java/util/Properties.html"><span><span>Properties</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1327712248%2FConstructors%2F-1722531997" anchor-label="ParameterList" id="1327712248%2FConstructors%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-parameter-list.html"><span>Parameter</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1327712248%2FConstructors%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Constructs an empty ParameterList object.</div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">def<span class="token operator">: </span><a href="index.html">ParameterList</a></span></span><span class="token punctuation">)</span></div><div class="brief ">Constructs an empty ParameterList object with the provided default parameters.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1537552818%2FFunctions%2F-1722531997" anchor-label="checkList" id="-1537552818%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-list.html"><span>check</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1537552818%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="check-list.html"><span class="token function">checkList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">prfx<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char/index.html">Char</a><span class="token punctuation">, </span></span><span class="parameter ">plist<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief ">Checks if the parameters which name starts with the prefix 'prfx' in the parameter list are all in the list of valid parameter names 'plist'.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="check-list.html"><span class="token function">checkList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">prfxs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char/index.html">Char</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">plist<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief ">Checks if the parameters which names do not start with any of the prefixes in 'prfxs' in this ParameterList are all in the list of valid parameter names 'plist'.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="587833803%2FFunctions%2F-1722531997" anchor-label="clear" id="587833803%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#587833803%2FFunctions%2F-1722531997"><span><span>clear</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="587833803%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#587833803%2FFunctions%2F-1722531997"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1548258491%2FFunctions%2F-1722531997" anchor-label="clone" id="1548258491%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1548258491%2FFunctions%2F-1722531997"><span><span>clone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1548258491%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1548258491%2FFunctions%2F-1722531997"><span class="token function">clone</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="944988579%2FFunctions%2F-1722531997" anchor-label="compute" id="944988579%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-916147676%2FFunctions%2F-1722531997"><span><span>compute</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="944988579%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-916147676%2FFunctions%2F-1722531997"><span class="token function">compute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-478123253%2FFunctions%2F-1722531997"><span class="token function">compute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1165110688%2FFunctions%2F-1722531997" anchor-label="computeIfAbsent" id="1165110688%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1130359299%2FFunctions%2F-1722531997"><span>compute</span><wbr></wbr><span>If</span><wbr></wbr><span><span>Absent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1165110688%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1130359299%2FFunctions%2F-1722531997"><span class="token function">computeIfAbsent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword">out </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1220550135%2FFunctions%2F-1722531997"><span class="token function">computeIfAbsent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="67859337%2FFunctions%2F-1722531997" anchor-label="computeIfPresent" id="67859337%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#819230100%2FFunctions%2F-1722531997"><span>compute</span><wbr></wbr><span>If</span><wbr></wbr><span><span>Present</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="67859337%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#819230100%2FFunctions%2F-1722531997"><span class="token function">computeIfPresent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-880969583%2FFunctions%2F-1722531997"><span class="token function">computeIfPresent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1229634032%2FFunctions%2F-1722531997" anchor-label="contains" id="1229634032%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1229634032%2FFunctions%2F-1722531997"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1229634032%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1229634032%2FFunctions%2F-1722531997"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1202744699%2FFunctions%2F-1722531997" anchor-label="containsKey" id="-1202744699%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1202744699%2FFunctions%2F-1722531997"><span>contains</span><wbr></wbr><span><span>Key</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1202744699%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1202744699%2FFunctions%2F-1722531997"><span class="token function">containsKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1824871731%2FFunctions%2F-1722531997" anchor-label="containsValue" id="1824871731%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1824871731%2FFunctions%2F-1722531997"><span>contains</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1824871731%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1824871731%2FFunctions%2F-1722531997"><span class="token function">containsValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1275496316%2FFunctions%2F-1722531997" anchor-label="copyOf" id="-1275496316%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997"><span>copy</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1275496316%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt; </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997"><span class="token function">copyOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Map.html">Map</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1275496316%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1299790603%2FFunctions%2F-1722531997" anchor-label="elements" id="-1299790603%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-151686282%2FFunctions%2F-1722531997"><span><span>elements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1299790603%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-151686282%2FFunctions%2F-1722531997"><span class="token function">elements</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Enumeration.html">Enumeration</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-328645365%2FFunctions%2F-1722531997"><span class="token function">elements</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Enumeration.html">Enumeration</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1578549605%2FFunctions%2F-1722531997" anchor-label="entry" id="1578549605%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997"><span><span>entry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1578549605%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt; </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997"><span class="token function">entry</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997">V</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Map.Entry.html">Map.Entry</a><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#1578549605%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="972391683%2FFunctions%2F-1722531997" anchor-label="entrySet" id="972391683%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1096518659%2FFunctions%2F-1722531997"><span>entry</span><wbr></wbr><span><span>Set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="972391683%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1096518659%2FFunctions%2F-1722531997"><span class="token function">entrySet</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Map.Entry.html">Map.Entry</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1273477742%2FFunctions%2F-1722531997"><span class="token function">entrySet</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Map.Entry.html">Map.Entry</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1683039856%2FFunctions%2F-1722531997" anchor-label="equals" id="-1683039856%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1683039856%2FFunctions%2F-1722531997"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1683039856%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1683039856%2FFunctions%2F-1722531997"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1538813165%2FFunctions%2F-1722531997" anchor-label="forEach" id="-1538813165%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1538813165%2FFunctions%2F-1722531997"><span>for</span><wbr></wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1538813165%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1538813165%2FFunctions%2F-1722531997"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiConsumer.html">BiConsumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1422373417%2FFunctions%2F-1722531997" anchor-label="get" id="-1422373417%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1363220636%2FFunctions%2F-1722531997"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1422373417%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1363220636%2FFunctions%2F-1722531997"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1708373679%2FFunctions%2F-1722531997"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1276466245%2FFunctions%2F-1722531997" anchor-label="getBooleanParameter" id="-1276466245%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-boolean-parameter.html"><span>get</span><wbr></wbr><span>Boolean</span><wbr></wbr><span><span>Parameter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1276466245%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-boolean-parameter.html"><span class="token function">getBooleanParameter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pname<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief ">Returns the value of the named parameter as a boolean.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-934288229%2FFunctions%2F-1722531997" anchor-label="getDefaultParameterList" id="-934288229%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-default-parameter-list.html"><span>get</span><wbr></wbr><span>Default</span><wbr></wbr><span>Parameter</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-934288229%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-default-parameter-list.html"><span class="token function">getDefaultParameterList</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ParameterList</a></div><div class="brief ">Returns the default ParameterList.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1219620335%2FFunctions%2F-1722531997" anchor-label="getFloatParameter" id="1219620335%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-float-parameter.html"><span>get</span><wbr></wbr><span>Float</span><wbr></wbr><span><span>Parameter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1219620335%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-float-parameter.html"><span class="token function">getFloatParameter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pname<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief ">Returns the value of the named parameter as a float.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="253000130%2FFunctions%2F-1722531997" anchor-label="getIntParameter" id="253000130%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-int-parameter.html"><span>get</span><wbr></wbr><span>Int</span><wbr></wbr><span><span>Parameter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="253000130%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-int-parameter.html"><span class="token function">getIntParameter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pname<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the value of the named parameter as an int.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2138110702%2FFunctions%2F-1722531997" anchor-label="getOrDefault" id="-2138110702%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#559830079%2FFunctions%2F-1722531997"><span>get</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Default</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2138110702%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#559830079%2FFunctions%2F-1722531997"><span class="token function">getOrDefault</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2108314341%2FFunctions%2F-1722531997"><span class="token function">getOrDefault</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-443946133%2FFunctions%2F-1722531997" anchor-label="getParameter" id="-443946133%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-parameter.html"><span>get</span><wbr></wbr><span><span>Parameter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-443946133%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-parameter.html"><span class="token function">getParameter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pname<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></div><div class="brief ">Returns the value of the named parameter, as a string.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2062438840%2FFunctions%2F-1722531997" anchor-label="getProperty" id="-2062438840%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2062438840%2FFunctions%2F-1722531997"><span>get</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2062438840%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-2062438840%2FFunctions%2F-1722531997"><span class="token function">getProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1920625255%2FFunctions%2F-1722531997" anchor-label="hashCode" id="1920625255%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1920625255%2FFunctions%2F-1722531997"><span>hash</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1920625255%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1920625255%2FFunctions%2F-1722531997"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="855401429%2FFunctions%2F-1722531997" anchor-label="isEmpty" id="855401429%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#855401429%2FFunctions%2F-1722531997"><span>is</span><wbr></wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="855401429%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#855401429%2FFunctions%2F-1722531997"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-602004421%2FFunctions%2F-1722531997" anchor-label="keys" id="-602004421%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#193697049%2FFunctions%2F-1722531997"><span><span>keys</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-602004421%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#193697049%2FFunctions%2F-1722531997"><span class="token function">keys</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Enumeration.html">Enumeration</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1452705490%2FFunctions%2F-1722531997"><span class="token function">keys</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Enumeration.html">Enumeration</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="405570461%2FFunctions%2F-1722531997" anchor-label="keySet" id="405570461%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-945223574%2FFunctions%2F-1722531997"><span>key</span><wbr></wbr><span><span>Set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="405570461%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-945223574%2FFunctions%2F-1722531997"><span class="token function">keySet</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1704868671%2FFunctions%2F-1722531997"><span class="token function">keySet</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1350912877%2FFunctions%2F-1722531997" anchor-label="list" id="1350912877%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1350912877%2FFunctions%2F-1722531997"><span><span>list</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1350912877%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1350912877%2FFunctions%2F-1722531997"><span class="token function">list</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/PrintStream.html">PrintStream</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="90177464%2FFunctions%2F-1722531997" anchor-label="load" id="90177464%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#90177464%2FFunctions%2F-1722531997"><span><span>load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="90177464%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#90177464%2FFunctions%2F-1722531997"><span class="token function">load</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/InputStream.html">InputStream</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1840791741%2FFunctions%2F-1722531997" anchor-label="loadFromXML" id="-1840791741%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1840791741%2FFunctions%2F-1722531997"><span>load</span><wbr></wbr><span>From</span><wbr></wbr><span><span>XML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1840791741%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1840791741%2FFunctions%2F-1722531997"><span class="token function">loadFromXML</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/InputStream.html">InputStream</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-191476347%2FFunctions%2F-1722531997" anchor-label="merge" id="-191476347%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#2019647137%2FFunctions%2F-1722531997"><span><span>merge</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-191476347%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#2019647137%2FFunctions%2F-1722531997"><span class="token function">merge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1381872378%2FFunctions%2F-1722531997"><span class="token function">merge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-34725454%2FFunctions%2F-1722531997" anchor-label="of" id="-34725454%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-34725454%2FFunctions%2F-1722531997"><span><span>of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-34725454%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-34725454%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-34725454%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt; </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-34725454%2FFunctions%2F-1722531997"><span class="token function">of</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-34725454%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-34725454%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1762658543%2FFunctions%2F-1722531997" anchor-label="ofEntries" id="-1762658543%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997"><span>of</span><wbr></wbr><span><span>Entries</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1762658543%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt; </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997"><span class="token function">ofEntries</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Map.Entry.html">Map.Entry</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997">K</a><span class="token punctuation">, </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1762658543%2FFunctions%2F-1722531997">V</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1577480224%2FFunctions%2F-1722531997" anchor-label="parseArgs" id="1577480224%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="parse-args.html"><span>parse</span><wbr></wbr><span><span>Args</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1577480224%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="parse-args.html"><span class="token function">parseArgs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argv<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief ">Parses the parameters from an argument list, such as as the one in the command line, and integrates them in this parameter list.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1173594779%2FFunctions%2F-1722531997" anchor-label="propertyNames" id="-1173594779%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1173594779%2FFunctions%2F-1722531997"><span>property</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1173594779%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1173594779%2FFunctions%2F-1722531997"><span class="token function">propertyNames</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Enumeration.html">Enumeration</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1688582416%2FFunctions%2F-1722531997" anchor-label="put" id="1688582416%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#2120377446%2FFunctions%2F-1722531997"><span><span>put</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1688582416%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#2120377446%2FFunctions%2F-1722531997"><span class="token function">put</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#149570358%2FFunctions%2F-1722531997"><span class="token function">put</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1392922684%2FFunctions%2F-1722531997" anchor-label="putAll" id="-1392922684%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1392922684%2FFunctions%2F-1722531997"><span>put</span><wbr></wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1392922684%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1392922684%2FFunctions%2F-1722531997"><span class="token function">putAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Map.html">Map</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="398813244%2FFunctions%2F-1722531997" anchor-label="putIfAbsent" id="398813244%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-656158916%2FFunctions%2F-1722531997"><span>put</span><wbr></wbr><span>If</span><wbr></wbr><span><span>Absent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="398813244%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-656158916%2FFunctions%2F-1722531997"><span class="token function">putIfAbsent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#897232524%2FFunctions%2F-1722531997"><span class="token function">putIfAbsent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1077056982%2FFunctions%2F-1722531997" anchor-label="remove" id="1077056982%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-477210218%2FFunctions%2F-1722531997"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1077056982%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-477210218%2FFunctions%2F-1722531997"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1110786667%2FFunctions%2F-1722531997"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-47002495%2FFunctions%2F-1722531997"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="522847041%2FFunctions%2F-1722531997" anchor-label="replace" id="522847041%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#948060811%2FFunctions%2F-1722531997"><span><span>replace</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="522847041%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#948060811%2FFunctions%2F-1722531997"><span class="token function">replace</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-828997605%2FFunctions%2F-1722531997"><span class="token function">replace</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-2044812079%2FFunctions%2F-1722531997"><span class="token function">replace</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="425900655%2FFunctions%2F-1722531997" anchor-label="replaceAll" id="425900655%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#425900655%2FFunctions%2F-1722531997"><span>replace</span><wbr></wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="425900655%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#425900655%2FFunctions%2F-1722531997"><span class="token function">replaceAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/function/BiFunction.html">BiFunction</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">in </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1121589330%2FFunctions%2F-1722531997" anchor-label="save" id="1121589330%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1121589330%2FFunctions%2F-1722531997"><span><span>save</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1121589330%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1121589330%2FFunctions%2F-1722531997"><span class="token function">save</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/OutputStream.html">OutputStream</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1862555842%2FFunctions%2F-1722531997" anchor-label="setProperty" id="-1862555842%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1862555842%2FFunctions%2F-1722531997"><span>set</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1862555842%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1862555842%2FFunctions%2F-1722531997"><span class="token function">setProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-694468671%2FFunctions%2F-1722531997" anchor-label="size" id="-694468671%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-694468671%2FFunctions%2F-1722531997"><span><span>size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-694468671%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-694468671%2FFunctions%2F-1722531997"><span class="token function">size</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1257170016%2FFunctions%2F-1722531997" anchor-label="store" id="-1257170016%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1257170016%2FFunctions%2F-1722531997"><span><span>store</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1257170016%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1257170016%2FFunctions%2F-1722531997"><span class="token function">store</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/OutputStream.html">OutputStream</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1530843472%2FFunctions%2F-1722531997" anchor-label="storeToXML" id="1530843472%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1530843472%2FFunctions%2F-1722531997"><span>store</span><wbr></wbr><span>To</span><wbr></wbr><span><span>XML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1530843472%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1530843472%2FFunctions%2F-1722531997"><span class="token function">storeToXML</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/OutputStream.html">OutputStream</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="509467798%2FFunctions%2F-1722531997" anchor-label="stringPropertyNames" id="509467798%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#509467798%2FFunctions%2F-1722531997"><span>string</span><wbr></wbr><span>Property</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="509467798%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#509467798%2FFunctions%2F-1722531997"><span class="token function">stringPropertyNames</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1376325883%2FFunctions%2F-1722531997" anchor-label="toNameArray" id="1376325883%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-name-array.html"><span>to</span><wbr></wbr><span>Name</span><wbr></wbr><span><span>Array</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1376325883%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="to-name-array.html"><span class="token function">toNameArray</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pinfo<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token operator">&gt;</span></div><div class="brief ">Converts the usage information to a list of parameter names in a single array.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1742459190%2FFunctions%2F-1722531997" anchor-label="toString" id="1742459190%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1742459190%2FFunctions%2F-1722531997"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1742459190%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1742459190%2FFunctions%2F-1722531997"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2010340191%2FFunctions%2F-1722531997" anchor-label="values" id="2010340191%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1949171285%2FFunctions%2F-1722531997"><span><span>values</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2010340191%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../jj2000.icc.tags/-i-c-c-tag-table/index.html#-1949171285%2FFunctions%2F-1722531997"><span class="token function">values</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Collection.html">Collection</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">V</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#700920960%2FFunctions%2F-1722531997"><span class="token function">values</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Collection.html">Collection</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

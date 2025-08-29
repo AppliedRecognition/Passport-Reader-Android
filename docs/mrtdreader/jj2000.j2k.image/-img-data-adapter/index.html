@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ImgDataAdapter</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    mrtdreader
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+3.0.4        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":mrtdreader/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":mrtdreader/release"
+                                       data-filter=":mrtdreader/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    mrtdreader
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="mrtdreader::jj2000.j2k.image/ImgDataAdapter///PointingToDeclaration//-1722531997">
+  <div class="breadcrumbs"><a href="../../../index.html">mrtdreader</a><span class="delimiter">/</span><a href="../index.html">jj2000.j2k.image</a><span class="delimiter">/</span><span class="current">ImgDataAdapter</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Img</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Adapter</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">ImgDataAdapter</a> : <a href="../-img-data/index.html">ImgData</a></div><p class="paragraph">This class provides a default implementation of the methods in the 'ImgData' interface. The default implementation is just to return the value of the source, where the source is another 'ImgData' object. </p><p class="paragraph">This abstract class can be used to facilitate the development of other classes that implement 'ImgData'. For example a YCbCr color transform can inherit from this class and all the trivial methods do not have to be re-implemented.</p><p class="paragraph">If the default implementation of a method provided in this class does not suit a particular implementation of the 'ImgData' interface, the method can be overridden to implement the proper behavior.</p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-img-data/index.html"><span>Img</span><wbr></wbr><span><span>Data</span></span></a></div></span></div><div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-img-data-converter/index.html">ImgDataConverter</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../jj2000.j2k.image.invcomptransf/-inv-comp-transf/index.html">InvCompTransf</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../jj2000.colorspace/-color-space-mapper/index.html">ColorSpaceMapper</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1384904249%2FFunctions%2F-1722531997" anchor-label="getCompImgHeight" id="1384904249%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-comp-img-height.html"><span>get</span><wbr></wbr><span>Comp</span><wbr></wbr><span>Img</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1384904249%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-comp-img-height.html"><span class="token function">getCompImgHeight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the height in pixels of the specified component in the overall image.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-659176480%2FFunctions%2F-1722531997" anchor-label="getCompImgWidth" id="-659176480%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-comp-img-width.html"><span>get</span><wbr></wbr><span>Comp</span><wbr></wbr><span>Img</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-659176480%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-comp-img-width.html"><span class="token function">getCompImgWidth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the width in pixels of the specified component in the overall image.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="649443828%2FFunctions%2F-1722531997" anchor-label="getCompSubsX" id="649443828%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-comp-subs-x.html"><span>get</span><wbr></wbr><span>Comp</span><wbr></wbr><span>Subs</span><wbr></wbr><span><span>X</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="649443828%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-comp-subs-x.html"><span class="token function">getCompSubsX</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the component subsampling factor in the horizontal direction, for the specified component.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1342545525%2FFunctions%2F-1722531997" anchor-label="getCompSubsY" id="1342545525%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-comp-subs-y.html"><span>get</span><wbr></wbr><span>Comp</span><wbr></wbr><span>Subs</span><wbr></wbr><span><span>Y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1342545525%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-comp-subs-y.html"><span class="token function">getCompSubsY</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the component subsampling factor in the vertical direction, for the specified component.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1032081808%2FFunctions%2F-1722531997" anchor-label="getCompULX" id="-1032081808%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-comp-u-l-x.html"><span>get</span><wbr></wbr><span>Comp</span><wbr></wbr><span><span>ULX</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1032081808%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-comp-u-l-x.html"><span class="token function">getCompULX</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the horizontal coordinate of the upper-left corner of the specified component in the current tile.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-338980111%2FFunctions%2F-1722531997" anchor-label="getCompULY" id="-338980111%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-comp-u-l-y.html"><span>get</span><wbr></wbr><span>Comp</span><wbr></wbr><span><span>ULY</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-338980111%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-comp-u-l-y.html"><span class="token function">getCompULY</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the vertical coordinate of the upper-left corner of the specified component in the current tile.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-74439413%2FFunctions%2F-1722531997" anchor-label="getImgHeight" id="-74439413%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-img-height.html"><span>get</span><wbr></wbr><span>Img</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-74439413%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-img-height.html"><span class="token function">getImgHeight</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the overall height of the image in pixels.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1629284953%2FFunctions%2F-1722531997" anchor-label="getImgULX" id="-1629284953%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-img-u-l-x.html"><span>get</span><wbr></wbr><span>Img</span><wbr></wbr><span><span>ULX</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629284953%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-img-u-l-x.html"><span class="token function">getImgULX</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the horizontal coordinate of the image origin, the top-left corner, in the canvas system, on the reference grid.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1598265146%2FFunctions%2F-1722531997" anchor-label="getImgULY" id="-1598265146%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-img-u-l-y.html"><span>get</span><wbr></wbr><span>Img</span><wbr></wbr><span><span>ULY</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1598265146%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-img-u-l-y.html"><span class="token function">getImgULY</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the vertical coordinate of the image origin, the top-left corner, in the canvas system, on the reference grid.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1007038850%2FFunctions%2F-1722531997" anchor-label="getImgWidth" id="1007038850%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-img-width.html"><span>get</span><wbr></wbr><span>Img</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1007038850%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-img-width.html"><span class="token function">getImgWidth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the overall width of the image in pixels.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-410540827%2FFunctions%2F-1722531997" anchor-label="getNomRangeBits" id="-410540827%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-nom-range-bits.html"><span>get</span><wbr></wbr><span>Nom</span><wbr></wbr><span>Range</span><wbr></wbr><span><span>Bits</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-410540827%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-nom-range-bits.html"><span class="token function">getNomRangeBits</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the number of bits, referred to as the &quot;range bits&quot;, corresponding to the nominal range of the image data in the specified component.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1023825324%2FFunctions%2F-1722531997" anchor-label="getNomTileHeight" id="-1023825324%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-nom-tile-height.html"><span>get</span><wbr></wbr><span>Nom</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1023825324%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-nom-tile-height.html"><span class="token function">getNomTileHeight</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the nominal tiles height</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-131965159%2FFunctions%2F-1722531997" anchor-label="getNomTileWidth" id="-131965159%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-nom-tile-width.html"><span>get</span><wbr></wbr><span>Nom</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-131965159%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-nom-tile-width.html"><span class="token function">getNomTileWidth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the nominal tiles width</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="16847431%2FFunctions%2F-1722531997" anchor-label="getNumComps" id="16847431%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-num-comps.html"><span>get</span><wbr></wbr><span>Num</span><wbr></wbr><span><span>Comps</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="16847431%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-num-comps.html"><span class="token function">getNumComps</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the number of components in the image.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="927037593%2FFunctions%2F-1722531997" anchor-label="getNumTiles" id="927037593%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-num-tiles.html"><span>get</span><wbr></wbr><span>Num</span><wbr></wbr><span><span>Tiles</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="927037593%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-num-tiles.html"><span class="token function">getNumTiles</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the total number of tiles in the image.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-num-tiles.html"><span class="token function">getNumTiles</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">co<span class="token operator">: </span><a href="../-coord/index.html">Coord</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-coord/index.html">Coord</a></div><div class="brief ">Returns the number of tiles in the horizontal and vertical directions.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1148742928%2FFunctions%2F-1722531997" anchor-label="getTile" id="1148742928%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile.html"><span>get</span><wbr></wbr><span><span>Tile</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1148742928%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile.html"><span class="token function">getTile</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">co<span class="token operator">: </span><a href="../-coord/index.html">Coord</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-coord/index.html">Coord</a></div><div class="brief ">Returns the indexes of the current tile.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1586769306%2FFunctions%2F-1722531997" anchor-label="getTileCompHeight" id="-1586769306%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-comp-height.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span>Comp</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1586769306%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-comp-height.html"><span class="token function">getTileCompHeight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">t<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the height in pixels of the specified tile-component.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="995641403%2FFunctions%2F-1722531997" anchor-label="getTileCompWidth" id="995641403%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-comp-width.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span>Comp</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="995641403%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-comp-width.html"><span class="token function">getTileCompWidth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">t<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the width in pixels of the specified tile-component tile.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2145868272%2FFunctions%2F-1722531997" anchor-label="getTileHeight" id="-2145868272%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-height.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2145868272%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-height.html"><span class="token function">getTileHeight</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the overall height of the current tile in pixels.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1606395834%2FFunctions%2F-1722531997" anchor-label="getTileIdx" id="-1606395834%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-idx.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Idx</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1606395834%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-idx.html"><span class="token function">getTileIdx</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the index of the current tile, relative to a standard scan-line order.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-415443627%2FFunctions%2F-1722531997" anchor-label="getTilePartULX" id="-415443627%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-part-u-l-x.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span>Part</span><wbr></wbr><span><span>ULX</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-415443627%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-part-u-l-x.html"><span class="token function">getTilePartULX</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the horizontal tile partition offset in the reference grid</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-384423820%2FFunctions%2F-1722531997" anchor-label="getTilePartULY" id="-384423820%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-part-u-l-y.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span>Part</span><wbr></wbr><span><span>ULY</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-384423820%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-part-u-l-y.html"><span class="token function">getTilePartULY</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the vertical tile offset in the reference grid</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1771502557%2FFunctions%2F-1722531997" anchor-label="getTileWidth" id="1771502557%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-tile-width.html"><span>get</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1771502557%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-tile-width.html"><span class="token function">getTileWidth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the overall width of the current tile in pixels.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-934851970%2FFunctions%2F-1722531997" anchor-label="nextTile" id="-934851970%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="next-tile.html"><span>next</span><wbr></wbr><span><span>Tile</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-934851970%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="next-tile.html"><span class="token function">nextTile</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Advances to the next tile, in standard scan-line order (by rows then columns).</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="367144892%2FFunctions%2F-1722531997" anchor-label="setTile" id="367144892%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-tile.html"><span>set</span><wbr></wbr><span><span>Tile</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="367144892%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="set-tile.html"><span class="token function">setTile</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief ">Changes the current tile, given the new indexes.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

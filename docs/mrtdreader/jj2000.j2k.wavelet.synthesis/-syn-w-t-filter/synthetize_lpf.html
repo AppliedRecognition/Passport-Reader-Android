@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>synthetize_lpf</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    mrtdreader
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+3.0.4        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":mrtdreader/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":mrtdreader/release"
+                                       data-filter=":mrtdreader/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    mrtdreader
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageIds="mrtdreader::jj2000.j2k.wavelet.synthesis/SynWTFilter/synthetize_lpf/#java.lang.Object#int#int#int#java.lang.Object#int#int#int#java.lang.Object#int#int/PointingToDeclaration//-1722531997">
+  <div class="breadcrumbs"><a href="../../../index.html">mrtdreader</a><span class="delimiter">/</span><a href="../index.html">jj2000.j2k.wavelet.synthesis</a><span class="delimiter">/</span><a href="index.html">SynWTFilter</a><span class="delimiter">/</span><span class="current">synthetize_lpf</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>synthetize_</span><wbr></wbr><span>lpf</span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="synthetize_lpf.html"><span class="token function">synthetize_lpf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lowSig<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">lowOff<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">lowLen<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">lowStep<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">highSig<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">highOff<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">highLen<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">highStep<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">outSig<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span></span><span class="parameter ">outOff<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">outStep<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Reconstructs the output signal by the synthesis filter, recomposing the low-pass and high-pass input signals in one output signal. This method performs the upsampling and fitering with the low pass first filtering convention. </p><p class="paragraph">The input low-pass (high-pass) signal resides in the lowSig array. The index of the first sample to filter (i.e. that will generate the first (second) output sample). is given by lowOff (highOff). This array must be of the same type as the one for which the particular implementation works with (which is returned by the getDataType() method).</p><p class="paragraph">The low-pass (high-pass) input signal can be interleaved with other signals in the same lowSig (highSig) array, and this is determined by the lowStep (highStep) argument. This means that the first sample of the low-pass (high-pass) input signal is lowSig[lowOff] (highSig[highOff]), the second is lowSig[lowOff+lowStep] (highSig[highOff+highStep]), the third is lowSig[lowOff+2*lowStep] (highSig[highOff+2*highStep]), and so on. Therefore if lowStep (highStep) is 1 there is no interleaving. This feature allows to filter columns of a 2-D signal, when it is stored in a line by line order in lowSig (highSig), without having to copy the data, in this case the lowStep (highStep) argument should be the line width of the low-pass (high-pass) signal.</p><p class="paragraph">The output signal is placed in the outSig array. The outOff and outStep arguments are analogous to the lowOff and lowStep ones, but they apply to the outSig array. The outSig array must be long enough to hold the low-pass output signal.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>low</span><wbr></wbr><span><span>Sig</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the array that contains the low-pass input signal. It must be of the correct type (e.g., it must be int[] if getDataType() returns TYPE_INT).</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>low</span><wbr></wbr><span><span>Off</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the index in lowSig of the first sample to filter.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>low</span><wbr></wbr><span><span>Len</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the number of samples in the low-pass input signal to filter.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>low</span><wbr></wbr><span><span>Step</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the step, or interleave factor, of the low-pass input signal samples in the lowSig array. See above.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>high</span><wbr></wbr><span><span>Sig</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the array that contains the high-pass input signal. It must be of the correct type (e.g., it must be int[] if getDataType() returns TYPE_INT).</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>high</span><wbr></wbr><span><span>Off</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the index in highSig of the first sample to filter.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>high</span><wbr></wbr><span><span>Len</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the number of samples in the high-pass input signal to filter.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>high</span><wbr></wbr><span><span>Step</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the step, or interleave factor, of the high-pass input signal samples in the highSig array. See above.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>out</span><wbr></wbr><span><span>Sig</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the array where the output signal is placed. It must be of the same type as lowSig and it should be long enough to contain the output signal.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>out</span><wbr></wbr><span><span>Off</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the index in outSig of the element where to put the first output sample.</p></div></div></div></div><div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>out</span><wbr></wbr><span><span>Step</span></span></u></div></span></div><div><div class="title"><p class="paragraph">This is the step, or interleave factor, of the output samples in the outSig array. See above.</p></div></div></div></div></div></div></div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
