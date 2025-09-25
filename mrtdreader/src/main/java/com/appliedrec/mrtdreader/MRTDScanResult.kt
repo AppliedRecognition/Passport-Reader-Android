@@ -24,6 +24,7 @@ sealed class MRTDScanResult : Parcelable {
      * @version 1.0.0
      */
     @Serializable
+    @ConsistentCopyVisibility
     data class Success internal constructor(
         var documentCode: String?,
         var issuingState: String?,
@@ -39,8 +40,50 @@ sealed class MRTDScanResult : Parcelable {
         var faceImage: Bitmap?,
         var signatureVerified: Boolean=false,
         var issuerVerified: Boolean=false
-    ): MRTDScanResult()
+    ): MRTDScanResult() {
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Success
+
+            if (signatureVerified != other.signatureVerified) return false
+            if (issuerVerified != other.issuerVerified) return false
+            if (documentCode != other.documentCode) return false
+            if (issuingState != other.issuingState) return false
+            if (primaryIdentifier != other.primaryIdentifier) return false
+            if (!secondaryIdentifiers.contentEquals(other.secondaryIdentifiers)) return false
+            if (nationality != other.nationality) return false
+            if (documentNumber != other.documentNumber) return false
+            if (personalNumber != other.personalNumber) return false
+            if (dateOfBirth != other.dateOfBirth) return false
+            if (dateOfExpiry != other.dateOfExpiry) return false
+            if (gender != other.gender) return false
+            if (faceImage != other.faceImage) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = signatureVerified.hashCode()
+            result = 31 * result + issuerVerified.hashCode()
+            result = 31 * result + (documentCode?.hashCode() ?: 0)
+            result = 31 * result + (issuingState?.hashCode() ?: 0)
+            result = 31 * result + (primaryIdentifier?.hashCode() ?: 0)
+            result = 31 * result + secondaryIdentifiers.contentHashCode()
+            result = 31 * result + (nationality?.hashCode() ?: 0)
+            result = 31 * result + (documentNumber?.hashCode() ?: 0)
+            result = 31 * result + (personalNumber?.hashCode() ?: 0)
+            result = 31 * result + (dateOfBirth?.hashCode() ?: 0)
+            result = 31 * result + (dateOfExpiry?.hashCode() ?: 0)
+            result = 31 * result + (gender?.hashCode() ?: 0)
+            result = 31 * result + (faceImage?.hashCode() ?: 0)
+            return result
+        }
+    }
+
     @Serializable
+    @ConsistentCopyVisibility
     data class Failure internal constructor(
         @Serializable(with = ThrowableSerializer::class)
         val error: Throwable
