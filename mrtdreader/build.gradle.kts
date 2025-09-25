@@ -1,4 +1,4 @@
-import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -86,14 +86,15 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-tasks.withType<DokkaTask>().configureEach {
+dokka {
+    dokkaPublications.html {
+        outputDirectory.set(rootProject.file("docs"))
+    }
+}
+
+tasks.withType<DokkaTaskPartial>().configureEach {
     moduleName.set("MRTD Reader")
     moduleVersion.set(project.version.toString())
-    outputDirectory.set(file("../docs"))
-
-    dokkaSourceSets.configureEach {
-        suppressedFiles.from(file("src/main/java/jj2000"))
-    }
 }
 
 mavenPublishing {

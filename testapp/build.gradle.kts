@@ -81,6 +81,8 @@ dependencies {
     implementation(libs.verid.face.detection)
     implementation(libs.verid.face.recognition.arcface)
     implementation(libs.verid.common.serialization)
+    implementation(libs.face.covering.detection)
+    implementation(libs.eyewear.detection)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

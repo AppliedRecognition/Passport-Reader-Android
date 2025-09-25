@@ -136,7 +136,7 @@ class MRTDScanActivity: ComponentActivity(), NfcAdapter.ReaderCallback {
     }
 
     private fun lockCurrentOrientation() {
-        val rotation = windowManager.defaultDisplay.rotation
+        val rotation = if (Build.VERSION.SDK_INT >= 30) display.rotation else windowManager.defaultDisplay.rotation
         val orientation = resources.configuration.orientation
         requestedOrientation = when {
             // Natural portrait

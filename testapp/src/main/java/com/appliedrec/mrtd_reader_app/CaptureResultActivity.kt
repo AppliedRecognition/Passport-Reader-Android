@@ -13,6 +13,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.lifecycle.lifecycleScope
+import com.appliedrec.facialattributedetection.eyewear.EyewearDetector
+import com.appliedrec.facialattributedetection.eyewear.EyewearType
+import com.appliedrec.facialattributedetection.facecovering.FaceCoveringDetector
 import com.appliedrec.mrtd_reader_app.databinding.ActivityCaptureResultBinding
 import com.appliedrec.mrtdreader.MRTDScanResult
 import com.appliedrec.verid3.common.Bearing
@@ -41,6 +44,8 @@ class CaptureResultActivity : AppCompatActivity() {
     private var scanResult: MRTDScanResult.Success? = null
     private lateinit var faceDetection: FaceDetectionRetinaFace
     private lateinit var faceRecognition: FaceRecognitionArcFace
+    private lateinit var faceCoveringDetector: FaceCoveringDetector
+    private lateinit var eyewearDetector: EyewearDetector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +61,8 @@ class CaptureResultActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 faceDetection = FaceDetectionRetinaFace.create(this@CaptureResultActivity)
+                faceCoveringDetector = FaceCoveringDetector.create(this@CaptureResultActivity)
+                eyewearDetector = EyewearDetector.create(this@CaptureResultActivity)
                 scanResult = ResultFileHelper.readScanResult(uri)
                 withContext(Dispatchers.Main) {
 
@@ -74,6 +81,9 @@ class CaptureResultActivity : AppCompatActivity() {
                 }
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    finish()
+                }
             }
         }
     }
@@ -83,6 +93,8 @@ class CaptureResultActivity : AppCompatActivity() {
         if (isFinishing) {
             CoroutineScope(Dispatchers.Default).launch {
                 faceDetection.close()
+                faceCoveringDetector.close()
+                eyewearDetector.close()
             }
         }
     }
@@ -118,20 +130,33 @@ class CaptureResultActivity : AppCompatActivity() {
                         )) as FaceTrackingPlugin<Any>
                     )}
                 }
-                when (faceCaptureResult) {
-                    is FaceCaptureSessionResult.Success -> {
-                        val faceCapture = faceCaptureResult.capturedFaces.first { it.bearing == Bearing.STRAIGHT }
-                        val intent = createFaceComparisonIntent(faceCapture)
-                        withContext(Dispatchers.Main) {
-                            startActivity(intent)
+                try {
+                    when (faceCaptureResult) {
+                        is FaceCaptureSessionResult.Success -> {
+                            val faceCapture =
+                                faceCaptureResult.capturedFaces.first { it.bearing == Bearing.STRAIGHT }
+                            val intent = createFaceComparisonIntent(faceCapture)
+                            withContext(Dispatchers.Main) {
+                                startActivity(intent)
+                            }
                         }
-                    }
-                    is FaceCaptureSessionResult.Failure -> {
-                        withContext(Dispatchers.Main) {
-                            showError(R.string.face_comparison_failed)
+
+                        is FaceCaptureSessionResult.Failure -> {
+                            withContext(Dispatchers.Main) {
+                                showError(R.string.face_comparison_failed)
+                            }
                         }
+
+                        else -> {}
                     }
-                    else -> {}
+                } catch (e: FacialAttributeException) {
+                    withContext(Dispatchers.Main) {
+                        showError(e.messageStringResourceId)
+                    }
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        showError(R.string.face_comparison_failed)
+                    }
                 }
             }
         } catch (exception: Exception) {
@@ -153,6 +178,16 @@ class CaptureResultActivity : AppCompatActivity() {
         val documentFace = faceDetection.detectFacesInImage(documentFaceImage, 1).firstOrNull()
             ?: throw Exception("Face not detected in image")
         val documentFaceCroppedImage = cropImageToFace(documentFaceImage.toBitmap(), documentFace)
+        faceCoveringDetector.detect(capturedFace.face, capturedFace.image)?.let {
+            throw FacialAttributeException(R.string.face_covering_detected)
+        }
+        val glassesDetected = eyewearDetector.detect(capturedFace.face, capturedFace.image)?.let { result ->
+            if (result.type == EyewearType.SUNGLASSES) {
+                throw FacialAttributeException(R.string.sunglasses_detected)
+            } else {
+                true
+            }
+        } ?: false
         val capturedFaceTemplate = faceRecognition.createFaceRecognitionTemplates(
             listOf(capturedFace.face), capturedFace.image
         ).first()
@@ -167,6 +202,7 @@ class CaptureResultActivity : AppCompatActivity() {
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE1, documentFaceJpeg)
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE2, liveFaceJpeg)
         intent.putExtra(FaceComparisonActivity.EXTRA_SCORE, score)
+        intent.putExtra(FaceComparisonActivity.EXTRA_GLASSES_DETECTED, glassesDetected)
         intent.putExtra(FaceComparisonActivity.EXTRA_THRESHOLD, faceRecognition.defaultThreshold)
         return intent
     }

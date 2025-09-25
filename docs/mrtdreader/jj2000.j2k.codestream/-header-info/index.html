@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>HeaderInfo</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    mrtdreader
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+3.0.4        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":mrtdreader/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":mrtdreader/release"
+                                       data-filter=":mrtdreader/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    mrtdreader
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="mrtdreader::jj2000.j2k.codestream/HeaderInfo///PointingToDeclaration//-1722531997">
+  <div class="breadcrumbs"><a href="../../../index.html">mrtdreader</a><span class="delimiter">/</span><a href="../index.html">jj2000.j2k.codestream</a><span class="delimiter">/</span><span class="current">HeaderInfo</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Header</span><wbr></wbr><span><span>Info</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">HeaderInfo</a> : <a href="../-markers/index.html">Markers</a>, <a href="../-progression-type/index.html">ProgressionType</a>, <a href="../../jj2000.j2k.wavelet/-filter-types/index.html">FilterTypes</a>, <a href="https://developer.android.com/reference/kotlin/java/lang/Cloneable.html">Cloneable</a></div><p class="paragraph">Classe that holds information found in the marker segments of the main and tile-part headers. There is one inner-class per marker segment type found in these headers.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1585536779%2FConstructors%2F-1722531997" anchor-label="HeaderInfo" id="-1585536779%2FConstructors%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-header-info.html"><span>Header</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1585536779%2FConstructors%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1366303290%2FClasslikes%2F-1722531997" anchor-label="COC" id="-1366303290%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-o-c/index.html"><span><span>COC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1366303290%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-c-o-c/index.html">COC</a></div><div class="brief ">Internal class holding information found in the COC marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1335283483%2FClasslikes%2F-1722531997" anchor-label="COD" id="-1335283483%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-o-d/index.html"><span><span>COD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1335283483%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-c-o-d/index.html">COD</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Cloneable.html">Cloneable</a></div><div class="brief ">Internal class holding information found in the COD marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1056105220%2FClasslikes%2F-1722531997" anchor-label="COM" id="-1056105220%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-o-m/index.html"><span><span>COM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1056105220%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-c-o-m/index.html">COM</a></div><div class="brief ">Internal class holding information found in the COM marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1642617989%2FClasslikes%2F-1722531997" anchor-label="CRG" id="1642617989%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-r-g/index.html"><span><span>CRG</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1642617989%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-c-r-g/index.html">CRG</a></div><div class="brief ">Internal class holding information found in the CRG marker segment</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-382911079%2FClasslikes%2F-1722531997" anchor-label="POC" id="-382911079%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-p-o-c/index.html"><span><span>POC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-382911079%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-p-o-c/index.html">POC</a></div><div class="brief ">Internal class holding information found in the POC marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="707886060%2FClasslikes%2F-1722531997" anchor-label="QCC" id="707886060%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-q-c-c/index.html"><span><span>QCC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="707886060%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-q-c-c/index.html">QCC</a></div><div class="brief ">Internal class holding information found in the QCC marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="738905867%2FClasslikes%2F-1722531997" anchor-label="QCD" id="738905867%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-q-c-d/index.html"><span><span>QCD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="738905867%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-q-c-d/index.html">QCD</a></div><div class="brief ">Internal class holding information found in the QCD marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="345856164%2FClasslikes%2F-1722531997" anchor-label="RGN" id="345856164%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-r-g-n/index.html"><span><span>RGN</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="345856164%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-r-g-n/index.html">RGN</a></div><div class="brief ">Internal class holding information found in the RGN marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1908381959%2FClasslikes%2F-1722531997" anchor-label="SIZ" id="-1908381959%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-i-z/index.html"><span><span>SIZ</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1908381959%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-s-i-z/index.html">SIZ</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Cloneable.html">Cloneable</a></div><div class="brief ">Internal class holding information found in the SIZ marker segment</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-619783995%2FClasslikes%2F-1722531997" anchor-label="SOT" id="-619783995%2FClasslikes%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-o-t/index.html"><span><span>SOT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-619783995%2FClasslikes%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-s-o-t/index.html">SOT</a></div><div class="brief ">Internal class holding information found in the SOt marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-765863197%2FProperties%2F-1722531997" anchor-label="COC" id="-765863197%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-c-o-c.html"><span><span>COC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-765863197%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-c-o-c.html">COC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-173</span></div><div class="brief ">Coding style component (COC): 0xFF53</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2026211405%2FProperties%2F-1722531997" anchor-label="coc" id="-2026211405%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="coc.html"><span><span>coc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2026211405%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="coc.html">coc</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the COC marker segments found in main and first tile-part header.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-734843390%2FProperties%2F-1722531997" anchor-label="COD" id="-734843390%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-c-o-d.html"><span><span>COD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-734843390%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-c-o-d.html">COD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-174</span></div><div class="brief ">Coding style default (COD): 0xFF52</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1995191598%2FProperties%2F-1722531997" anchor-label="cod" id="-1995191598%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cod.html"><span><span>cod</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1995191598%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="cod.html">cod</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the COD marker segments found in main and first tile-part header.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-455665127%2FProperties%2F-1722531997" anchor-label="COM" id="-455665127%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-c-o-m.html"><span><span>COM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-455665127%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-c-o-m.html">COM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-156</span></div><div class="brief ">Comment (COM): 0xFF64</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1716013335%2FProperties%2F-1722531997" anchor-label="com" id="-1716013335%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="com.html"><span><span>com</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1716013335%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="com.html">com</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the COM marker segments found in main and tile-part headers.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1153073974%2FProperties%2F-1722531997" anchor-label="COMP_POS_RES_LY_PROG" id="-1153073974%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-progression-type/-c-o-m-p_-p-o-s_-r-e-s_-l-y_-p-r-o-g.html"><span>COMP_</span><wbr></wbr><span>POS_</span><wbr></wbr><span>RES_</span><wbr></wbr><span>LY_</span><wbr></wbr><span>PROG</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1153073974%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-progression-type/-c-o-m-p_-p-o-s_-r-e-s_-l-y_-p-r-o-g.html">COMP_POS_RES_LY_PROG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4</span></div><div class="brief ">The codestream is Component/Position/Resolution/Layer progressive : 4</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2051909214%2FProperties%2F-1722531997" anchor-label="CRG" id="-2051909214%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-c-r-g.html"><span><span>CRG</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2051909214%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-c-r-g.html">CRG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-157</span></div><div class="brief ">Component registration (CRG): 0xFF63</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="982709874%2FProperties%2F-1722531997" anchor-label="crg" id="982709874%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="crg.html"><span><span>crg</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="982709874%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="crg.html">crg</a><span class="token operator">: </span><a href="-c-r-g/index.html">HeaderInfo.CRG</a></div><div class="brief ">Reference to the CRG marker segment found in main header</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="589341462%2FProperties%2F-1722531997" anchor-label="CUSTOM" id="589341462%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.j2k.wavelet/-filter-types/-c-u-s-t-o-m.html"><span><span>CUSTOM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="589341462%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../jj2000.j2k.wavelet/-filter-types/-c-u-s-t-o-m.html">CUSTOM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">-1</span></div><div class="brief ">User-defined filter: -1</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1275336287%2FProperties%2F-1722531997" anchor-label="EOC" id="-1275336287%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-e-o-c.html"><span><span>EOC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1275336287%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-e-o-c.html">EOC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-39</span></div><div class="brief ">End of codestream (EOC): 0xFFD9</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-158623235%2FProperties%2F-1722531997" anchor-label="EPH" id="-158623235%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-e-p-h.html"><span><span>EPH</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-158623235%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-e-p-h.html">EPH</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-110</span></div><div class="brief ">End of packet header (EPH): 0xFF92</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1463477992%2FProperties%2F-1722531997" anchor-label="EPH_LENGTH" id="-1463477992%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-e-p-h_-l-e-n-g-t-h.html"><span>EPH_</span><wbr></wbr><span>LENGTH</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1463477992%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-e-p-h_-l-e-n-g-t-h.html">EPH_LENGTH</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">Length of EPH marker (in bytes)</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1540263330%2FProperties%2F-1722531997" anchor-label="ERS_SEG_SYMBOLS" id="1540263330%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-e-r-s_-s-e-g_-s-y-m-b-o-l-s.html"><span>ERS_</span><wbr></wbr><span>SEG_</span><wbr></wbr><span>SYMBOLS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1540263330%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-e-r-s_-s-e-g_-s-y-m-b-o-l-s.html">ERS_SEG_SYMBOLS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">The &quot;segmentation symbols used&quot; flag within Sers: 2</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-792936641%2FProperties%2F-1722531997" anchor-label="ERS_SOP" id="-792936641%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-e-r-s_-s-o-p.html"><span>ERS_</span><wbr></wbr><span>SOP</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-792936641%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-e-r-s_-s-o-p.html">ERS_SOP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">The &quot;SOP marker segments used&quot; flag within Sers: 1</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1307317672%2FProperties%2F-1722531997" anchor-label="LY_RES_COMP_POS_PROG" id="-1307317672%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-progression-type/-l-y_-r-e-s_-c-o-m-p_-p-o-s_-p-r-o-g.html"><span>LY_</span><wbr></wbr><span>RES_</span><wbr></wbr><span>COMP_</span><wbr></wbr><span>POS_</span><wbr></wbr><span>PROG</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1307317672%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-progression-type/-l-y_-r-e-s_-c-o-m-p_-p-o-s_-p-r-o-g.html">LY_RES_COMP_POS_PROG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">The codestream is Layer/Resolution/Component/Position progressive : 0</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-211269969%2FProperties%2F-1722531997" anchor-label="MAX_COMP_BITDEPTH" id="-211269969%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-m-a-x_-c-o-m-p_-b-i-t-d-e-p-t-h.html"><span>MAX_</span><wbr></wbr><span>COMP_</span><wbr></wbr><span>BITDEPTH</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-211269969%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-m-a-x_-c-o-m-p_-b-i-t-d-e-p-t-h.html">MAX_COMP_BITDEPTH</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">38</span></div><div class="brief ">The maximum number of component bitdepth</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2041269284%2FProperties%2F-1722531997" anchor-label="MAX_LPPM" id="2041269284%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-m-a-x_-l-p-p-m.html"><span>MAX_</span><wbr></wbr><span>LPPM</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2041269284%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-m-a-x_-l-p-p-m.html">MAX_LPPM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">65535</span></div><div class="brief ">Maximum length of PPM marker segment</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2036559363%2FProperties%2F-1722531997" anchor-label="MAX_LPPT" id="-2036559363%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-m-a-x_-l-p-p-t.html"><span>MAX_</span><wbr></wbr><span>LPPT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2036559363%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-m-a-x_-l-p-p-t.html">MAX_LPPT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">65535</span></div><div class="brief ">Maximum length of PPT marker segment</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1937852329%2FProperties%2F-1722531997" anchor-label="PLM" id="1937852329%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-p-l-m.html"><span><span>PLM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1937852329%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-p-l-m.html">PLM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-169</span></div><div class="brief ">Packet length, main header (PLM): 0xFF57</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2139976318%2FProperties%2F-1722531997" anchor-label="PLT" id="-2139976318%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-p-l-t.html"><span><span>PLT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2139976318%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-p-l-t.html">PLT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-168</span></div><div class="brief ">Packet length, tile-part header (PLT): 0xFF58</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="217529014%2FProperties%2F-1722531997" anchor-label="POC" id="217529014%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-p-o-c.html"><span><span>POC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="217529014%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-p-o-c.html">POC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-161</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1042819194%2FProperties%2F-1722531997" anchor-label="poc" id="-1042819194%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="poc.html"><span><span>poc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1042819194%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="poc.html">poc</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the POC marker segments found in main and first tile-part header.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-179721900%2FProperties%2F-1722531997" anchor-label="POS_COMP_RES_LY_PROG" id="-179721900%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-progression-type/-p-o-s_-c-o-m-p_-r-e-s_-l-y_-p-r-o-g.html"><span>POS_</span><wbr></wbr><span>COMP_</span><wbr></wbr><span>RES_</span><wbr></wbr><span>LY_</span><wbr></wbr><span>PROG</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-179721900%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-progression-type/-p-o-s_-c-o-m-p_-r-e-s_-l-y_-p-r-o-g.html">POS_COMP_RES_LY_PROG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">3</span></div><div class="brief ">The codestream is Position/Component/Resolution/Layer progressive : 3</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1489341101%2FProperties%2F-1722531997" anchor-label="PPM" id="1489341101%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-p-p-m.html"><span><span>PPM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1489341101%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-p-p-m.html">PPM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-160</span></div><div class="brief ">Packed packet headers, main header (PPM): 0xFF60</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1706479750%2FProperties%2F-1722531997" anchor-label="PPT" id="1706479750%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-p-p-t.html"><span><span>PPT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1706479750%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-p-p-t.html">PPT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-159</span></div><div class="brief ">Packed packet headers, tile-part header (PPT): 0xFF61</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1749396769%2FProperties%2F-1722531997" anchor-label="PRECINCT_PARTITION_DEF_SIZE" id="1749396769%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-p-r-e-c-i-n-c-t_-p-a-r-t-i-t-i-o-n_-d-e-f_-s-i-z-e.html"><span>PRECINCT_</span><wbr></wbr><span>PARTITION_</span><wbr></wbr><span>DEF_</span><wbr></wbr><span>SIZE</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1749396769%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-p-r-e-c-i-n-c-t_-p-a-r-t-i-t-i-o-n_-d-e-f_-s-i-z-e.html">PRECINCT_PARTITION_DEF_SIZE</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">65535</span></div><div class="brief ">The default size exponent of the precincts</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1308326153%2FProperties%2F-1722531997" anchor-label="QCC" id="1308326153%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-q-c-c.html"><span><span>QCC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1308326153%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-q-c-c.html">QCC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-163</span></div><div class="brief ">Quantization component (QCC): 0xFF5D</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="47977945%2FProperties%2F-1722531997" anchor-label="qcc" id="47977945%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="qcc.html"><span><span>qcc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="47977945%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="qcc.html">qcc</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the QCC marker segments found in main and first tile-part header.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1339345960%2FProperties%2F-1722531997" anchor-label="QCD" id="1339345960%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-q-c-d.html"><span><span>QCD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1339345960%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-q-c-d.html">QCD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-164</span></div><div class="brief ">Quantization default (QCD): 0xFF5C</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="78997752%2FProperties%2F-1722531997" anchor-label="qcd" id="78997752%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="qcd.html"><span><span>qcd</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="78997752%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="qcd.html">qcd</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the QCD marker segments found in main and first tile-part header.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="85173592%2FProperties%2F-1722531997" anchor-label="RCOM_GEN_USE" id="85173592%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-r-c-o-m_-g-e-n_-u-s-e.html"><span>RCOM_</span><wbr></wbr><span>GEN_</span><wbr></wbr><span>USE</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="85173592%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-r-c-o-m_-g-e-n_-u-s-e.html">RCOM_GEN_USE</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">General use registration value (COM): 0x0001</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1685614150%2FProperties%2F-1722531997" anchor-label="RES_LY_COMP_POS_PROG" id="-1685614150%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-progression-type/-r-e-s_-l-y_-c-o-m-p_-p-o-s_-p-r-o-g.html"><span>RES_</span><wbr></wbr><span>LY_</span><wbr></wbr><span>COMP_</span><wbr></wbr><span>POS_</span><wbr></wbr><span>PROG</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1685614150%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-progression-type/-r-e-s_-l-y_-c-o-m-p_-p-o-s_-p-r-o-g.html">RES_LY_COMP_POS_PROG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">The codestream is Resolution/Layer/Component/Position progressive : 1</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="396107510%2FProperties%2F-1722531997" anchor-label="RES_POS_COMP_LY_PROG" id="396107510%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-progression-type/-r-e-s_-p-o-s_-c-o-m-p_-l-y_-p-r-o-g.html"><span>RES_</span><wbr></wbr><span>POS_</span><wbr></wbr><span>COMP_</span><wbr></wbr><span>LY_</span><wbr></wbr><span>PROG</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="396107510%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-progression-type/-r-e-s_-p-o-s_-c-o-m-p_-l-y_-p-r-o-g.html">RES_POS_COMP_LY_PROG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">The codestream is Resolution/Position/Component/Layer progressive : 2</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="946296257%2FProperties%2F-1722531997" anchor-label="RGN" id="946296257%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-r-g-n.html"><span><span>RGN</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="946296257%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-r-g-n.html">RGN</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-162</span></div><div class="brief ">Region-of-interest (RGN): 0xFF5E</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-314051951%2FProperties%2F-1722531997" anchor-label="rgn" id="-314051951%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rgn.html"><span><span>rgn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-314051951%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="rgn.html">rgn</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the RGN marker segments found in main and first tile-part header.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1218311080%2FProperties%2F-1722531997" anchor-label="RSIZ_BASELINE" id="1218311080%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-r-s-i-z_-b-a-s-e-l-i-n-e.html"><span>RSIZ_</span><wbr></wbr><span>BASELINE</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1218311080%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-r-s-i-z_-b-a-s-e-l-i-n-e.html">RSIZ_BASELINE</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">No special capabilities (baseline) in codestream, in Rsiz field of SIZ marker: 0x00.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2125358801%2FProperties%2F-1722531997" anchor-label="RSIZ_ER_FLAG" id="-2125358801%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-r-s-i-z_-e-r_-f-l-a-g.html"><span>RSIZ_</span><wbr></wbr><span>ER_</span><wbr></wbr><span>FLAG</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2125358801%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-r-s-i-z_-e-r_-f-l-a-g.html">RSIZ_ER_FLAG</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">Error resilience marker flag bit in Rsiz field in SIZ marker: 0x01</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-149092607%2FProperties%2F-1722531997" anchor-label="RSIZ_ROI" id="-149092607%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-r-s-i-z_-r-o-i.html"><span>RSIZ_</span><wbr></wbr><span>ROI</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-149092607%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-r-s-i-z_-r-o-i.html">RSIZ_ROI</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">ROI present marker flag bit in Rsiz field in SIZ marker: 0x02</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1712757671%2FProperties%2F-1722531997" anchor-label="SCOX_HOR_CB_PART" id="1712757671%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-c-o-x_-h-o-r_-c-b_-p-a-r-t.html"><span>SCOX_</span><wbr></wbr><span>HOR_</span><wbr></wbr><span>CB_</span><wbr></wbr><span>PART</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1712757671%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-c-o-x_-h-o-r_-c-b_-p-a-r-t.html">SCOX_HOR_CB_PART</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">8</span></div><div class="brief ">Horizontal code-block partition origin is at x=1</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-627709005%2FProperties%2F-1722531997" anchor-label="SCOX_PRECINCT_PARTITION" id="-627709005%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-c-o-x_-p-r-e-c-i-n-c-t_-p-a-r-t-i-t-i-o-n.html"><span>SCOX_</span><wbr></wbr><span>PRECINCT_</span><wbr></wbr><span>PARTITION</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-627709005%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-c-o-x_-p-r-e-c-i-n-c-t_-p-a-r-t-i-t-i-o-n.html">SCOX_PRECINCT_PARTITION</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">Precinct used flag</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1762811775%2FProperties%2F-1722531997" anchor-label="SCOX_USE_EPH" id="-1762811775%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-c-o-x_-u-s-e_-e-p-h.html"><span>SCOX_</span><wbr></wbr><span>USE_</span><wbr></wbr><span>EPH</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1762811775%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-c-o-x_-u-s-e_-e-p-h.html">SCOX_USE_EPH</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4</span></div><div class="brief ">Use end of packet header marker</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1747611670%2FProperties%2F-1722531997" anchor-label="SCOX_USE_SOP" id="-1747611670%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-c-o-x_-u-s-e_-s-o-p.html"><span>SCOX_</span><wbr></wbr><span>USE_</span><wbr></wbr><span>SOP</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1747611670%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-c-o-x_-u-s-e_-s-o-p.html">SCOX_USE_SOP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">Use start of packet marker</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1122749617%2FProperties%2F-1722531997" anchor-label="SCOX_VER_CB_PART" id="-1122749617%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-c-o-x_-v-e-r_-c-b_-p-a-r-t.html"><span>SCOX_</span><wbr></wbr><span>VER_</span><wbr></wbr><span>CB_</span><wbr></wbr><span>PART</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1122749617%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-c-o-x_-v-e-r_-c-b_-p-a-r-t.html">SCOX_VER_CB_PART</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">16</span></div><div class="brief ">Vertical code-block partition origin is at y=1</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1307941866%2FProperties%2F-1722531997" anchor-label="SIZ" id="-1307941866%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-i-z.html"><span><span>SIZ</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1307941866%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-i-z.html">SIZ</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-175</span></div><div class="brief ">SIZ marker (Image and tile size): 0xFF51</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1726677222%2FProperties%2F-1722531997" anchor-label="siz" id="1726677222%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="siz.html"><span><span>siz</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1726677222%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="siz.html">siz</a><span class="token operator">: </span><a href="-s-i-z/index.html">HeaderInfo.SIZ</a></div><div class="brief ">Reference to the SIZ marker segment found in main header</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-546680621%2FProperties%2F-1722531997" anchor-label="SOC" id="-546680621%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-o-c.html"><span><span>SOC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-546680621%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-o-c.html">SOC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-177</span></div><div class="brief ">Start of codestream (SOC): 0xFF4F</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-515660814%2FProperties%2F-1722531997" anchor-label="SOD" id="-515660814%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-o-d.html"><span><span>SOD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-515660814%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-o-d.html">SOD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-109</span></div><div class="brief ">Start of data (SOD): 0xFF93</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-143423130%2FProperties%2F-1722531997" anchor-label="SOP" id="-143423130%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-o-p.html"><span><span>SOP</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-143423130%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-o-p.html">SOP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-111</span></div><div class="brief ">Start pf packet (SOP): 0xFF91</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-96620145%2FProperties%2F-1722531997" anchor-label="SOP_LENGTH" id="-96620145%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-o-p_-l-e-n-g-t-h.html"><span>SOP_</span><wbr></wbr><span>LENGTH</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-96620145%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-o-p_-l-e-n-g-t-h.html">SOP_LENGTH</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">6</span></div><div class="brief ">Length of SOP marker (in bytes)</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-19343902%2FProperties%2F-1722531997" anchor-label="SOT" id="-19343902%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-o-t.html"><span><span>SOT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-19343902%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-o-t.html">SOT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-112</span></div><div class="brief ">Start of tile-part (SOT): 0xFF90</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1279692110%2FProperties%2F-1722531997" anchor-label="sot" id="-1279692110%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sot.html"><span><span>sot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1279692110%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="sot.html">sot</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Hashtable.html">Hashtable</a></div><div class="brief ">Reference to the SOT marker segments found in tile-part headers.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1351945728%2FProperties%2F-1722531997" anchor-label="SQCX_EXP_MASK" id="1351945728%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-e-x-p_-m-a-s-k.html"><span>SQCX_</span><wbr></wbr><span>EXP_</span><wbr></wbr><span>MASK</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1351945728%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-e-x-p_-m-a-s-k.html">SQCX_EXP_MASK</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">31</span></div><div class="brief ">Exponent bitmask in SPQCX when no quantization: 3</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2070777908%2FProperties%2F-1722531997" anchor-label="SQCX_EXP_SHIFT" id="-2070777908%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-e-x-p_-s-h-i-f-t.html"><span>SQCX_</span><wbr></wbr><span>EXP_</span><wbr></wbr><span>SHIFT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2070777908%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-e-x-p_-s-h-i-f-t.html">SQCX_EXP_SHIFT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">3</span></div><div class="brief ">Exponent shift in SPQCX when no quantization: 3</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1600306291%2FProperties%2F-1722531997" anchor-label="SQCX_GB_MSK" id="-1600306291%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-g-b_-m-s-k.html"><span>SQCX_</span><wbr></wbr><span>GB_</span><wbr></wbr><span>MSK</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1600306291%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-g-b_-m-s-k.html">SQCX_GB_MSK</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">7</span></div><div class="brief ">Guard bits mask in SQCX field: 7</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1456893968%2FProperties%2F-1722531997" anchor-label="SQCX_GB_SHIFT" id="-1456893968%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-g-b_-s-h-i-f-t.html"><span>SQCX_</span><wbr></wbr><span>GB_</span><wbr></wbr><span>SHIFT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1456893968%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-g-b_-s-h-i-f-t.html">SQCX_GB_SHIFT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">5</span></div><div class="brief ">Guard bits shift in SQCX field: 5</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1826985587%2FProperties%2F-1722531997" anchor-label="SQCX_NO_QUANTIZATION" id="-1826985587%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-n-o_-q-u-a-n-t-i-z-a-t-i-o-n.html"><span>SQCX_</span><wbr></wbr><span>NO_</span><wbr></wbr><span><span>QUANTIZATION</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1826985587%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-n-o_-q-u-a-n-t-i-z-a-t-i-o-n.html">SQCX_NO_QUANTIZATION</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">No quantization (i.e.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-658608124%2FProperties%2F-1722531997" anchor-label="SQCX_SCALAR_DERIVED" id="-658608124%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-s-c-a-l-a-r_-d-e-r-i-v-e-d.html"><span>SQCX_</span><wbr></wbr><span>SCALAR_</span><wbr></wbr><span>DERIVED</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-658608124%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-s-c-a-l-a-r_-d-e-r-i-v-e-d.html">SQCX_SCALAR_DERIVED</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">Scalar derived (i.e.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="522803561%2FProperties%2F-1722531997" anchor-label="SQCX_SCALAR_EXPOUNDED" id="522803561%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-q-c-x_-s-c-a-l-a-r_-e-x-p-o-u-n-d-e-d.html"><span>SQCX_</span><wbr></wbr><span>SCALAR_</span><wbr></wbr><span>EXPOUNDED</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="522803561%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-q-c-x_-s-c-a-l-a-r_-e-x-p-o-u-n-d-e-d.html">SQCX_SCALAR_EXPOUNDED</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></div><div class="brief ">Scalar expounded (i.e.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1360624476%2FProperties%2F-1722531997" anchor-label="SRGN_IMPLICIT" id="1360624476%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-r-g-n_-i-m-p-l-i-c-i-t.html"><span>SRGN_</span><wbr></wbr><span>IMPLICIT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1360624476%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-r-g-n_-i-m-p-l-i-c-i-t.html">SRGN_IMPLICIT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">Implicit (i.e.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1101867082%2FProperties%2F-1722531997" anchor-label="SSIZ_DEPTH_BITS" id="1101867082%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-s-s-i-z_-d-e-p-t-h_-b-i-t-s.html"><span>SSIZ_</span><wbr></wbr><span>DEPTH_</span><wbr></wbr><span>BITS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1101867082%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-s-s-i-z_-d-e-p-t-h_-b-i-t-s.html">SSIZ_DEPTH_BITS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">7</span></div><div class="brief ">Component bitdepth bits in Ssiz field in SIZ marker: 7</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="918906149%2FProperties%2F-1722531997" anchor-label="TLM" id="918906149%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-markers/-t-l-m.html"><span><span>TLM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="918906149%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-markers/-t-l-m.html">TLM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-short/index.html">Short</a><span class="token operator"> = </span><span class="token constant">-171</span></div><div class="brief ">Tile-part lengths (TLM): 0xFF55</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="36271086%2FProperties%2F-1722531997" anchor-label="W5X3" id="36271086%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.j2k.wavelet/-filter-types/-w5-x3.html"><span><span>W5X3</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="36271086%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../jj2000.j2k.wavelet/-filter-types/-w5-x3.html">W5X3</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div><div class="brief ">W5x3 filter: 0x01</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-858595866%2FProperties%2F-1722531997" anchor-label="W9X7" id="-858595866%2FProperties%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../jj2000.j2k.wavelet/-filter-types/-w9-x7.html"><span><span>W9X7</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-858595866%2FProperties%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../jj2000.j2k.wavelet/-filter-types/-w9-x7.html">W9X7</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">W7x9 filter: 0x00</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1659037524%2FFunctions%2F-1722531997" anchor-label="getCopy" id="1659037524%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-copy.html"><span>get</span><wbr></wbr><span><span>Copy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659037524%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-copy.html"><span class="token function">getCopy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nt<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">HeaderInfo</a></div><div class="brief ">Returns a copy of this object</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="752675197%2FFunctions%2F-1722531997" anchor-label="getNewCOC" id="752675197%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-c-o-c.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>COC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="752675197%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-c-o-c.html"><span class="token function">getNewCOC</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-c-o-c/index.html">HeaderInfo.COC</a></div><div class="brief ">Returns a new instance of COC</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="783695004%2FFunctions%2F-1722531997" anchor-label="getNewCOD" id="783695004%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-c-o-d.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>COD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="783695004%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-c-o-d.html"><span class="token function">getNewCOD</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-c-o-d/index.html">HeaderInfo.COD</a></div><div class="brief ">Returns a new instance of COD</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1062873267%2FFunctions%2F-1722531997" anchor-label="getNewCOM" id="1062873267%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-c-o-m.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>COM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1062873267%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-c-o-m.html"><span class="token function">getNewCOM</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-c-o-m/index.html">HeaderInfo.COM</a></div><div class="brief ">Returns a new instance of COM</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-533370820%2FFunctions%2F-1722531997" anchor-label="getNewCRG" id="-533370820%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-c-r-g.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>CRG</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-533370820%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-c-r-g.html"><span class="token function">getNewCRG</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-c-r-g/index.html">HeaderInfo.CRG</a></div><div class="brief ">Returns a new instance of CRG</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1736067408%2FFunctions%2F-1722531997" anchor-label="getNewPOC" id="1736067408%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-p-o-c.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>POC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1736067408%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-p-o-c.html"><span class="token function">getNewPOC</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-p-o-c/index.html">HeaderInfo.POC</a></div><div class="brief ">Returns a new instance of POC</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1468102749%2FFunctions%2F-1722531997" anchor-label="getNewQCC" id="-1468102749%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-q-c-c.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>QCC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1468102749%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-q-c-c.html"><span class="token function">getNewQCC</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-q-c-c/index.html">HeaderInfo.QCC</a></div><div class="brief ">Returns a new instance of QCC</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1437082942%2FFunctions%2F-1722531997" anchor-label="getNewQCD" id="-1437082942%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-q-c-d.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>QCD</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1437082942%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-q-c-d.html"><span class="token function">getNewQCD</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-q-c-d/index.html">HeaderInfo.QCD</a></div><div class="brief ">Returns a new instance of QCD</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1830132645%2FFunctions%2F-1722531997" anchor-label="getNewRGN" id="-1830132645%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-r-g-n.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>RGN</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1830132645%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-r-g-n.html"><span class="token function">getNewRGN</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-r-g-n/index.html">HeaderInfo.RGN</a></div><div class="brief ">Returns a new instance of RGN</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="210596528%2FFunctions%2F-1722531997" anchor-label="getNewSIZ" id="210596528%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-s-i-z.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>SIZ</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="210596528%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-s-i-z.html"><span class="token function">getNewSIZ</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-s-i-z/index.html">HeaderInfo.SIZ</a></div><div class="brief ">Returns a new instance of SIZ</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1499194492%2FFunctions%2F-1722531997" anchor-label="getNewSOT" id="1499194492%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-s-o-t.html"><span>get</span><wbr></wbr><span>New</span><wbr></wbr><span><span>SOT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1499194492%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-new-s-o-t.html"><span class="token function">getNewSOT</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-s-o-t/index.html">HeaderInfo.SOT</a></div><div class="brief ">Returns a new instance of SOT</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1392118375%2FFunctions%2F-1722531997" anchor-label="getNumCOM" id="-1392118375%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-num-c-o-m.html"><span>get</span><wbr></wbr><span>Num</span><wbr></wbr><span><span>COM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1392118375%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-num-c-o-m.html"><span class="token function">getNumCOM</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief ">Returns the number of found COM marker segments</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1631779426%2FFunctions%2F-1722531997" anchor-label="toStringMainHeader" id="-1631779426%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string-main-header.html"><span>to</span><wbr></wbr><span>String</span><wbr></wbr><span>Main</span><wbr></wbr><span><span>Header</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1631779426%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="to-string-main-header.html"><span class="token function">toStringMainHeader</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></div><div class="brief ">Display information found in the different marker segments of the main header</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2005870196%2FFunctions%2F-1722531997" anchor-label="toStringThNoSOT" id="2005870196%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string-th-no-s-o-t.html"><span>to</span><wbr></wbr><span>String</span><wbr></wbr><span>Th</span><wbr></wbr><span>No</span><wbr></wbr><span><span>SOT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2005870196%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="to-string-th-no-s-o-t.html"><span class="token function">toStringThNoSOT</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">t<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">ntp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></div><div class="brief ">Returns information found in the tile-part headers of a given tile exception the SOT marker segment.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-730263714%2FFunctions%2F-1722531997" anchor-label="toStringTileHeader" id="-730263714%2FFunctions%2F-1722531997" data-filterable-set=":mrtdreader/release"></a>
+          <div class="table-row" data-filterable-current=":mrtdreader/release" data-filterable-set=":mrtdreader/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string-tile-header.html"><span>to</span><wbr></wbr><span>String</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Header</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-730263714%2FFunctions%2F-1722531997"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":mrtdreader/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="to-string-tile-header.html"><span class="token function">toStringTileHeader</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">t<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">ntp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a></div><div class="brief ">Returns information found in the tile-part headers of a given tile.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

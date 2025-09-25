@@ -32,6 +32,7 @@ import org.jmrtd.lds.SODFile
 import org.jmrtd.lds.icao.DG1File
 import org.jmrtd.lds.icao.DG2File
 import org.jmrtd.lds.iso19794.FaceImageInfo
+import org.jmrtd.lds.iso19794.FaceInfo
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.security.Security
@@ -153,7 +154,7 @@ internal class MRTDReaderViewModel(application: Application) : AndroidViewModel(
                     result.dateOfExpiry = dG1File.mrzInfo.dateOfExpiry
                     result.documentNumber = dG1File.mrzInfo.documentNumber
                     result.documentCode = dG1File.mrzInfo.documentCode
-                    result.gender = dG1File.mrzInfo.gender.name
+                    result.gender = dG1File.mrzInfo.genderCode.name
                     result.issuingState = dG1File.mrzInfo.issuingState
                     result.nationality = dG1File.mrzInfo.nationality
                     result.personalNumber = dG1File.mrzInfo.personalNumber
@@ -175,8 +176,10 @@ internal class MRTDReaderViewModel(application: Application) : AndroidViewModel(
                     )
 
                     val faceImageInfos = mutableListOf<FaceImageInfo>()
-                    dG2File.faceInfos.forEach { faceInfo ->
-                        faceImageInfos.addAll(faceInfo.faceImageInfos)
+                    dG2File.subRecords.forEach { block ->
+                        if (block is FaceInfo) {
+                            faceImageInfos.addAll(block.faceImageInfos)
+                        }
                     }
 
                     if (faceImageInfos.isNotEmpty()) {

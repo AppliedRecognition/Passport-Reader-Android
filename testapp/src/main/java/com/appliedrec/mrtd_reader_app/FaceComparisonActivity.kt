@@ -3,6 +3,7 @@ package com.appliedrec.mrtd_reader_app
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.appliedrec.mrtd_reader_app.databinding.ActivityFaceComparisonBinding
@@ -15,6 +16,7 @@ class FaceComparisonActivity : AppCompatActivity() {
         const val EXTRA_IMAGE1 = "image1"
         const val EXTRA_IMAGE2 = "image2"
         const val EXTRA_THRESHOLD = "threshold"
+        const val EXTRA_GLASSES_DETECTED = "glasses_detected"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,19 +26,22 @@ class FaceComparisonActivity : AppCompatActivity() {
         )
         setContentView(viewBinding.root)
         val score = intent.getFloatExtra(EXTRA_SCORE, 0f)
-        val threshold = intent.getFloatExtra(EXTRA_THRESHOLD, 0.68f)
-        val warningThreshold = threshold - 0.15f
+        val threshold = intent.getFloatExtra(EXTRA_THRESHOLD, 0.6f)
+        val glassesDetected = intent.getBooleanExtra(EXTRA_GLASSES_DETECTED, false)
+        val warningThreshold = threshold - 0.1f
         if (score >= threshold) {
             viewBinding.contextLabel.text = getString(R.string.pass_details, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.pass)
             val green = Color.rgb(54, 175, 0)
             viewBinding.resultStatusTextView.setTextColor(green)
         } else if (score >= warningThreshold) {
-            viewBinding.contextLabel.text = getString(R.string.warning_details, score, threshold)
+            @StringRes val resId: Int = if (glassesDetected) R.string.warning_details_glasses else R.string.warning_details
+            viewBinding.contextLabel.text = getString(resId, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.warning)
             viewBinding.resultStatusTextView.setTextColor(Color.rgb(244, 191, 79))
         } else {
-            viewBinding.contextLabel.text = getString(R.string.fail_details, score, threshold)
+            @StringRes val resId: Int = if (glassesDetected) R.string.fail_details_glasses else R.string.fail_details
+            viewBinding.contextLabel.text = getString(resId, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.fail)
             viewBinding.resultStatusTextView.setTextColor(Color.RED)
         }
