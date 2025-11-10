@@ -82,7 +82,7 @@ dependencies {
     implementation(libs.verid.face.capture)
     implementation(libs.spoof.device.detection)
     implementation(libs.verid.face.detection)
-    implementation(libs.verid.face.recognition.arcface)
+    implementation(libs.verid.face.recognition.r300)
     implementation(libs.verid.common.serialization)
     implementation(libs.face.covering.detection)
     implementation(libs.eyewear.detection)
