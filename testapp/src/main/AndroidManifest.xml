@@ -33,6 +33,12 @@
         <activity
             android:name="com.appliedrec.mrtd_reader_app.DocumentDetailsActivity"
             android:label="@string/document_details" />
+        <meta-data
+            android:name="com.appliedrec.face-recognition-r300.serverUrl"
+            android:value="${VERID_R300_SERVER_URL}" />
+        <meta-data
+            android:name="com.appliedrec.face-recognition-r300.apiKey"
+            android:value="${VERID_R300_API_KEY}" />
     </application>
 
 </manifest>

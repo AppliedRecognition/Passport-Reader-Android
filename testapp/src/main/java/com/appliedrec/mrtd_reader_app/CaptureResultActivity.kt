@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.lifecycle.lifecycleScope
+import com.appliedrec.facerecognition.r300.cloud.FaceRecognitionR300
 import com.appliedrec.facialattributedetection.eyewear.EyewearDetector
 import com.appliedrec.facialattributedetection.eyewear.EyewearType
 import com.appliedrec.facialattributedetection.facecovering.FaceCoveringDetector
@@ -29,7 +30,6 @@ import com.appliedrec.verid3.facecapture.FaceCaptureSessionResult
 import com.appliedrec.verid3.facecapture.FaceTrackingPlugin
 import com.appliedrec.verid3.facecapture.LivenessDetectionPlugin
 import com.appliedrec.verid3.facedetection.retinaface.FaceDetectionRetinaFace
-import com.appliedrec.verid3.facerecognition.arcface.cloud.FaceRecognitionArcFace
 import com.appliedrec.verid3.spoofdevicedetection.cloud.SpoofDeviceDetection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,13 +43,13 @@ class CaptureResultActivity : AppCompatActivity() {
 
     private var scanResult: MRTDScanResult.Success? = null
     private lateinit var faceDetection: FaceDetectionRetinaFace
-    private lateinit var faceRecognition: FaceRecognitionArcFace
+    private lateinit var faceRecognition: FaceRecognitionR300
     private lateinit var faceCoveringDetector: FaceCoveringDetector
     private lateinit var eyewearDetector: EyewearDetector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        faceRecognition = FaceRecognitionArcFace(this)
+        faceRecognition = FaceRecognitionR300(this)
         val viewBinding = ActivityCaptureResultBinding.inflate(
             layoutInflater
         )

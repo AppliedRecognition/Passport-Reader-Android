@@ -51,7 +51,7 @@ class MyActivity : AppCompatActivity() {
 
 ## Sample application
 
-The project contains a sample application in the module called `testapp`. The application shows how to use the r[Ver-ID SDK](https://github.com/AppliedRecognition/Face-Capture-Android) to capture a selfie and compare it to the face from the passport's NFC chip.
+The project contains a sample application in the module called `testapp`. The application shows how to use the [Ver-ID SDK](https://github.com/AppliedRecognition/Face-Capture-Android) to capture a selfie and compare it to the face from the passport's NFC chip.
 
 ## Documentation
 

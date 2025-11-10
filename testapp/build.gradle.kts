@@ -17,6 +17,9 @@ android {
         targetSdk = 36
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Rate-limited endpoint and API key
+        manifestPlaceholders["VERID_R300_SERVER_URL"] = "https://9qz4sdd2ga.execute-api.us-east-1.amazonaws.com/Prod/extract_face_templates"
+        manifestPlaceholders["VERID_R300_API_KEY"] = "BK1aJ1vpb08InLtOsdmhL6ZiRDJtq0H89nPqVuzB"
     }
 
     buildTypes {
@@ -79,7 +82,7 @@ dependencies {
     implementation(libs.verid.face.capture)
     implementation(libs.spoof.device.detection)
     implementation(libs.verid.face.detection)
-    implementation(libs.verid.face.recognition.arcface)
+    implementation(libs.verid.face.recognition.r300)
     implementation(libs.verid.common.serialization)
     implementation(libs.face.covering.detection)
     implementation(libs.eyewear.detection)
