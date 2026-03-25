@@ -61,6 +61,12 @@ android {
             // or, if you want to pick the first (rarely needed):
             // pickFirsts += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
         }
+        jniLibs {
+            pickFirsts.add("lib/arm64-v8a/libonnxruntime.so")
+            pickFirsts.add("lib/x86_64/libonnxruntime.so")
+            pickFirsts.add("lib/armeabi-v7a/libonnxruntime.so")
+            pickFirsts.add("lib/x86/libonnxruntime.so")
+        }
     }
 }
 
@@ -80,8 +86,8 @@ dependencies {
     implementation(libs.kotlinx.serialization)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.verid.face.capture)
-    implementation(libs.spoof.device.detection)
     implementation(libs.verid.face.detection)
+    implementation(libs.spoof.device.detection)
     implementation(libs.verid.face.recognition.r300)
     implementation(libs.verid.common.serialization)
     implementation(libs.face.covering.detection)

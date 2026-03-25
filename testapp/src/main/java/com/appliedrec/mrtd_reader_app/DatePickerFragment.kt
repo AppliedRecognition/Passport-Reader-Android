@@ -27,6 +27,7 @@ class DatePickerFragment : DialogFragment(), OnDateSetListener {
                 calendar.time = it
             }
         } else {
+            @Suppress("DEPRECATION")
             (arguments?.getSerializable(DATE_KEY) as? Date)?.let {
                 calendar.time = it
             }

@@ -7,7 +7,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.appliedrec.mrtd_reader_app.databinding.ActivityFaceComparisonBinding
-import org.apache.commons.math3.distribution.NormalDistribution
 
 class FaceComparisonActivity : AppCompatActivity() {
 
@@ -17,6 +16,7 @@ class FaceComparisonActivity : AppCompatActivity() {
         const val EXTRA_IMAGE2 = "image2"
         const val EXTRA_THRESHOLD = "threshold"
         const val EXTRA_GLASSES_DETECTED = "glasses_detected"
+        const val EXTRA_FACE_COVERING_DETECTED = "face_covering_detected"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +28,7 @@ class FaceComparisonActivity : AppCompatActivity() {
         val score = intent.getFloatExtra(EXTRA_SCORE, 0f)
         val threshold = intent.getFloatExtra(EXTRA_THRESHOLD, 0.6f)
         val glassesDetected = intent.getBooleanExtra(EXTRA_GLASSES_DETECTED, false)
+        val faceCoveringDetected = intent.getBooleanExtra(EXTRA_FACE_COVERING_DETECTED, false)
         val warningThreshold = threshold - 0.1f
         if (score >= threshold) {
             viewBinding.contextLabel.text = getString(R.string.pass_details, score, threshold)
@@ -35,12 +36,22 @@ class FaceComparisonActivity : AppCompatActivity() {
             val green = Color.rgb(54, 175, 0)
             viewBinding.resultStatusTextView.setTextColor(green)
         } else if (score >= warningThreshold) {
-            @StringRes val resId: Int = if (glassesDetected) R.string.warning_details_glasses else R.string.warning_details
+            @StringRes val resId: Int = when (glassesDetected to faceCoveringDetected) {
+                true to true -> R.string.warning_details_mask_glasses
+                true to false -> R.string.warning_details_glasses
+                false to true -> R.string.warning_details_mask
+                else -> R.string.warning_details
+            }
             viewBinding.contextLabel.text = getString(resId, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.warning)
             viewBinding.resultStatusTextView.setTextColor(Color.rgb(244, 191, 79))
         } else {
-            @StringRes val resId: Int = if (glassesDetected) R.string.fail_details_glasses else R.string.fail_details
+            @StringRes val resId: Int = when (glassesDetected to faceCoveringDetected) {
+                true to true -> R.string.fail_details_mask_glasses
+                true to false -> R.string.fail_details_glasses
+                false to true -> R.string.fail_details_mask
+                else -> R.string.fail_details
+            }
             viewBinding.contextLabel.text = getString(resId, score, threshold)
             viewBinding.resultStatusTextView.setText(R.string.fail)
             viewBinding.resultStatusTextView.setTextColor(Color.RED)

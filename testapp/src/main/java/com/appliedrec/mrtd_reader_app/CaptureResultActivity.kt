@@ -27,7 +27,6 @@ import com.appliedrec.verid3.common.serialization.toBitmap
 import com.appliedrec.verid3.facecapture.CapturedFace
 import com.appliedrec.verid3.facecapture.FaceCapture
 import com.appliedrec.verid3.facecapture.FaceCaptureSessionResult
-import com.appliedrec.verid3.facecapture.FaceTrackingPlugin
 import com.appliedrec.verid3.facecapture.LivenessDetectionPlugin
 import com.appliedrec.verid3.facedetection.retinaface.FaceDetectionRetinaFace
 import com.appliedrec.verid3.spoofdevicedetection.cloud.SpoofDeviceDetection
@@ -127,7 +126,7 @@ class CaptureResultActivity : AppCompatActivity() {
                     createFaceTrackingPlugins = { listOf(
                         LivenessDetectionPlugin(arrayOf(
                             SpoofDeviceDetection(activity)
-                        )) as FaceTrackingPlugin<Any>
+                        ))
                     )}
                 }
                 try {
@@ -178,9 +177,7 @@ class CaptureResultActivity : AppCompatActivity() {
         val documentFace = faceDetection.detectFacesInImage(documentFaceImage, 1).firstOrNull()
             ?: throw Exception("Face not detected in image")
         val documentFaceCroppedImage = cropImageToFace(documentFaceImage.toBitmap(), documentFace)
-        faceCoveringDetector.detect(capturedFace.face, capturedFace.image)?.let {
-            throw FacialAttributeException(R.string.face_covering_detected)
-        }
+        val faceCoveringDetected = faceCoveringDetector.detect(capturedFace.face, capturedFace.image) != null
         val glassesDetected = eyewearDetector.detect(capturedFace.face, capturedFace.image)?.let { result ->
             if (result.type == EyewearType.SUNGLASSES) {
                 throw FacialAttributeException(R.string.sunglasses_detected)
@@ -203,6 +200,7 @@ class CaptureResultActivity : AppCompatActivity() {
         intent.putExtra(FaceComparisonActivity.EXTRA_IMAGE2, liveFaceJpeg)
         intent.putExtra(FaceComparisonActivity.EXTRA_SCORE, score)
         intent.putExtra(FaceComparisonActivity.EXTRA_GLASSES_DETECTED, glassesDetected)
+        intent.putExtra(FaceComparisonActivity.EXTRA_FACE_COVERING_DETECTED, faceCoveringDetected)
         intent.putExtra(FaceComparisonActivity.EXTRA_THRESHOLD, faceRecognition.defaultThreshold)
         return intent
     }

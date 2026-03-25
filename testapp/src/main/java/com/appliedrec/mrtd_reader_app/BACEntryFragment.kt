@@ -41,6 +41,7 @@ class BACEntryFragment : Fragment(), DatePickerFragment.Listener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             arguments?.getParcelable(BAC_KEY, BACSpec::class.java)?.let { updateFromBACSpec(it) }
         } else {
+            @Suppress("DEPRECATION")
             arguments?.getParcelable<BACSpec>(BAC_KEY)?.let { updateFromBACSpec(it) }
         }
         viewBinding!!.documentNumber.addTextChangedListener(object : TextWatcher {
